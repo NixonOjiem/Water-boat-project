@@ -2,7 +2,6 @@
   <div>
     <div class="signup-view">
       <SignUpComponent />
-      <p>The value of 'a' is: {{ a }}</p>
   </div>
   </div>
 </template>
@@ -31,12 +30,30 @@ data() {
 </script>
 
 <style scoped>
-/* .signup-view {
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  min-width: 100vw;
-} */
+.signup-view {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.signup-view::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/20250702_103943.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px); /* 👈 Adjust the blur here */
+  z-index: 0;
+}
+
+.signup-view > * {
+  position: relative;
+  z-index: 1; /* Ensure your content stays on top */
+}
+
 </style>

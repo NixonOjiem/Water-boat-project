@@ -4,8 +4,12 @@ const router = express.Router(); // <--- CRUCIAL: Create a new router instance
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 // Assuming 'connection' is imported or available here, or pass it via dependency injection if needed
-const connection = require("../index"); // If you want to use the connection from server.js
+const connection = require("../config/db"); // If you want to use the connection from server.js
 const JWT_SECRET = process.env.JWT_SECRET; // Loads JWT secret from environment variables
+const { OAuth2Client } = require("google-auth-library");
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+
+const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 // Manual Login route
 router.post("/login", async (req, res) => {

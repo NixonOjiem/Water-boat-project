@@ -1,29 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise"); // <--- IMPORTANT: Changed to mysql2/promise
 require("dotenv").config();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000; // Added default port if not in .env
 const routes = require("./routes"); // Basic routes file
 const authRoutes = require("./middleware/auth"); //middleware for authentication
 
 // Database connection
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error("❌ MySQL connection error:", err.message);
-    return;
-  }
-  console.log("✅ MySQL connected");
-});
-
-module.exports = connection;
+const pool = require("./config/db"); // Import the database connection pool
 
 // Configure CORS specifically for your frontend origin
 const corsOptions = {
@@ -46,6 +31,12 @@ app.get("/", (req, res) => {
 
 app.use("/", routes);
 app.use("/auth", authRoutes); // Use the auth middleware for authentication routes
+
+// Error handling middleware (optional, but good practice)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
 
 // Start server
 app.listen(port, () => {

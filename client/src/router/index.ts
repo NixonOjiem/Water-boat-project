@@ -11,7 +11,6 @@ const router = createRouter({
       name: 'authentication',
       component: SignUpView,
     },
-
   ],
 })
 

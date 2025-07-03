@@ -31,20 +31,6 @@
                   {{ isSigningUp ? 'Sign Up' : 'Sign In' }} with Google
                 </span>
               </button>
-
-              <!-- GitHub button (Placeholder - not implemented in backend) -->
-              <button
-                class="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5">
-                <div class="bg-white p-1 rounded-full">
-                  <svg class="w-6" viewBox="0 0 32 32">
-                    <path fill-rule="evenodd"
-                      d="M16 4C9.371 4 4 9.371 4 16c0 5.3 3.438 9.8 8.207 11.387.602.11.82-.258.82-.578 0-.286-.011-1.04-.015-2.04-3.34.723-4.043-1.609-4.043-1.609-.547-1.387-1.332-1.758-1.332-1.758-1.09-.742.082-.726.082-.726 1.203.086 1.836 1.234 1.836 1.234 1.07 1.836 2.808 1.305 3.492 1 .11-.777.422-1.305.762-1.605-2.664-.301-5.465-1.332-5.465-5.93 0-1.313.469-2.383 1.234-3.223-.121-.3-.535-1.523.117-3.175 0 0 1.008-.32 3.301 1.23A11.487 11.487 0 0116 9.805c1.02.004 2.047.136 3.004.402 2.293-1.55 3.297-1.23 3.297-1.23.656 1.652.246 2.875.12 3.175.77.84 1.231 1.91 1.231 3.223 0 4.61-2.804 5.621-5.476 5.922.43.367.812 1.101.812 2.219 0 1.605-.011 2.898-.011 3.293 0 .32.214.695.824.578C24.566 25.797 28 21.3 28 16c0-6.629-5.371-12-12-12z" />
-                  </svg>
-                </div>
-                <span class="ml-4">
-                  {{ isSigningUp ? 'Sign Up' : 'Sign In' }} with GitHub
-                </span>
-              </button>
             </div>
 
             <div class="my-12 border-b text-center">
@@ -105,17 +91,18 @@
           </div>
         </div>
       </div>
-      <div class="flex-1 bg-indigo-100 text-center hidden lg:flex">
-        <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat rectangular-bg"
-          style="background-image: url('/images/4970051.jpg');">
-        </div>
+      <div class="flex-1 bg-indigo-100 hidden lg:flex bg-contain bg-no-repeat bg-cover"
+        style="background-image: url('/images/VectorImage.jpg');">
+        <!-- <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat rectangular-bg"
+          style="background-image: url('/images/VectorImage.jpg');">
+        </div> -->
       </div>
     </div>
   </div>
 </template>
-
 <script>
 import axios from 'axios';
+const apiRoute = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 export default {
   data() {
@@ -131,21 +118,19 @@ export default {
       registerError: '',
       googleAuthMessage: '',
       googleAuthError: '',
-      // IMPORTANT: Replace with your actual Google Client ID for the frontend
-      // This is different from the backend one for token verification.
-      GOOGLE_CLIENT_ID_FRONTEND: 'YOUR_GOOGLE_CLIENT_ID_FOR_FRONTEND_WEB_APP',
+      GOOGLE_CLIENT_ID_FRONTEND: import.meta.env.VITE_APP_GOOGLE_CLIENT_ID,
+      isGoogleScriptLoaded: false // Add a flag to track script loading
     };
   },
   mounted() {
-    // Initialize Google Sign-In when the component mounts
-    this.initGoogleSignIn();
+    // Load the Google script dynamically
+    this.loadGoogleSignInScript();
   },
   methods: {
     // Toggles between Sign In and Sign Up mode
     toggleAuthMode() {
       this.isSigningUp = !this.isSigningUp;
-      // Clear all messages and inputs when switching modes
-      this.clearMessagesAndInputs(); // This clears both inputs and messages
+      this.clearMessagesAndInputs();
     },
 
     // Clears all form inputs and messages
@@ -154,10 +139,10 @@ export default {
       this.email = '';
       this.phone = '';
       this.password = '';
-      this.clearMessagesAndErrors(); // Call the new method to clear only messages/errors
+      this.clearMessagesAndErrors();
     },
 
-    // New method: Clears only messages and errors, leaves input fields' data properties intact
+    // Clears only messages and errors
     clearMessagesAndErrors() {
       this.loginMessage = '';
       this.loginError = '';
@@ -167,7 +152,7 @@ export default {
       this.googleAuthError = '';
     },
 
-    // Handles form submission (either login or registration)
+    // Handles form submission (login or registration)
     async handleSubmit() {
       if (this.isSigningUp) {
         await this.handleRegister();
@@ -178,23 +163,20 @@ export default {
 
     // Handles manual login
     async handleLogin() {
-      this.clearMessagesAndErrors(); // Clear previous messages/errors
-
-      // Client-side validation for login
+      this.clearMessagesAndErrors();
       if (!this.email || !this.password) {
         this.loginError = 'Email and password are required for login.';
-        return; // Stop execution if validation fails
+        return;
       }
-
       try {
-        const response = await axios.post('http://localhost:5000/auth/login', {
+        const response = await axios.post(`${apiRoute}/auth/login`, {
           email: this.email,
           password: this.password,
         });
         this.loginMessage = response.data.message;
         localStorage.setItem('userToken', response.data.token);
         console.log('Login successful, token:', response.data.token);
-        // TODO: Redirect user or update UI state after successful login
+        // TODO: Redirect user
       } catch (error) {
         this.loginError = error.response?.data?.message || 'Login failed. Please try again.';
         console.error('Login error:', error);
@@ -203,75 +185,82 @@ export default {
 
     // Handles manual registration
     async handleRegister() {
-      this.clearMessagesAndErrors(); // Clear previous messages/errors
-
-      // Debugging: Log the values before validation
-      console.log('Attempting to register with:', {
-        username: this.username,
-        email: this.email,
-        password: this.password
-      });
-
-      // Client-side validation for registration
+      this.clearMessagesAndErrors();
       if (!this.username || !this.email || !this.password) {
-        this.registerError = 'Username, email, and password are required for registration.';
-        console.error('Client-side validation failed: One or more fields are empty.');
-        return; // Stop execution if validation fails
+        this.registerError = 'Username, email, and password are required.';
+        return;
       }
-
       try {
-        const response = await axios.post('http://localhost:5000/auth/register', {
+        const response = await axios.post(`${apiRoute}/auth/register`, {
           username: this.username,
           email: this.email,
-          phone: this.phone || null, // Send null if phone is empty
+          phone: this.phone || null,
           password: this.password,
         });
         this.registerMessage = response.data.message;
         console.log('Registration successful, user ID:', response.data.userId);
-        // Optionally, automatically switch to sign-in mode or log in the user
-        this.isSigningUp = false; // Switch to sign-in after successful registration
-        this.email = this.email; // Pre-fill email for login
-        this.password = ''; // Clear password
+        this.isSigningUp = false;
+        this.email = this.email;
+        this.password = '';
       } catch (error) {
         this.registerError = error.response?.data?.message || 'Registration failed. Please try again.';
         console.error('Registration error:', error);
       }
     },
 
-    // Initializes Google Sign-In button
-    initGoogleSignIn() {
-      // Ensure the Google API script is loaded before initializing
-      if (window.google && window.google.accounts && window.google.accounts.id) {
-        window.google.accounts.id.initialize({
-          client_id: this.GOOGLE_CLIENT_ID_FRONTEND, // Your frontend Google Client ID
-          callback: this.handleGoogleCredentialResponse,
-        });
-
-        // Render the Google Sign-In button into the div with ref="googleSignInButton"
-        // The `renderButton` function will replace the content of the div with the actual Google button
-        window.google.accounts.id.renderButton(
-          this.$refs.googleSignInButton,
-          { theme: 'outline', size: 'large', text: this.isSigningUp ? 'signup_with' : 'signin_with' } // Customization
-        );
-      } else {
-        console.warn('Google Identity Services script not loaded yet. Retrying in 1 second...');
-        setTimeout(this.initGoogleSignIn, 1000); // Retry if script not loaded
+    // **NEW**: Method to load the script
+    loadGoogleSignInScript() {
+      if (this.isGoogleScriptLoaded || document.getElementById('google-signin-script')) {
+        this.initGoogleSignIn();
+        return;
       }
+      const script = document.createElement('script');
+      script.id = 'google-signin-script';
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        this.isGoogleScriptLoaded = true;
+        this.initGoogleSignIn();
+      };
+      script.onerror = () => {
+        console.error('Google Identity Services script failed to load.');
+        this.googleAuthError = 'Could not load Google Sign-In. Please try again later.';
+      }
+      document.head.appendChild(script);
     },
 
-    // Callback for Google Sign-In after user interacts with the button
+    // Initializes Google Sign-In button (now called by script's onload)
+    initGoogleSignIn() {
+      if (!window.google || !this.$refs.googleSignInButton) {
+        // If the script isn't ready or the component unmounted, do nothing.
+        return;
+      }
+
+      window.google.accounts.id.initialize({
+        client_id: this.GOOGLE_CLIENT_ID_FRONTEND,
+        callback: this.handleGoogleCredentialResponse,
+      });
+
+      window.google.accounts.id.renderButton(
+        this.$refs.googleSignInButton,
+        // The text can be generic. The backend will handle if it's a new or existing user.
+        { theme: 'outline', size: 'large', text: 'continue_with' }
+      );
+    },
+
+    // Callback for Google Sign-In
     async handleGoogleCredentialResponse(response) {
-      this.clearMessagesAndErrors(); // Clear previous messages/errors
+      this.clearMessagesAndErrors();
       if (response.credential) {
         try {
-          // Send the ID token to your backend for verification and user management
-          const backendResponse = await axios.post('http://localhost:5000/auth/google', {
-            token: response.credential, // This is the ID token provided by Google
+          const backendResponse = await axios.post(`${apiRoute}/auth/google`, {
+            token: response.credential,
           });
           this.googleAuthMessage = backendResponse.data.message;
           localStorage.setItem('userToken', backendResponse.data.token);
           console.log('Google auth successful, user:', backendResponse.data.user);
-          // TODO: Redirect user or update UI state after successful Google login/signup
+          // TODO: Redirect user
         } catch (error) {
           this.googleAuthError = error.response?.data?.message || 'Google authentication failed on backend.';
           console.error('Google auth backend error:', error);
@@ -282,13 +271,8 @@ export default {
       }
     },
   },
-  watch: {
-    // Watch for changes in isSigningUp to re-render the Google button text
-    isSigningUp() {
-      // Re-initialize the Google button to update its text (Sign In/Sign Up)
-      this.initGoogleSignIn();
-    }
-  }
+  // **REMOVED**: The watch block is no longer needed and was causing issues.
+  // watch: { ... }
 };
 </script>
 

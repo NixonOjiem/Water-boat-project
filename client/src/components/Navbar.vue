@@ -7,10 +7,10 @@
 
       <nav class="hidden md:flex flex-grow justify-center">
         <ul class="flex space-x-10 bg-white p-6 rounded-[2.75rem] shadow-md">
-          <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Why Us</a></li>
+          <li><a href="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</a></li>
           <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</a></li>
           <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Our Experts</a></li>
-          <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Our Cases</a></li>
+          <li><a href="/booking" class="text-gray-700 hover:text-blue-600 font-medium">Book a Trip</a></li>
         </ul>
       </nav>
 

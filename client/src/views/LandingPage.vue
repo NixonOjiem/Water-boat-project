@@ -72,12 +72,16 @@
         </div>
       </div>
     </main>
+    <GetInTouch/>
+    <Footer/>
   </section>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import Navbar from '@/components/Navbar.vue';
+import GetInTouch from '@/components/GetInTouch.vue';
+import Footer from '@/components/Footer.vue';
 
 // --- Card Interaction Logic ---
 const activeCardId = ref(null);

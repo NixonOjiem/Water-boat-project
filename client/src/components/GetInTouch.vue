@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-100"
+    class="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#e0f2fe] to-[#bfdbfe]"
     >
     <div class="absolute inset-0 overflow-hidden">
       <div class="water-ripple" style="background: rgba(0, 170, 212, 0.1);"></div>
@@ -12,7 +12,7 @@
       class="relative z-10 max-w-4xl w-full bg-white bg-opacity-90 rounded-xl shadow-2xl overflow-hidden md:flex"
     >
       <div
-        class="md:w-1/2 p-8 sm:p-12 bg-deep-blue text-white flex flex-col justify-between"
+        class="md:w-1/2 p-8 sm:p-12 bg-[#002255] text-white flex flex-col justify-between"
       >
         <div>
           <h2 class="text-3xl font-extrabold mb-4 text-center md:text-left">
@@ -30,7 +30,7 @@
             >
               <ion-icon
                 name="location-outline"
-                class="flex-shrink-0 h-7 w-7 mr-4 text-ocean-blue text-3xl"
+                class="flex-shrink-0 h-7 w-7 mr-4 text-[#00aad4] text-3xl"
               ></ion-icon>
               <div>
                 <h4 class="text-xl font-semibold mb-1">Our Location</h4>
@@ -45,7 +45,7 @@
             >
               <ion-icon
                 name="call-outline"
-                class="flex-shrink-0 h-7 w-7 mr-4 text-ocean-blue text-3xl"
+                class="flex-shrink-0 h-7 w-7 mr-4 text-[#00aad4] text-3xl"
               ></ion-icon>
               <div>
                 <h4 class="text-xl font-semibold mb-1">Call Us</h4>
@@ -62,7 +62,7 @@
             >
               <ion-icon
                 name="mail-outline"
-                class="flex-shrink-0 h-7 w-7 mr-4 text-ocean-blue text-3xl"
+                class="flex-shrink-0 h-7 w-7 mr-4 text-[#00aad4] text-3xl"
               ></ion-icon>
               <div>
                 <h4 class="text-xl font-semibold mb-1">Email Us</h4>
@@ -83,25 +83,25 @@
           <div class="flex justify-center md:justify-start space-x-6">
             <a
               href="#"
-              class="text-ocean-blue hover:text-white transition-colors duration-300 transform hover:scale-110"
+              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110"
             >
               <ion-icon name="logo-facebook" class="text-3xl"></ion-icon>
             </a>
             <a
               href="#"
-              class="text-ocean-blue hover:text-white transition-colors duration-300 transform hover:scale-110"
+              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110"
             >
               <ion-icon name="logo-twitter" class="text-3xl"></ion-icon>
             </a>
             <a
               href="#"
-              class="text-ocean-blue hover:text-white transition-colors duration-300 transform hover:scale-110"
+              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110"
             >
               <ion-icon name="logo-instagram" class="text-3xl"></ion-icon>
             </a>
             <a
               href="#"
-              class="text-ocean-blue hover:text-white transition-colors duration-300 transform hover:scale-110"
+              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110"
             >
               <ion-icon name="logo-linkedin" class="text-3xl"></ion-icon>
             </a>
@@ -124,7 +124,7 @@
               v-model="form.name"
               autocomplete="name"
               required
-              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-ocean-blue focus:border-ocean-blue sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
+              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
               placeholder="Your Full Name"
             />
           </div>
@@ -139,7 +139,7 @@
               v-model="form.email"
               autocomplete="email"
               required
-              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-ocean-blue focus:border-ocean-blue sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
+              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
               placeholder="you@example.com"
             />
           </div>
@@ -152,7 +152,7 @@
               type="text"
               id="subject"
               v-model="form.subject"
-              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-ocean-blue focus:border-ocean-blue sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
+              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
               placeholder="Regarding boat booking, custom build, etc."
             />
           </div>
@@ -168,7 +168,7 @@
               v-model="form.message"
               rows="6"
               required
-              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-ocean-blue focus:border-ocean-blue sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
+              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
               placeholder="Tell us more about what you need..."
             ></textarea>
           </div>
@@ -176,7 +176,7 @@
           <div>
             <button
               type="submit"
-              class="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-semibold text-white bg-ocean-blue hover:bg-deep-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ocean-blue transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+              class="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-semibold text-white bg-[#00aad4] hover:bg-[#002255] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00aad4] transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
             >
               <span v-if="!loading">Send Message</span>
               <span v-else class="flex items-center">
@@ -210,7 +210,7 @@
             :class="[
               'mt-4 p-3 rounded-md text-center',
               formStatus.type === 'success'
-                ? 'bg-seafoam-green/10 text-deep-blue' // Subtly use green with transparency for background, text in deep blue
+                ? 'bg-[#80ff3f]/10 text-[#002255]' // Subtly use green with transparency for background, text in deep blue
                 : 'bg-red-100 text-red-800', // Standard red for errors
             ]"
           >
@@ -294,7 +294,7 @@ export default {
 .water-ripple {
   position: absolute;
   border-radius: 50%;
-  /* This style will be overridden by inline style if preferred for dynamic colors */
+  /* This style will be overridden by inline style for dynamic colors */
   background: rgba(255, 255, 255, 0.1); /* Fallback */
   animation: ripple 15s infinite ease-in-out;
   opacity: 0;

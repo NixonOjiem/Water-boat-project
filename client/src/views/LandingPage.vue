@@ -37,7 +37,7 @@
                   'desktop-menu-button hidden md:flex items-center justify-center w-12 h-12 rounded-full cursor-pointer text-white',
                   { 'p-4': isDesktopMenuOpen }
                 ]" @click="toggleDesktopMenu">
-                <ion-icon name="menu-outline" class="text-2xl transition-transform duration-300 ease-in-out"></ion-icon>
+                <ion-icon name="menu-outline" class="text-2xl transition-transform duration-300 ease-in-out text-black"></ion-icon>
               </div>
 
               <transition name="fade">

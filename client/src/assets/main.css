@@ -1,7 +1,1 @@
-@import "tailwindcss";
-/* @import './base.css'; */
-
-#app {
-  margin: 0 auto;
-  font-weight: normal;
-}
+@import 'tailwindcss';

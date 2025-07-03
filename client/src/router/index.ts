@@ -1,6 +1,7 @@
 import LandingPage from '@/views/LandingPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import SignUpView from '@/views/SignUpView.vue'
+import BookingView from '@/views/BookingView.vue'
 
 
 const router = createRouter({
@@ -16,6 +17,11 @@ const router = createRouter({
       path: '/',
       name: 'LandingPage',
       component: LandingPage,
+    },
+    {
+      path: '/booking',
+      name: 'BookingView',
+      component: BookingView,
     },
   ],
 })

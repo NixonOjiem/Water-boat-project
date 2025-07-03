@@ -1,23 +1,13 @@
-<template>
-    <header class="w-full">
-        <h1 class="text-2xl font-bold">Water Boat Project</h1>
-        <nav>
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </nav>
-    </header>
-</template>
-
-<script setup>
-
+<script setup lang="ts">
 </script>
-
-<style>
-html {
-  scroll-behavior: smooth;
+<template>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+</template>
+<style scoped>
+.app{
+  width: 100%;
+  height: 100%;
 }
 </style>

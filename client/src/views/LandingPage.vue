@@ -3,7 +3,7 @@
     <!-- Hero Section: Contains the header, the parallax image, and the ripple overlay -->
     <section class="relative w-full h-screen overflow-hidden" ref="heroSectionRef">
       <!-- Header is positioned absolutely to overlay the image -->
-      <header class="w-full absolute top-0 left-0 z-[9999]">
+      <!-- <header class="w-full absolute top-0 left-0 z-[9999]">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
           <div class="logo-nav">
             <a href="#" class="text-2xl font-bold text-white">Your Logo</a>
@@ -52,17 +52,17 @@
             </div>
           </div>
         </div>
-      </header>
-
+      </header> -->
+      <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
+        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu" />
       <!-- Hero Image for Parallax Effect -->
-      <img
-        src="/images/cruise-vertical.png"
-        alt="Aerial view of a yacht on Lake Victoria"
+      <img src="/images/cruise-vertical.png" alt="Aerial view of a yacht on Lake Victoria"
         class="absolute top-0 left-0 w-full h-full object-cover hero-image"
         :style="{ transform: `scale(${parallaxScale})` }" />
 
       <!-- Text Overlay - Removed bg-black and used inline style for rgba background -->
-      <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4" style="background-color: rgba(0, 0, 0, 0.6);">
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4"
+        style="background-color: rgba(0, 0, 0, 0.6);">
         <h1 class="text-5xl md:text-7xl font-bold text-center mb-4">Experience the Ocean's Majesty</h1>
         <p class="text-lg md:text-xl text-center max-w-2xl">Sail across the serene waters, captured from an unparalleled
           aerial perspective.</p>
@@ -88,6 +88,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import Navbar from '@/components/Navbar.vue';
 // --- Menu State and Logic ---
 const isMobileMenuOpen = ref(false);
 const isDesktopMenuOpen = ref(false);
@@ -162,7 +163,7 @@ function Ripple(x, y) {
   this.fadeSpeed = 0.02; // How fast the ripple fades
 }
 
-Ripple.prototype.draw = function() {
+Ripple.prototype.draw = function () {
   ctx.beginPath();
   ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
 
@@ -180,7 +181,7 @@ Ripple.prototype.draw = function() {
   ctx.stroke();
 };
 
-Ripple.prototype.update = function() {
+Ripple.prototype.update = function () {
   this.radius += this.speed;
   this.alpha -= this.fadeSpeed;
 };
@@ -243,11 +244,13 @@ onUnmounted(() => {
 <style>
 /* Global style to prevent body scrollbar shift */
 html {
-  overflow-y: scroll; /* Always show scrollbar to prevent horizontal jumps */
+  overflow-y: scroll;
+  /* Always show scrollbar to prevent horizontal jumps */
 }
 
 body {
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
 }
 </style>
 

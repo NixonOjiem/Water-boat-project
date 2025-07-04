@@ -1,49 +1,70 @@
-<template>
-    <section class="relative w-full h-screen overflow-hidden" ref="heroSectionRef">
-      <img
-        src="/images/cruise-vertical.png"
-        alt="Aerial view of a yacht on Lake Victoria"
-        class="absolute top-0 left-0 w-full h-full object-cover hero-image"
-        :style="{ transform: `scale(${parallaxScale})` }"
-      />
-      <div
-        class="absolute inset-0 flex flex-col justify-center items-center text-white p-4"
-        style="background-color: rgba(0, 0, 0, 0.6)"
-      >
-        <h1 class="text-5xl md:text-7xl font-bold text-center mb-4">
-          Experience the Ocean's Majesty
-        </h1>
-        <p class="text-lg md:text-xl text-center max-w-2xl">
-          Sail across the serene waters, captured from an unparalleled aerial perspective.
-        </p>
-      </div>
-      <canvas ref="rippleCanvas" class="absolute inset-0 z-[100] cursor-pointer"></canvas>
-    </section>
-</template>
+<template></template>
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import Navbar from '@/components/Navbar.vue';
+// --- Menu State and Logic ---
+const isMobileMenuOpen = ref(false);
+const isDesktopMenuOpen = ref(false);
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+  if (isMobileMenuOpen.value) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+};
+
+const toggleDesktopMenu = (event) => {
+  event.stopPropagation();
+  isDesktopMenuOpen.value = !isDesktopMenuOpen.value;
+};
+
+const handleClickOutside = (event) => {
+  const desktopMenuWrapper = document.querySelector('.desktop-menu-wrapper');
+  const desktopMenuDropdown = document.querySelector('.desktop-menu-wrapper > .absolute.right-0.top-full');
+
+  if (desktopMenuWrapper && !desktopMenuWrapper.contains(event.target) &&
+    desktopMenuDropdown && !desktopMenuDropdown.contains(event.target)) {
+    isDesktopMenuOpen.value = false;
+  }
+};
+
+const handleResize = () => {
+  if (window.innerWidth >= 768) {
+    isMobileMenuOpen.value = false;
+    document.body.style.overflow = '';
+    isDesktopMenuOpen.value = false;
+  }
+};
 
 // --- Parallax Effect Logic ---
-const parallaxScale = ref(1)
+const heroSectionRef = ref(null); // Ref for the hero section element
+const parallaxScale = ref(1); // Reactive property for the parallax zoom level
+
 const updateParallax = () => {
   if (heroSectionRef.value) {
-    // Get the top position of the hero section relative to the viewport
-    const rect = heroSectionRef.value.getBoundingClientRect()
-    // Calculate scroll progress (0 when top of section hits top of viewport, 1 when bottom hits)
-    let scrollProgress = -rect.top / window.innerHeight
-    // Clamp the value between 0 and 1
-    scrollProgress = Math.max(0, Math.min(1, scrollProgress))
-    // Define how much the image should zoom (e.g., 20%)
-    const maxZoomFactor = 0.2
-    // Update the scale value
-    parallaxScale.value = 1 + scrollProgress * maxZoomFactor
+    const rect = heroSectionRef.value.getBoundingClientRect();
+
+    // Calculate how much of the hero section has scrolled out of view from the top
+    let scrollProgress = -rect.top / window.innerHeight;
+
+    // Clamp the progress between 0 and 1 to control the effect only while scrolling through the hero
+    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+
+    // Calculate the scale:
+    // When scrollProgress is 0 (hero is at the top), scale is 1.0 (no zoom)
+    // When scrollProgress is 1 (hero has scrolled one full viewport height), scale is 1.2 (20% zoom)
+    const maxZoomFactor = 0.2; // Controls the maximum amount of zoom
+    parallaxScale.value = 1 + (scrollProgress * maxZoomFactor);
   }
-}
+};
 
 // --- Ripple Effect Logic ---
 const rippleCanvas = ref(null);
 let ctx;
 let ripples = [];
+
 // Ripple constructor
 function Ripple(x, y) {
   this.x = x;
@@ -99,11 +120,13 @@ const animateRipples = () => {
   }
   requestAnimationFrame(animateRipples);
 };
+
 // --- Lifecycle Hooks ---
 onMounted(() => {
-  window.addEventListener('scroll', updateParallax)
-  document.addEventListener('click', handleClickOutside)
-    // Parallax setup
+  window.addEventListener('resize', handleResize);
+  document.addEventListener('click', handleClickOutside);
+
+  // Parallax setup
   window.addEventListener('scroll', updateParallax);
   updateParallax(); // Initial call for parallax
 
@@ -117,14 +140,23 @@ onMounted(() => {
     heroSectionRef.value.addEventListener('mousemove', createRipple);
     requestAnimationFrame(animateRipples); // Start ripple animation loop
   }
-})
+});
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', updateParallax)
-  document.removeEventListener('click', handleClickOutside)
-    // Clean up ripple listeners
+  window.removeEventListener('resize', handleResize);
+  document.removeEventListener('click', handleClickOutside);
+  window.removeEventListener('scroll', updateParallax); // Clean up parallax listener
+
+  // Clean up ripple listeners
   if (heroSectionRef.value) {
     heroSectionRef.value.removeEventListener('mousemove', createRipple);
   }
-})
+});
 </script>
+<style></style>
+
+<script>
+
+
+</script>
+

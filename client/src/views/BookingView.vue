@@ -3,17 +3,19 @@
     <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
         @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"  />
     <BookingComponent />
+    <Footer />
   </div>
 
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue';
 import BookingComponent from '@/components/BookingComponent.vue';
 import { ref } from 'vue';
 
 export default {
-  components: { Navbar, BookingComponent },
+  components: { Navbar, BookingComponent, Footer },
   setup() {
     // --- State for Mobile Menu ---
     const isMobileMenuOpen = ref(false);

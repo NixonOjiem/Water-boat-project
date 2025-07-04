@@ -6,13 +6,15 @@
       <p class="text-lg mb-12">Explore the services we offer for your boating adventures.</p>
       <!-- Add your services content here -->
     </main>
+    <Footer />
   </div>
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue';
 export default {
   components: {
-    Navbar
+    Navbar, Footer
   },
   setup() {
     // You can add any setup logic here if needed

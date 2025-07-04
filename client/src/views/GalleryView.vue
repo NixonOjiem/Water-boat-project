@@ -6,15 +6,17 @@
       <p class="text-lg mb-12">Explore our collection of stunning boat images.</p>
     </main>
     <GalleryComponent />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue';
 import GalleryComponent from '@/components/GalleryComponent.vue';
+import Footer from '@/components/Footer.vue';
 export default {
   components: {
-    Navbar, GalleryComponent
+    Navbar, GalleryComponent, Footer
   },
   setup() {
     // You can add any setup logic here if needed

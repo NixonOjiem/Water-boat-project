@@ -7,14 +7,16 @@
       <!-- Add your trip management content here -->
     </main>
     <TripsComponent />
+    <Footer />
   </div>
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue';
 import TripsComponent from '@/components/TripsComponent.vue';
 export default {
   components: {
-    Navbar, TripsComponent
+    Navbar, TripsComponent, Footer
   },
   setup() {
     // You can add any setup logic here if needed

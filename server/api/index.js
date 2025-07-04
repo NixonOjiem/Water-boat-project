@@ -9,14 +9,26 @@ router.post("/bookings", async (req, res) => {
     // Destructure userId from req.body as well
     const { destination, date, time, passengers, userId } = req.body;
 
+    // Explicit check for userId validity
+    // Enhanced userId check
+    if (
+      !userId ||
+      userId === "null" ||
+      userId === "undefined" ||
+      userId === "guest"
+    ) {
+      return res.status(401).json({
+        message: "Authentication required. Please log in to book a trip.",
+        error: "UNAUTHENTICATED",
+      });
+    }
+
     // Basic server-side validation
     if (!destination || !date || !time || !passengers || !userId) {
       // Added userId to validation
-      return res
-        .status(400)
-        .json({
-          message: "All booking fields (including userId) are required.",
-        });
+      return res.status(400).json({
+        message: "All booking fields are required.",
+      });
     }
 
     // Validate passengers count (should be within your frontend's maxPassengers)

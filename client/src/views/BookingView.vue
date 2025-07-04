@@ -17,13 +17,15 @@ export default {
   setup() {
     // --- State for Mobile Menu ---
     const isMobileMenuOpen = ref(false);
-    const toggleMobileMenu = () => {
+    const toggleMobileMenu = (event) => {
+      event.stopPropagation();
       isMobileMenuOpen.value = !isMobileMenuOpen.value;
     };
 
     // --- State for Desktop Menu ---
     const isDesktopMenuOpen = ref(false);
-    const toggleDesktopMenu = () => {
+    const toggleDesktopMenu = (event) => { // <--- Add 'event' parameter here
+      event.stopPropagation(); // <--- Add this line
       isDesktopMenuOpen.value = !isDesktopMenuOpen.value;
     };
 

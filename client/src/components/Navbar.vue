@@ -11,6 +11,7 @@
           <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</a></li>
           <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Our Experts</a></li>
           <li><a href="/booking" class="text-gray-700 hover:text-blue-600 font-medium">Book a Trip</a></li>
+
         </ul>
       </nav>
 
@@ -43,7 +44,14 @@
                 </li>
                 <li><a href="#" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">Settings</a>
                 </li>
-                <li><a href="#" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">Logout</a>
+                <li v-if="authStore.isAuthenticated">
+                  <a href="#" class="hover:text-blue-600" @click="logout">Logout</a>
+                </li>
+                <li v-else>
+                  <router-link to="/authentication" class="hover:text-blue-600"
+                    @click="$emit('toggle-desktop-menu', $event)">
+                    Login
+                  </router-link>
                 </li>
               </ul>
             </div>
@@ -56,6 +64,15 @@
 
 <script setup>
 import { defineProps, defineEmits } from 'vue';
+import { useRouter } from 'vue-router';
+import { authStore } from '@/store/auth';
+
+const router = useRouter();
+
+const logout = () => {
+  authStore.logout();
+  router.push('/');
+};
 
 // Define props that the component expects to receive
 const props = defineProps({

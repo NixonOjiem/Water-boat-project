@@ -102,7 +102,10 @@
 </template>
 <script>
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 const apiRoute = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const router = useRouter();
+
 
 export default {
   data() {
@@ -176,7 +179,7 @@ export default {
         this.loginMessage = response.data.message;
         localStorage.setItem('userToken', response.data.token);
         console.log('Login successful, token:', response.data.token);
-        // TODO: Redirect user
+        this.$router.push('/');
       } catch (error) {
         this.loginError = error.response?.data?.message || 'Login failed. Please try again.';
         console.error('Login error:', error);
@@ -199,6 +202,7 @@ export default {
         });
         this.registerMessage = response.data.message;
         console.log('Registration successful, user ID:', response.data.userId);
+        this.$router.push('/');
         this.isSigningUp = false;
         this.email = this.email;
         this.password = '';
@@ -260,7 +264,7 @@ export default {
           this.googleAuthMessage = backendResponse.data.message;
           localStorage.setItem('userToken', backendResponse.data.token);
           console.log('Google auth successful, user:', backendResponse.data.user);
-          // TODO: Redirect user
+          this.$router.push('/');
         } catch (error) {
           this.googleAuthError = error.response?.data?.message || 'Google authentication failed on backend.';
           console.error('Google auth backend error:', error);

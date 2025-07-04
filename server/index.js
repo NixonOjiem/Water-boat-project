@@ -6,6 +6,7 @@ require("dotenv").config();
 const port = process.env.PORT || 5000; // Added default port if not in .env
 const routes = require("./routes"); // Basic routes file
 const authRoutes = require("./middleware/auth"); //middleware for authentication
+const apiRoutes = require("./api");
 
 // Database connection
 const pool = require("./config/db"); // Import the database connection pool
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/", routes);
+app.use("/api", apiRoutes);
 app.use("/auth", authRoutes); // Use the auth middleware for authentication routes
 
 // Error handling middleware (optional, but good practice)

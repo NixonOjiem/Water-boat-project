@@ -1,7 +1,6 @@
 <template>
   <div class="min-h-screen bg-transparent font-sans flex items-center justify-center p-4">
     <div class="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
-      <!-- Left side: Image and Overlay -->
       <div class="w-full md:w-1/2 relative">
         <img src="https://images.unsplash.com/photo-1527098602225-6363b71c3743?q=80&w=2592&auto=format&fit=crop"
           alt="A beautiful boat on the water at sunset" class="h-64 md:h-full w-full object-cover">
@@ -12,13 +11,11 @@
         </div>
       </div>
 
-      <!-- Right side: Booking Form -->
       <div class="w-full md:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
         <h1 class="text-3xl font-bold text-gray-800 mb-2">Book Your Trip</h1>
         <p class="text-gray-600 mb-8">Select your destination and date to get started.</p>
 
         <form @submit.prevent="submitBooking" class="space-y-6">
-          <!-- Destination Dropdown -->
           <div>
             <label for="destination" class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
             <div class="relative">
@@ -35,14 +32,12 @@
             </div>
           </div>
 
-          <!-- Date Picker -->
           <div>
             <label for="trip-date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
             <input type="date" id="trip-date" v-model="booking.date" :min="today" required
               class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
           </div>
 
-          <!-- time picker -->
           <div>
             <label for="trip-time" class="block text-sm font-medium text-gray-700 mb-1">Time</label>
             <input type="time" id="trip-time" v-model="booking.time" required
@@ -50,40 +45,45 @@
           </div>
 
 
-          <!-- Passenger Counter -->
           <div>
             <label for="passengers" class="block text-sm font-medium text-gray-700 mb-1">Passengers (Max: 20)</label>
             <div class="flex items-center">
               <button type="button" @click="decrementPassengers"
-                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg hover:bg-gray-300 transition">-</button>
+                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg hover:bg-gray-300 transition"
+                :disabled="booking.passengers <= 1">-</button>
               <input type="number" id="passengers" v-model.number="booking.passengers" readonly
                 class="w-full text-center px-4 py-3 bg-gray-50 border-t border-b border-gray-300 focus:outline-none">
               <button type="button" @click="incrementPassengers"
-                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg hover:bg-gray-300 transition">+</button>
+                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg hover:bg-gray-300 transition"
+                :disabled="booking.passengers >= 20">+</button>
             </div>
           </div>
 
-          <!-- Price Display -->
           <div class="text-center pt-4">
             <p class="text-lg text-gray-600">Total Price</p>
             <p class="text-4xl font-bold text-gray-900">Ksh {{ totalPrice.toLocaleString() }}</p>
           </div>
 
-          <!-- Submit Button -->
           <button type="submit"
             :class="['w-full text-white font-bold py-4 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105', bookingStatus === 'idle' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-500']"
-            :disabled="bookingStatus === 'booked'">
-            {{ bookingStatus === 'booked' ? 'Booked Successfully!' : 'Book Now' }}
+            :disabled="bookingStatus === 'booked' || bookingStatus === 'loading'">
+            {{ buttonText }}
           </button>
         </form>
 
-        <!-- Confirmation Message -->
         <transition name="fade">
-          <div v-if="showConfirmation"
-            class="mt-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-center">
-            <p class="font-bold">Booking Confirmed!</p>
-            <p>We've received your request for a trip to {{ booking.destination }} for {{ booking.passengers }} people
-              on {{ formattedDate }}.</p>
+          <div>
+            <div v-if="showConfirmation" key="confirmation"
+              class="mt-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-center">
+              <p class="font-bold">Booking Confirmed!</p>
+              <p>We've received your request for a trip to {{ booking.destination }} for {{ booking.passengers }} people
+                on {{ formattedDate }} at {{ booking.time }}.</p>
+            </div>
+            <div v-if="showError" key="error"
+              class="mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center">
+              <p class="font-bold">Booking Failed!</p>
+              <p>{{ errorMessage }}</p>
+            </div>
           </div>
         </transition>
 
@@ -93,10 +93,14 @@
 </template>
 
 <script>
+const apiRoute = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+import { getUserFromToken } from '@/utils/UserData';
+
 export default {
   name: 'BookingComponent',
   data() {
     return {
+      userId: null,
       booking: {
         destination: '',
         date: '',
@@ -116,8 +120,12 @@ export default {
         { id: 10, name: 'Homa Bay' },
       ],
       basePricePerPerson: 1500,
-      bookingStatus: 'idle', // idle, booked
+      bookingStatus: 'idle', // idle, loading, booked, error
       showConfirmation: false,
+      showError: false,
+      errorMessage: '',
+      maxPassengers: 20, // Define max passengers
+      backendApiUrl: `${apiRoute}/api/bookings`, // Your backend API endpoint
     };
   },
   computed: {
@@ -132,11 +140,20 @@ export default {
       if (!this.booking.date) return '';
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return new Date(this.booking.date).toLocaleDateString('en-US', options);
+    },
+    buttonText() {
+      if (this.bookingStatus === 'loading') {
+        return 'Booking...';
+      } else if (this.bookingStatus === 'booked') {
+        return 'Booked Successfully!';
+      } else {
+        return 'Book Now';
+      }
     }
   },
   methods: {
     incrementPassengers() {
-      if (this.booking.passengers < 20) {
+      if (this.booking.passengers < this.maxPassengers) {
         this.booking.passengers++;
       }
     },
@@ -145,26 +162,66 @@ export default {
         this.booking.passengers--;
       }
     },
-    submitBooking() {
+    async submitBooking() {
       // Basic validation
-      if (!this.booking.destination || !this.booking.date) {
-        alert('Please fill in all fields.');
+      if (!this.booking.destination || !this.booking.date || !this.booking.time) {
+        this.showError = true;
+        this.errorMessage = 'Please fill in all fields.';
+        this.showConfirmation = false;  // Ensure confirmation is hidden
         return;
       }
 
-      console.log('Booking Submitted:', this.booking);
-      this.bookingStatus = 'booked';
-      this.showConfirmation = true;
+      this.bookingStatus = 'loading';
+      this.showError = false;
+      this.showConfirmation = false;
 
-      // Reset form and status after a few seconds
-      setTimeout(() => {
-        this.resetForm();
-      }, 5000);
+      try {
+        const response = await fetch(this.backendApiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // Add any authentication headers if needed, e.g., 'Authorization': 'Bearer YOUR_TOKEN'
+          },
+          body: JSON.stringify({
+            ...this.booking,
+            userId: this.userId
+          })
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Failed to book your trip. Please try again.');
+        }
+
+        const responseData = await response.json();
+        //console.log('Booking Submitted Successfully:', responseData);
+
+        this.bookingStatus = 'booked';
+        this.showConfirmation = true;
+
+        // Reset form and status after a few seconds
+        setTimeout(() => {
+          this.resetForm();
+        }, 5000);
+
+      } catch (error) {
+        console.error('Error submitting booking:', error);
+        this.bookingStatus = 'error';
+        this.showError = true;
+        this.errorMessage = error.message || 'An unexpected error occurred. Please try again later.';
+        // Reset error message after a few seconds
+        setTimeout(() => {
+          this.showError = false;
+          this.errorMessage = '';
+          this.bookingStatus = 'idle';
+        }, 5000);
+      }
     },
     resetForm() {
       this.booking = {
         destination: '',
-        date: '',
+        date: this.today, // Reset to today's date
+        time: '',
         passengers: 1,
       };
       this.bookingStatus = 'idle';
@@ -172,19 +229,25 @@ export default {
     }
   },
   mounted() {
+    const userData = getUserFromToken();
+    if (userData) {
+      this.userId = userData.id;
+      // console.log('User ID is:', userData.id);
+      // console.log('User Email is:', userData.email);
+    }
     // Set a default date
     this.booking.date = this.today;
+    // Set a default time (optional, but good for user experience)
+    const now = new Date();
+    this.booking.time = now.toTimeString().split(' ')[0].substring(0, 5); // HH:MM format
   }
 };
 </script>
 
 <style scoped>
 /*
- Using Tailwind CSS classes directly in the template, so minimal custom CSS is needed. */
+  Using Tailwind CSS classes directly in the template, so minimal custom CSS is needed. */
 /* We can add custom animations here if needed */
-
-
-
 
 /* Fade transition for the confirmation message */
 .fade-enter-active,

@@ -102,7 +102,10 @@
 </template>
 <script>
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 const apiRoute = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const router = useRouter();
+
 
 export default {
   data() {
@@ -175,8 +178,8 @@ export default {
         });
         this.loginMessage = response.data.message;
         localStorage.setItem('userToken', response.data.token);
-        console.log('Login successful, token:', response.data.token);
-        // TODO: Redirect user
+        // console.log('Login successful, Token:', response.data.token,);
+        this.$router.push('/');
       } catch (error) {
         this.loginError = error.response?.data?.message || 'Login failed. Please try again.';
         console.error('Login error:', error);

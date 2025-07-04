@@ -1,10 +1,8 @@
 <template>
-  <header
-    :class="[
-      'w-full fixed top-0 left-0 z-[9999] transition-all duration-300 ease-in-out',
-      { 'scrolled-nav': isScrolled }
-    ]"
-  >
+  <header :class="[
+    'w-full fixed top-0 left-0 z-[9999] transition-all duration-300 ease-in-out',
+    { 'scrolled-nav': isScrolled }
+  ]">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <div class="logo-nav">
         <a href="#" class="text-2xl font-bold text-white">Yieh Boats</a>
@@ -16,13 +14,13 @@
           <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</a></li>
           <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Our Experts</a></li>
           <li><a href="/booking" class="text-gray-700 hover:text-blue-600 font-medium">Book a Trip</a></li>
+
         </ul>
       </nav>
 
       <div class="other-links flex items-center space-x-4 relative">
         <div
-          class="get-touch flex items-center space-x-2 cursor-pointer bg-white p-4 rounded-[2.75rem] shadow-md text-gray-700 hover:text-blue-600"
-        >
+          class="get-touch flex items-center space-x-2 cursor-pointer bg-white p-4 rounded-[2.75rem] shadow-md text-gray-700 hover:text-blue-600">
           <ion-icon name="mail-outline" class="text-xl"></ion-icon>
           <span>Get in Touch</span>
         </div>
@@ -49,7 +47,14 @@
                 </li>
                 <li><a href="#" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">Settings</a>
                 </li>
-                <li><a href="#" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">Logout</a>
+                <li v-if="authStore.isAuthenticated">
+                  <a href="#" class="hover:text-blue-600" @click="logout">Logout</a>
+                </li>
+                <li v-else>
+                  <router-link to="/authentication" class="hover:text-blue-600"
+                    @click="$emit('toggle-desktop-menu', $event)">
+                    Login
+                  </router-link>
                 </li>
               </ul>
             </div>
@@ -62,6 +67,15 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, defineProps, defineEmits } from 'vue';
+import { useRouter } from 'vue-router';
+import { authStore } from '@/store/auth';
+
+const router = useRouter();
+
+const logout = () => {
+  authStore.logout();
+  router.push('/');
+};
 
 // Define props that the component expects to receive
 const props = defineProps({
@@ -92,7 +106,6 @@ onUnmounted(() => {
 
 <style scoped>
 /* This class will be applied when the user scrolls down */
-
 
 /* Scoped styles for the Navbar component */
 .fade-enter-active,

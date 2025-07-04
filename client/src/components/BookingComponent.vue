@@ -42,6 +42,14 @@
               class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
           </div>
 
+          <!-- time picker -->
+          <div>
+            <label for="trip-time" class="block text-sm font-medium text-gray-700 mb-1">Time</label>
+            <input type="time" id="trip-time" v-model="booking.time" required
+              class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+          </div>
+
+
           <!-- Passenger Counter -->
           <div>
             <label for="passengers" class="block text-sm font-medium text-gray-700 mb-1">Passengers (Max: 20)</label>
@@ -92,6 +100,7 @@ export default {
       booking: {
         destination: '',
         date: '',
+        time: '',
         passengers: 1,
       },
       destinations: [

@@ -163,24 +163,36 @@ export default {
       }
     },
     async submitBooking() {
-      // Basic validation
-      if (!this.booking.destination || !this.booking.date || !this.booking.time) {
+      // Reset previous error/confirmation messages
+      this.showError = false;
+      this.showConfirmation = false;
+      this.errorMessage = '';
+
+      // **Check if the user is logged in (userId exists)**
+      if (!this.userId) {
+        this.errorMessage = 'Please log in to make a booking.';
         this.showError = true;
+        this.bookingStatus = 'error'; // Set status to error
+        return; // Stop the submission process
+      }
+
+      // Basic form field validation
+      if (!this.booking.destination || !this.booking.date || !this.booking.time) {
         this.errorMessage = 'Please fill in all fields.';
-        this.showConfirmation = false;  // Ensure confirmation is hidden
+        this.showError = true;
+        this.bookingStatus = 'error';
         return;
       }
 
       this.bookingStatus = 'loading';
-      this.showError = false;
-      this.showConfirmation = false;
 
       try {
         const response = await fetch(this.backendApiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            // Add any authentication headers if needed, e.g., 'Authorization': 'Bearer YOUR_TOKEN'
+            // Example for sending a token if you have one
+            // 'Authorization': `Bearer ${localStorage.getItem('token')}`
           },
           body: JSON.stringify({
             ...this.booking,
@@ -188,18 +200,16 @@ export default {
           })
         });
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || 'Failed to book your trip. Please try again.');
-        }
-
         const responseData = await response.json();
-        //console.log('Booking Submitted Successfully:', responseData);
+
+        if (!response.ok) {
+          // Use the error message from the server response
+          throw new Error(responseData.message || 'Failed to book your trip. Please try again.');
+        }
 
         this.bookingStatus = 'booked';
         this.showConfirmation = true;
 
-        // Reset form and status after a few seconds
         setTimeout(() => {
           this.resetForm();
         }, 5000);
@@ -208,8 +218,9 @@ export default {
         console.error('Error submitting booking:', error);
         this.bookingStatus = 'error';
         this.showError = true;
-        this.errorMessage = error.message || 'An unexpected error occurred. Please try again later.';
-        // Reset error message after a few seconds
+        // Display the caught error message
+        this.errorMessage = error.message;
+
         setTimeout(() => {
           this.showError = false;
           this.errorMessage = '';
@@ -220,7 +231,7 @@ export default {
     resetForm() {
       this.booking = {
         destination: '',
-        date: this.today, // Reset to today's date
+        date: this.today,
         time: '',
         passengers: 1,
       };
@@ -232,24 +243,16 @@ export default {
     const userData = getUserFromToken();
     if (userData) {
       this.userId = userData.id;
-      // console.log('User ID is:', userData.id);
-      // console.log('User Email is:', userData.email);
     }
-    // Set a default date
     this.booking.date = this.today;
-    // Set a default time (optional, but good for user experience)
     const now = new Date();
-    this.booking.time = now.toTimeString().split(' ')[0].substring(0, 5); // HH:MM format
+    this.booking.time = now.toTimeString().split(' ')[0].substring(0, 5);
   }
 };
 </script>
 
 <style scoped>
-/*
-  Using Tailwind CSS classes directly in the template, so minimal custom CSS is needed. */
-/* We can add custom animations here if needed */
-
-/* Fade transition for the confirmation message */
+/* Fade transition */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
@@ -260,7 +263,7 @@ export default {
   opacity: 0;
 }
 
-/* Custom styling for number input to hide arrows */
+/* Hide number input arrows */
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;

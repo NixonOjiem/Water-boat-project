@@ -77,7 +77,6 @@ const logout = () => {
   router.push('/');
 };
 
-
 // Define props that the component expects to receive
 const props = defineProps({
   isMobileMenuOpen: Boolean,

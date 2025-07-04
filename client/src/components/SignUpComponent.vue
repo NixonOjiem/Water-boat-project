@@ -178,7 +178,7 @@ export default {
         });
         this.loginMessage = response.data.message;
         localStorage.setItem('userToken', response.data.token);
-        console.log('Login successful, token:', response.data.token);
+        // console.log('Login successful, Token:', response.data.token,);
         this.$router.push('/');
       } catch (error) {
         this.loginError = error.response?.data?.message || 'Login failed. Please try again.';
@@ -202,7 +202,6 @@ export default {
         });
         this.registerMessage = response.data.message;
         console.log('Registration successful, user ID:', response.data.userId);
-        this.$router.push('/');
         this.isSigningUp = false;
         this.email = this.email;
         this.password = '';
@@ -264,7 +263,7 @@ export default {
           this.googleAuthMessage = backendResponse.data.message;
           localStorage.setItem('userToken', backendResponse.data.token);
           console.log('Google auth successful, user:', backendResponse.data.user);
-          this.$router.push('/');
+          // TODO: Redirect user
         } catch (error) {
           this.googleAuthError = error.response?.data?.message || 'Google authentication failed on backend.';
           console.error('Google auth backend error:', error);

@@ -94,11 +94,13 @@
 
 <script>
 const apiRoute = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+import { getUserFromToken } from '@/utils/UserData';
 
 export default {
   name: 'BookingComponent',
   data() {
     return {
+      userId: null,
       booking: {
         destination: '',
         date: '',
@@ -180,7 +182,10 @@ export default {
             'Content-Type': 'application/json',
             // Add any authentication headers if needed, e.g., 'Authorization': 'Bearer YOUR_TOKEN'
           },
-          body: JSON.stringify(this.booking),
+          body: JSON.stringify({
+            ...this.booking,
+            userId: this.userId
+          })
         });
 
         if (!response.ok) {
@@ -189,7 +194,7 @@ export default {
         }
 
         const responseData = await response.json();
-        console.log('Booking Submitted Successfully:', responseData);
+        //console.log('Booking Submitted Successfully:', responseData);
 
         this.bookingStatus = 'booked';
         this.showConfirmation = true;
@@ -224,6 +229,12 @@ export default {
     }
   },
   mounted() {
+    const userData = getUserFromToken();
+    if (userData) {
+      this.userId = userData.id;
+      // console.log('User ID is:', userData.id);
+      // console.log('User Email is:', userData.email);
+    }
     // Set a default date
     this.booking.date = this.today;
     // Set a default time (optional, but good for user experience)

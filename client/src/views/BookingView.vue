@@ -1,7 +1,7 @@
 <template lang="">
   <div class = "booking-container">
     <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
-        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu" />
+        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"  />
     <BookingComponent />
   </div>
 
@@ -10,10 +10,31 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import BookingComponent from '@/components/BookingComponent.vue';
+import { ref } from 'vue';
 
 export default {
   components: { Navbar, BookingComponent },
+  setup() {
+    // --- State for Mobile Menu ---
+    const isMobileMenuOpen = ref(false);
+    const toggleMobileMenu = () => {
+      isMobileMenuOpen.value = !isMobileMenuOpen.value;
+    };
 
+    // --- State for Desktop Menu ---
+    const isDesktopMenuOpen = ref(false);
+    const toggleDesktopMenu = () => {
+      isDesktopMenuOpen.value = !isDesktopMenuOpen.value;
+    };
+
+    // --- Expose state and methods to the template ---
+    return {
+      isMobileMenuOpen,
+      toggleMobileMenu,
+      isDesktopMenuOpen,
+      toggleDesktopMenu,
+    };
+  }
 }
 </script>
 

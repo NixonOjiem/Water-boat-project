@@ -1,5 +1,10 @@
 <template>
-  <header class="w-full absolute top-0 left-0 z-[9999]">
+  <header
+    :class="[
+      'w-full fixed top-0 left-0 z-[9999] transition-all duration-300 ease-in-out',
+      { 'scrolled-nav': isScrolled }
+    ]"
+  >
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <div class="logo-nav">
         <a href="#" class="text-2xl font-bold text-white">Yieh Boats</a>
@@ -16,7 +21,8 @@
 
       <div class="other-links flex items-center space-x-4 relative">
         <div
-          class="get-touch flex items-center space-x-2 cursor-pointer bg-white p-4 rounded-[2.75rem] shadow-md text-gray-700 hover:text-blue-600">
+          class="get-touch flex items-center space-x-2 cursor-pointer bg-white p-4 rounded-[2.75rem] shadow-md text-gray-700 hover:text-blue-600"
+        >
           <ion-icon name="mail-outline" class="text-xl"></ion-icon>
           <span>Get in Touch</span>
         </div>
@@ -30,8 +36,8 @@
           { 'teardrop-active bg-white rounded-[2.75rem] shadow-md': isDesktopMenuOpen }
         ]">
           <div :class="[
-            'desktop-menu-button hidden md:flex items-center justify-center w-12 h-12 rounded-full cursor-pointer text-white',
-            { 'p-4': isDesktopMenuOpen }
+            'desktop-menu-button hidden md:flex items-center justify-center w-12 h-12 rounded-full cursor-pointer',
+            isDesktopMenuOpen ? 'text-gray-700' : 'text-white'
           ]" @click="$emit('toggle-desktop-menu', $event)">
             <ion-icon name="menu-outline" class="text-2xl transition-transform duration-300 ease-in-out"></ion-icon>
           </div>
@@ -55,7 +61,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue';
+import { ref, onMounted, onUnmounted, defineProps, defineEmits } from 'vue';
 
 // Define props that the component expects to receive
 const props = defineProps({
@@ -65,9 +71,32 @@ const props = defineProps({
 
 // Define custom events that the component can emit
 const emit = defineEmits(['toggle-mobile-menu', 'toggle-desktop-menu']);
+
+// --- Scroll Logic ---
+const isScrolled = ref(false);
+
+const handleScroll = () => {
+  // Check if the user has scrolled more than 50px from the top
+  isScrolled.value = window.scrollY > 50;
+};
+
+// Add and remove the scroll event listener
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <style scoped>
+/* This class will be applied when the user scrolls down */
+.scrolled-nav {
+  background-color: transparent; /* Set to transparent as requested */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
 /* Scoped styles for the Navbar component */
 .fade-enter-active,
 .fade-leave-active {

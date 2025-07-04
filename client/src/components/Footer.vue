@@ -6,10 +6,10 @@
         <!-- Company Info Section -->
         <div class="w-full md:w-1/3 lg:w-1/4 text-center md:text-left">
           <h3 class="text-2xl font-semibold text-white mb-4">
-            <span class="text-blue-400">Your</span>Brand
+            <span class="text-blue-400">Yieh</span>Boats
           </h3>
           <p class="text-sm leading-relaxed">
-            We are a leading company dedicated to providing innovative solutions and exceptional services to our clients worldwide.
+           We are innovators charting a new course for sustainable water transport. We design and build safe, reliable, and clean boats propelled entirely by solar energy.
           </p>
         </div>
 

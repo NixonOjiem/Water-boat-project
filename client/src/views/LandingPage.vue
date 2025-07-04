@@ -1,12 +1,32 @@
 <template>
   <section class="bg-slate-900 text-white">
-      <Navbar
-        :is-mobile-menu-open="isMobileMenuOpen"
-        :is-desktop-menu-open="isDesktopMenuOpen"
-        @toggle-mobile-menu="toggleMobileMenu"
-        @toggle-desktop-menu="toggleDesktopMenu"
+    <section class="relative w-full h-screen overflow-hidden" ref="heroSectionRef">
+    <Navbar
+      :is-mobile-menu-open="isMobileMenuOpen"
+      :is-desktop-menu-open="isDesktopMenuOpen"
+      @toggle-mobile-menu="toggleMobileMenu"
+      @toggle-desktop-menu="toggleDesktopMenu"
+    />
+      <img
+        src="/images/cruise-vertical.png"
+        alt="Aerial view of a yacht on Lake Victoria"
+        class="absolute top-0 left-0 w-full h-full object-cover hero-image"
+        :style="{ transform: `scale(${parallaxScale})` }"
       />
-      <HeroSection />
+      <div
+        class="absolute inset-0 flex flex-col justify-center items-center text-white p-4"
+        style="background-color: rgba(0, 0, 0, 0.6)"
+      >
+        <h1 class="text-5xl md:text-7xl font-bold text-center mb-4">
+          Experience the Ocean's Majesty
+        </h1>
+        <p class="text-lg md:text-xl text-center max-w-2xl">
+          Sail across the serene waters, captured from an unparalleled aerial perspective.
+        </p>
+      </div>
+      <canvas ref="rippleCanvas" class="absolute inset-0 z-[100] cursor-pointer"></canvas>
+    </section>
+
     <main class="container mx-auto px-4 py-16 md:py-24">
       <div class="text-center mb-12">
         <h2 class="text-4xl md:text-5xl font-bold">A New Horizon for Lake Transport</h2>
@@ -40,8 +60,7 @@
           <div @click="toggleCard('card-2')" class="p-6 cursor-pointer">
             <h3 class="text-2xl font-bold">☀️ The Solution</h3>
             <p class="mt-2 text-slate-300">
-              A solar-powered catamaran combining clean energy with a safe, stable, and
-              locally-built design.
+              A solar-powered catamaran combining clean energy with a safe, stable, and locally-built design.
             </p>
           </div>
           <Transition name="expand">
@@ -97,57 +116,14 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import Navbar from '@/components/Navbar.vue'
-import HeroSection from '@/components/HeroSection.vue'
 import GetInTouch from '@/components/GetInTouch.vue'
 import Footer from '@/components/Footer.vue'
 
-// --- Card Interaction Logic ---
-const activeCardId = ref(null)
-const bentoGridRef = ref(null) // Ref for the grid container
+// --- Template Refs ---
+const heroSectionRef = ref(null)
+const bentoGridRef = ref(null)
 
-const toggleCard = (cardId) => {
-  activeCardId.value = activeCardId.value === cardId ? null : cardId
-}
-
-// NEW: Handles clicking outside the bento grid to close the active card
-const handleClickOutside = (event) => {
-  if (bentoGridRef.value && !bentoGridRef.value.contains(event.target)) {
-    activeCardId.value = null
-  }
-}
-
-const cardClasses = (cardId) => {
-  const baseClasses =
-    'card-container rounded-2xl overflow-hidden transition-all duration-300 ease-in-out'
-  const isActive = activeCardId.value === cardId
-
-  // Static layout classes - cards no longer change their span
-  let layoutClasses = 'lg:col-span-1'
-  if (cardId === 'card-1' || cardId === 'card-2') {
-    layoutClasses = 'md:col-span-1 lg:col-span-2'
-  }
-
-  return `${baseClasses} ${layoutClasses} ${isActive ? 'active-card' : ''}`
-}
-
-// --- Card Content (Simplified for dropdown) ---
-const content = {
-  'card-1': {
-    body: `<p>For generations, water transport on Lake Victoria has relied on petrol-powered canoes, leading to:</p><ul><li>⚠️ <strong>Safety Risks:</strong> Prone to capsizing.</li><li>🛢️ <strong>Environmental Harm:</strong> Oil leaks and emissions.</li><li>💸 <strong>High Operating Costs:</strong> Unsustainable fuel dependency.</li></ul>`,
-  },
-  'card-2': {
-    body: `<p>Our vessel revolutionizes lake transport by being:</p><ul><li>✅ <strong>Safe:</strong> A stable catamaran design.</li><li>🌱 <strong>Clean:</strong> Zero emissions.</li><li>🔋 <strong>Reliable:</strong> Consistent solar power.</li><li>🇰🇪 <strong>Locally Built:</strong> Crafted in Kenya.</li></ul>`,
-  },
-  'card-3': {
-    body: `<p>We are innovators charting a new course for sustainable water transport. We design and build safe, reliable, and clean boats propelled entirely by solar energy.</p>`,
-  },
-  'card-4': {
-    body: `<p>Our catamaran adapts to every journey:</p><ul><li><strong>Leisure:</strong> Onboard BBQs & tours.</li><li><strong>Commercial:</strong> Supply, cargo, and transport.</li><li><strong>Recreational:</strong> A stable, eco-friendly fishing platform.</li></ul>`,
-  },
-}
-
-
-// --- UNCHANGED SCRIPT LOGIC (Menu, Parallax, Ripple) ---
+// --- Menu State ---
 const isMobileMenuOpen = ref(false)
 const isDesktopMenuOpen = ref(false)
 const toggleMobileMenu = () => {
@@ -158,7 +134,138 @@ const toggleDesktopMenu = (event) => {
   isDesktopMenuOpen.value = !isDesktopMenuOpen.value
 }
 
-let ctx
+// --- Parallax Effect Logic ---
+const parallaxScale = ref(1)
+const updateParallax = () => {
+  if (heroSectionRef.value) {
+    // Get the top position of the hero section relative to the viewport
+    const rect = heroSectionRef.value.getBoundingClientRect()
+    // Calculate scroll progress (0 when top of section hits top of viewport, 1 when bottom hits)
+    let scrollProgress = -rect.top / window.innerHeight
+    // Clamp the value between 0 and 1
+    scrollProgress = Math.max(0, Math.min(1, scrollProgress))
+    // Define how much the image should zoom (e.g., 20%)
+    const maxZoomFactor = 0.2
+    // Update the scale value
+    parallaxScale.value = 1 + scrollProgress * maxZoomFactor
+  }
+}
+
+// --- Ripple Effect Logic ---
+const rippleCanvas = ref(null);
+let ctx;
+let ripples = [];
+// Ripple constructor
+function Ripple(x, y) {
+  this.x = x;
+  this.y = y;
+  this.radius = 0;
+  this.alpha = 1;
+  this.maxRadius = 50; // Max size of the ripple
+  this.speed = 1; // How fast the ripple expands
+  this.fadeSpeed = 0.02; // How fast the ripple fades
+}
+
+Ripple.prototype.draw = function () {
+  ctx.beginPath();
+  ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+
+  // Determine color based on vertical position
+  const heroHeight = ctx.canvas.height;
+  if (this.y > heroHeight / 2) {
+    // Bottom half: Lighter Ocean Blue
+    ctx.strokeStyle = `rgba(0, 150, 220, ${this.alpha})`; // Changed from 0, 119, 190
+  } else {
+    // Top half: Sky Blue
+    ctx.strokeStyle = `rgba(135, 206, 235, ${this.alpha})`; // A shade of sky blue
+  }
+
+  ctx.lineWidth = 2; // Ripple thickness
+  ctx.stroke();
+};
+
+Ripple.prototype.update = function () {
+  this.radius += this.speed;
+  this.alpha -= this.fadeSpeed;
+};
+
+const createRipple = (event) => {
+  const rect = rippleCanvas.value.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  ripples.push(new Ripple(x, y));
+};
+
+const animateRipples = () => {
+  ctx.clearRect(0, 0, rippleCanvas.value.width, rippleCanvas.value.height);
+
+  for (let i = 0; i < ripples.length; i++) {
+    ripples[i].update();
+    ripples[i].draw();
+
+    if (ripples[i].alpha <= 0 || ripples[i].radius >= ripples[i].maxRadius) {
+      ripples.splice(i, 1);
+      i--;
+    }
+  }
+  requestAnimationFrame(animateRipples);
+};
+
+
+// --- Card Interaction Logic ---
+const activeCardId = ref(null)
+const toggleCard = (cardId) => {
+  activeCardId.value = activeCardId.value === cardId ? null : cardId
+}
+const handleClickOutside = (event) => {
+  if (bentoGridRef.value && !bentoGridRef.value.contains(event.target)) {
+    activeCardId.value = null
+  }
+}
+const cardClasses = (cardId) => {
+  const baseClasses = 'card-container rounded-2xl overflow-hidden transition-all duration-300 ease-in-out'
+  const isActive = activeCardId.value === cardId
+  let layoutClasses = 'lg:col-span-1'
+  if (cardId === 'card-1' || cardId === 'card-2') {
+    layoutClasses = 'md:col-span-1 lg:col-span-2'
+  }
+  return `${baseClasses} ${layoutClasses} ${isActive ? 'active-card' : ''}`
+}
+const content = {
+  'card-1': { body: `<p>For generations, water transport on Lake Victoria has relied on petrol-powered canoes, leading to:</p><ul><li>⚠️ <strong>Safety Risks:</strong> Prone to capsizing.</li><li>🛢️ <strong>Environmental Harm:</strong> Oil leaks and emissions.</li><li>💸 <strong>High Operating Costs:</strong> Unsustainable fuel dependency.</li></ul>` },
+  'card-2': { body: `<p>Our vessel revolutionizes lake transport by being:</p><ul><li>✅ <strong>Safe:</strong> A stable catamaran design.</li><li>🌱 <strong>Clean:</strong> Zero emissions.</li><li>🔋 <strong>Reliable:</strong> Consistent solar power.</li><li>🇰🇪 <strong>Locally Built:</strong> Crafted in Kenya.</li></ul>` },
+  'card-3': { body: `<p>We are innovators charting a new course for sustainable water transport. We design and build safe, reliable, and clean boats propelled entirely by solar energy.</p>` },
+  'card-4': { body: `<p>Our catamaran adapts to every journey:</p><ul><li><strong>Leisure:</strong> Onboard BBQs & tours.</li><li><strong>Commercial:</strong> Supply, cargo, and transport.</li><li><strong>Recreational:</strong> A stable, eco-friendly fishing platform.</li></ul>` },
+}
+
+// --- Lifecycle Hooks ---
+onMounted(() => {
+  window.addEventListener('scroll', updateParallax)
+  document.addEventListener('click', handleClickOutside)
+    // Parallax setup
+  window.addEventListener('scroll', updateParallax);
+  updateParallax(); // Initial call for parallax
+
+  // Ripple effect setup
+  if (rippleCanvas.value) {
+    ctx = rippleCanvas.value.getContext('2d');
+    // Set canvas dimensions to match the hero section
+    rippleCanvas.value.width = heroSectionRef.value.offsetWidth;
+    rippleCanvas.value.height = heroSectionRef.value.offsetHeight;
+
+    heroSectionRef.value.addEventListener('mousemove', createRipple);
+    requestAnimationFrame(animateRipples); // Start ripple animation loop
+  }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateParallax)
+  document.removeEventListener('click', handleClickOutside)
+    // Clean up ripple listeners
+  if (heroSectionRef.value) {
+    heroSectionRef.value.removeEventListener('mousemove', createRipple);
+  }
+})
 </script>
 
 <style>
@@ -182,9 +289,7 @@ let ctx
 /* Expansion Transition Animation for the content */
 .expand-enter-active,
 .expand-leave-active {
-  transition:
-    max-height 0.5s ease-in-out,
-    opacity 0.3s ease-in-out;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
   overflow: hidden;
 }
 
@@ -197,7 +302,6 @@ let ctx
 .expand-enter-to,
 .expand-leave-from {
   max-height: 500px;
-  /* Adjust to a height larger than any possible content */
   opacity: 1;
 }
 
@@ -214,11 +318,12 @@ let ctx
   color: #f9fafb;
 }
 
-/* Unchanged styles */
+/* Hero image style for performance */
 .hero-image {
   will-change: transform;
 }
 
+/* Prevent horizontal scrollbar */
 html {
   overflow-y: scroll;
 }

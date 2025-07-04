@@ -1,13 +1,27 @@
 <template>
   <div
     class="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#e0f2fe] to-[#bfdbfe]"
-    >
+  >
     <div class="absolute inset-0 overflow-hidden">
-      <div class="water-ripple" style="background: rgba(0, 170, 212, 0.1);"></div>
-      <div class="water-ripple delay-1" style="background: rgba(0, 170, 212, 0.1);"></div>
-      <div class="water-ripple delay-2" style="background: rgba(0, 170, 212, 0.1);"></div>
+      <div
+        class="water-ripple"
+        style="background: rgba(0, 170, 212, 0.1)"
+      ></div>
+      <div
+        class="water-ripple delay-1"
+        style="background: rgba(0, 170, 212, 0.1)"
+      ></div>
+      <div
+        class="water-ripple delay-2"
+        style="background: rgba(0, 170, 212, 0.1)"
+      ></div>
     </div>
 
+    <div
+      class="absolute top-1/2 left-8 transform -translate-y-1/2 -rotate-90 font-extrabold text-7xl text-gray-300 opacity-80 pointer-events-none tracking-widest hidden lg:block"
+    >
+      CONTACT US
+    </div>
     <div
       class="relative z-10 max-w-4xl w-full bg-white bg-opacity-90 rounded-xl shadow-2xl overflow-hidden md:flex"
     >
@@ -34,9 +48,7 @@
               ></ion-icon>
               <div>
                 <h4 class="text-xl font-semibold mb-1">Our Location</h4>
-                <p class="text-lg opacity-90">
-                  Kisumu City, Kenya
-                </p>
+                <p class="text-lg opacity-90">Kisumu City, Kenya</p>
               </div>
             </div>
 
@@ -67,9 +79,7 @@
               <div>
                 <h4 class="text-xl font-semibold mb-1">Email Us</h4>
                 <p class="text-lg opacity-90">
-                  <a
-                    href="mailto:info@yiehboats.com"
-                    class="hover:underline"
+                  <a href="mailto:info@yiehboats.com" class="hover:underline"
                     >info@yiehboats.com</a
                   >
                 </p>
@@ -224,26 +234,26 @@
 
 <script>
 export default {
-  name: 'GetInTouch',
+  name: "GetInTouch",
   data() {
     return {
       form: {
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
       },
       loading: false,
       formStatus: {
-        message: '',
-        type: '', // 'success' or 'error'
+        message: "",
+        type: "", // 'success' or 'error'
       },
     };
   },
   methods: {
     async submitForm() {
       this.loading = true;
-      this.formStatus = { message: '', type: '' }; // Reset status
+      this.formStatus = { message: "", type: "" }; // Reset status
 
       // Simulate API call
       try {
@@ -255,11 +265,11 @@ export default {
             if (success) {
               resolve({
                 status: 200,
-                message: 'Your message has been sent successfully!',
+                message: "Your message has been sent successfully!",
               });
             } else {
               throw new Error(
-                'Failed to send message. Please try again later.'
+                "Failed to send message. Please try again later."
               );
             }
           }, 2000)
@@ -267,21 +277,22 @@ export default {
 
         if (response.status === 200) {
           this.formStatus.message = response.message;
-          this.formStatus.type = 'success';
+          this.formStatus.type = "success";
           // Optionally clear the form
-          this.form.name = '';
-          this.form.email = '';
-          this.form.subject = '';
-          this.form.message = '';
+          this.form.name = "";
+          this.form.email = "";
+          this.form.subject = "";
+          this.form.message = "";
         }
       } catch (error) {
-        this.formStatus.message = error.message || 'An unexpected error occurred.';
-        this.formStatus.type = 'error';
+        this.formStatus.message =
+          error.message || "An unexpected error occurred.";
+        this.formStatus.type = "error";
       } finally {
         this.loading = false;
         // Clear status message after a few seconds
         setTimeout(() => {
-          this.formStatus.message = '';
+          this.formStatus.message = "";
         }, 5000);
       }
     },

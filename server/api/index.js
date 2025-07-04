@@ -72,6 +72,50 @@ router.post("/bookings", async (req, res) => {
   }
 });
 
+/**
+ * @route   GET /api/bookings/user/:userId
+ * @desc    Get all bookings for a specific user
+ * @access  Private (assuming you have auth middleware)
+ */
+router.get("/user/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    if (!userId) {
+      return res.status(400).json({ message: "User ID is required." });
+    }
+
+    // Corrected query based on your 'bookings' table schema
+    const [bookings] = await pool.execute(
+      `SELECT
+           id AS booking_id,
+           booking_date,
+           booking_time,    -- Including booking_time as it's in your schema
+           passengers,      -- Including passengers as it's in your schema
+           destination AS destination_name, -- 'destination' column is the name
+           -- Removed destination_image as it does not exist in your 'bookings' table
+           created_at,      -- Including created_at
+           updated_at       -- Including updated_at
+         FROM bookings
+         WHERE userId = ?    -- Use 'userId' (case-sensitive as per your schema)
+         ORDER BY booking_date DESC, booking_time DESC`, // Order by time as well for consistency
+      [userId]
+    );
+
+    if (bookings.length === 0) {
+      return res.status(200).json([]); // Return an empty array if no bookings are found
+    }
+
+    res.status(200).json(bookings);
+  } catch (error) {
+    console.error("Error fetching user bookings:", error);
+    res.status(500).json({
+      message: "Failed to fetch user bookings.",
+      error: error.message,
+    });
+  }
+});
+
 // Example: A GET route for fetching destinations (if your frontend needs them from the backend)
 router.get("/destinations", async (req, res) => {
   try {

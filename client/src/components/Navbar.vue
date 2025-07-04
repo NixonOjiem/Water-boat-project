@@ -5,7 +5,7 @@
   ]">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <div class="logo-nav">
-        <a href="#" class="text-2xl font-bold text-white">Yieh Boats</a>
+        <a href="/" class="text-2xl font-bold text-white">Yieh Boats</a>
       </div>
 
       <nav class="hidden md:flex flex-grow justify-center">

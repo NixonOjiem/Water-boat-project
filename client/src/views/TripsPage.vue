@@ -6,13 +6,15 @@
       <p class="text-lg mb-12">Manage your trips and bookings here.</p>
       <!-- Add your trip management content here -->
     </main>
+    <TripsComponent />
   </div>
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
+import TripsComponent from '@/components/TripsComponent.vue';
 export default {
   components: {
-    Navbar
+    Navbar, TripsComponent
   },
   setup() {
     // You can add any setup logic here if needed

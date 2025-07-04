@@ -18,8 +18,8 @@ function getUserFromToken() {
 export { getUserFromToken }
 
 // --- Example Usage ---
-const userData = getUserFromToken()
-if (userData) {
-  console.log('User ID is:', userData.id)
-  console.log('User Email is:', userData.email)
-}
+// const userData = getUserFromToken()
+// if (userData) {
+//   console.log('User ID is:', userData.id)
+//   console.log('User Email is:', userData.email)
+// }

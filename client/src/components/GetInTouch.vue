@@ -35,7 +35,7 @@
               <div>
                 <h4 class="text-xl font-semibold mb-1">Our Location</h4>
                 <p class="text-lg opacity-90">
-                  123 Lakeside Drive, Waterside City, Aqua State, 98765
+                  Kisumu City, Kenya
                 </p>
               </div>
             </div>
@@ -50,8 +50,8 @@
               <div>
                 <h4 class="text-xl font-semibold mb-1">Call Us</h4>
                 <p class="text-lg opacity-90">
-                  <a href="tel:+1234567890" class="hover:underline"
-                    >+1 (234) 567-890</a
+                  <a href="tel:+254799424167" class="hover:underline"
+                    >+254 (0799) 424-167</a
                   >
                 </p>
               </div>
@@ -68,9 +68,9 @@
                 <h4 class="text-xl font-semibold mb-1">Email Us</h4>
                 <p class="text-lg opacity-90">
                   <a
-                    href="mailto:info@boatadventures.com"
+                    href="mailto:info@yiehboats.com"
                     class="hover:underline"
-                    >info@boatadventures.com</a
+                    >info@yiehboats.com</a
                   >
                 </p>
               </div>

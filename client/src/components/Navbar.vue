@@ -103,11 +103,6 @@ onUnmounted(() => {
 
 <style scoped>
 /* This class will be applied when the user scrolls down */
-.scrolled-nav {
-  background-color: transparent;
-  /* Set to transparent as requested */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
 
 /* Scoped styles for the Navbar component */
 .fade-enter-active,

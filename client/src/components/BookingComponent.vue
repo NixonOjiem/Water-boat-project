@@ -2,9 +2,10 @@
   <div class="min-h-screen bg-transparent font-sans flex items-center justify-center p-4">
     <div class="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
       <div class="w-full md:w-1/2 relative">
-        <img src="https://images.unsplash.com/photo-1527098602225-6363b71c3743?q=80&w=2592&auto=format&fit=crop"
-          alt="A beautiful boat on the water at sunset" class="h-64 md:h-full w-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-8 text-white">
+        <!-- <img src="/images/solarboat.webp" alt="A beautiful boat on the water at sunset"
+          class="h-64 md:h-full w-full object-cover"> -->
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-8 text-white
+            bg-cover bg-center" style="background-image: url('/images/Kennedy_Cargo_Sailboats.gif');">
           <h2 class="text-3xl font-bold leading-tight">Your Lakeside Adventure Awaits</h2>
           <p class="mt-2 text-lg opacity-90">Book your boat trip today and explore the stunning beauty of Lake Victoria.
           </p>
@@ -46,7 +47,8 @@
 
 
           <div>
-            <label for="passengers" class="block text-sm font-medium text-gray-700 mb-1">Passengers (Max: 20)</label>
+            <label for="passengers" class="block text-sm font-medium text-gray-700 mb-1">Passengers (Max: {{
+              maxPassengers }})</label>
             <div class="flex items-center">
               <button type="button" @click="decrementPassengers"
                 class="px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg hover:bg-gray-300 transition"
@@ -55,7 +57,7 @@
                 class="w-full text-center px-4 py-3 bg-gray-50 border-t border-b border-gray-300 focus:outline-none">
               <button type="button" @click="incrementPassengers"
                 class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg hover:bg-gray-300 transition"
-                :disabled="booking.passengers >= 20">+</button>
+                :disabled="booking.passengers >= maxPassengers">+</button>
             </div>
           </div>
 
@@ -65,7 +67,7 @@
           </div>
 
           <button type="submit"
-            :class="['w-full text-white font-bold py-4 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105', bookingStatus === 'idle' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-500']"
+            :class="['w-full text-white font-bold py-4 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105', bookingStatus === 'booked' ? 'bg-green-500' : 'bg-blue-600 hover:bg-blue-700']"
             :disabled="bookingStatus === 'booked' || bookingStatus === 'loading'">
             {{ buttonText }}
           </button>
@@ -93,14 +95,21 @@
 </template>
 
 <script>
+// For Vite, use import.meta.env.VITE_API_URL
+// For Vue CLI, use process.env.VUE_APP_API_URL
 const apiRoute = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+// Ensure this utility exists and correctly exports getUserFromToken
+// If it's a default export, you'd do: import getUserFromToken from '@/utils/UserData';
+// If it's a named export, keep as: import { getUserFromToken } from '@/utils/UserData';
 import { getUserFromToken } from '@/utils/UserData';
+
 
 export default {
   name: 'BookingComponent',
   data() {
     return {
-      userId: null,
+      userId: null, // Will be set from token
       booking: {
         destination: '',
         date: '',
@@ -108,18 +117,18 @@ export default {
         passengers: 1,
       },
       destinations: [
-        { id: 1, name: 'Dunga Beach' },
-        { id: 2, name: 'Coastal Cruise' },
-        { id: 3, name: 'Hippo Point' },
-        { id: 4, name: 'Kisumu Yatch Club' },
-        { id: 5, name: 'Kisumu Impala Sanctuary' },
-        { id: 6, name: 'Dunga Hill Camp' },
-        { id: 7, name: 'Villa Del Sol' },
-        { id: 8, name: 'Mbita & Rusinga Island' },
-        { id: 9, name: 'Mfangano Island' },
-        { id: 10, name: 'Homa Bay' },
+        { id: 1, name: 'Dunga Beach', pricePerPassenger: 1500 },
+        { id: 2, name: 'Coastal Cruise', pricePerPassenger: 2000 },
+        { id: 3, name: 'Hippo Point', pricePerPassenger: 1800 },
+        { id: 4, name: 'Kisumu Yatch Club', pricePerPassenger: 2200 },
+        { id: 5, name: 'Kisumu Impala Sanctuary', pricePerPassenger: 2500 },
+        { id: 6, name: 'Dunga Hill Camp', pricePerPassenger: 1700 },
+        { id: 7, name: 'Villa Del Sol', pricePerPassenger: 2100 },
+        { id: 8, name: 'Mbita & Rusinga Island', pricePerPassenger: 4500 }, // Longer trip, higher price
+        { id: 9, name: 'Mfangano Island', pricePerPassenger: 5000 }, // Longer trip, higher price
+        { id: 10, name: 'Homa Bay', pricePerPassenger: 4000 }, // Longer trip, higher price
       ],
-      basePricePerPerson: 1500,
+      // basePricePerPerson: 1500, // No longer needed if prices are per destination
       bookingStatus: 'idle', // idle, loading, booked, error
       showConfirmation: false,
       showError: false,
@@ -130,7 +139,11 @@ export default {
   },
   computed: {
     totalPrice() {
-      return this.booking.passengers * this.basePricePerPerson;
+      const selectedDestination = this.destinations.find(
+        (dest) => dest.name === this.booking.destination
+      );
+      // Use the specific price for the selected destination, default to 0 if not found
+      return selectedDestination ? selectedDestination.pricePerPassenger * this.booking.passengers : 0;
     },
     today() {
       // To prevent booking past dates
@@ -168,7 +181,7 @@ export default {
       this.showConfirmation = false;
       this.errorMessage = '';
 
-      // **Check if the user is logged in (userId exists)**
+      // Check if the user is logged in (userId exists)
       if (!this.userId) {
         this.errorMessage = 'Please log in to make a booking.';
         this.showError = true;
@@ -192,11 +205,12 @@ export default {
           headers: {
             'Content-Type': 'application/json',
             // Example for sending a token if you have one
-            // 'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${localStorage.getItem('token')}` // Assuming token is stored in localStorage
           },
           body: JSON.stringify({
             ...this.booking,
-            userId: this.userId
+            userId: this.userId,
+            totalPrice: this.totalPrice // Include total price in the payload
           })
         });
 
@@ -212,7 +226,7 @@ export default {
 
         setTimeout(() => {
           this.resetForm();
-        }, 5000);
+        }, 5000); // Reset form after 5 seconds on success
 
       } catch (error) {
         console.error('Error submitting booking:', error);
@@ -224,15 +238,15 @@ export default {
         setTimeout(() => {
           this.showError = false;
           this.errorMessage = '';
-          this.bookingStatus = 'idle';
-        }, 5000);
+          this.bookingStatus = 'idle'; // Reset status after error message fades
+        }, 5000); // Hide error and reset status after 5 seconds
       }
     },
     resetForm() {
       this.booking = {
         destination: '',
-        date: this.today,
-        time: '',
+        date: this.today, // Reset date to today's date
+        time: new Date().toTimeString().split(' ')[0].substring(0, 5), // Reset time to current time
         passengers: 1,
       };
       this.bookingStatus = 'idle';
@@ -240,11 +254,19 @@ export default {
     }
   },
   mounted() {
+    // Get user ID from token on component mount
     const userData = getUserFromToken();
-    if (userData) {
+    if (userData && userData.id) { // Ensure userData and userData.id exist
       this.userId = userData.id;
+    } else {
+      // Handle case where user is not logged in or token is invalid
+      console.warn("User not logged in or invalid token. Booking will require login.");
+      // You might want to redirect to login page or display a persistent message
     }
+
+    // Set initial date to today
     this.booking.date = this.today;
+    // Set initial time to current time
     const now = new Date();
     this.booking.time = now.toTimeString().split(' ')[0].substring(0, 5);
   }

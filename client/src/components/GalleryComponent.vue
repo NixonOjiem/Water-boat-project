@@ -4,7 +4,7 @@
 
       <div class="relative flex flex-col items-start justify-end h-64 p-6 overflow-hidden rounded-xl md:col-span-2">
         <div class="absolute inset-0 z-0">
-          <img src="/images/download.jpg"
+          <img src="https://images.unsplash.com/photo-1744996746100-a144a225c9be?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             class="absolute inset-0 object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
             alt="A modern yacht sailing on the open water.">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -17,7 +17,7 @@
 
       <div class="relative flex flex-col items-start justify-end h-64 p-6 overflow-hidden rounded-xl">
         <div class="absolute inset-0 z-0">
-          <img src="/images/download (3).jpg"
+          <img src="https://images.pexels.com/photos/163236/luxury-yacht-boat-speed-water-163236.jpeg"
             class="absolute inset-0 object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
             alt="A small boat navigating through a scenic canyon.">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -30,7 +30,7 @@
 
       <div class="relative flex flex-col items-start justify-end h-64 p-6 overflow-hidden rounded-xl">
         <div class="absolute inset-0 z-0">
-          <img src="/images/download (2).jpg"
+          <img src="https://images.pexels.com/photos/28241135/pexels-photo-28241135.jpeg"
             class="absolute inset-0 object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
             alt="Close-up of boat engine maintenance.">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -43,7 +43,7 @@
 
       <div class="relative flex flex-col items-start justify-end h-64 p-6 overflow-hidden rounded-xl md:col-span-2">
         <div class="absolute inset-0 z-0">
-          <img src="/images/download (1).jpg"
+          <img src="https://images.pexels.com/photos/8800142/pexels-photo-8800142.jpeg"
             class="absolute inset-0 object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
             alt="A group of people enjoying themselves on the deck of a luxury yacht.">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>

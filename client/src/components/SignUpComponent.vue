@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex justify-center">
-    <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+    <div class="max-w-[900px] m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
       <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
         <div class="mt-12 flex flex-col items-center">
           <h1 class="text-2xl xl:text-3xl font-extrabold">
@@ -92,7 +92,7 @@
         </div>
       </div>
       <div class="flex-1 bg-indigo-100 hidden lg:flex bg-no-repeat bg-cover"
-        style="background-image: url('/images/VectorImage.jpg');">
+        style="background-image: url('/images/watergif.gif');">
         <!-- <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat rectangular-bg"
           style="background-image: url('/images/VectorImage.jpg');">
         </div> -->

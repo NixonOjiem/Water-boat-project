@@ -205,6 +205,7 @@ export default {
         this.isSigningUp = false;
         this.email = this.email;
         this.password = '';
+        this.$router.push('/');
       } catch (error) {
         this.registerError = error.response?.data?.message || 'Registration failed. Please try again.';
         console.error('Registration error:', error);
@@ -263,7 +264,7 @@ export default {
           this.googleAuthMessage = backendResponse.data.message;
           localStorage.setItem('userToken', backendResponse.data.token);
           console.log('Google auth successful, user:', backendResponse.data.user);
-          // TODO: Redirect user
+          this.$router.push('/');
         } catch (error) {
           this.googleAuthError = error.response?.data?.message || 'Google authentication failed on backend.';
           console.error('Google auth backend error:', error);

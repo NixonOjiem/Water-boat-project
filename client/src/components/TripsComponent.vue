@@ -25,7 +25,7 @@
           <span class="trip-status">{{ getTripStatus(booking.booking_date).text }}</span>
         </div>
         <div class="card-content">
-          <h3 class="destination-name">{{ booking.destination }}</h3>
+          <h3 class="destination-name">{{ booking.destination_name }}</h3>
           <div class="booking-details">
             <p class="booking-info">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

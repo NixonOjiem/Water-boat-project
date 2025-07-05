@@ -1,24 +1,15 @@
 <template>
   <section class="bg-slate-900 text-white">
     <section class="relative w-full h-screen overflow-hidden" ref="heroSectionRef">
-    <Navbar
-      :is-mobile-menu-open="isMobileMenuOpen"
-      :is-desktop-menu-open="isDesktopMenuOpen"
-      @toggle-mobile-menu="toggleMobileMenu"
-      @toggle-desktop-menu="toggleDesktopMenu"
-    />
-      <img
-        src="/images/cruise-vertical.png"
-        alt="Aerial view of a yacht on Lake Victoria"
+      <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
+        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu" />
+      <img src="/images/cruise-vertical.png" alt="Aerial view of a yacht on Lake Victoria"
         class="absolute top-0 left-0 w-full h-full object-cover hero-image"
-        :style="{ transform: `scale(${parallaxScale})` }"
-      />
-      <div
-        class="absolute inset-0 flex flex-col justify-center items-center text-white p-4"
-        style="background-color: rgba(0, 0, 0, 0.6)"
-      >
+        :style="{ transform: `scale(${parallaxScale})` }" />
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4"
+        style="background-color: rgba(0, 0, 0, 0.6)">
         <h1 class="text-5xl md:text-7xl font-bold text-center mb-4">
-          Experience the Ocean's Majesty
+          Experience Lake Victoria's Majesty
         </h1>
         <p class="text-lg md:text-xl text-center max-w-2xl">
           Sail across the serene waters, captured from an unparalleled aerial perspective.
@@ -35,10 +26,7 @@
         </p>
       </div>
 
-      <div
-        ref="bentoGridRef"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start"
-      >
+      <div ref="bentoGridRef" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
         <div :class="cardClasses('card-1')">
           <div @click="toggleCard('card-1')" class="p-6 cursor-pointer">
             <h3 class="text-2xl font-bold">🌊 The Challenge</h3>
@@ -48,10 +36,7 @@
           </div>
           <Transition name="expand">
             <div v-if="activeCardId === 'card-1'" class="px-6 pb-6">
-              <div
-                class="prose prose-invert max-w-none prose-slate"
-                v-html="content['card-1'].body"
-              ></div>
+              <div class="prose prose-invert max-w-none prose-slate" v-html="content['card-1'].body"></div>
             </div>
           </Transition>
         </div>
@@ -65,10 +50,7 @@
           </div>
           <Transition name="expand">
             <div v-if="activeCardId === 'card-2'" class="px-6 pb-6">
-              <div
-                class="prose prose-invert max-w-none prose-slate"
-                v-html="content['card-2'].body"
-              ></div>
+              <div class="prose prose-invert max-w-none prose-slate" v-html="content['card-2'].body"></div>
             </div>
           </Transition>
         </div>
@@ -82,10 +64,7 @@
           </div>
           <Transition name="expand">
             <div v-if="activeCardId === 'card-3'" class="px-6 pb-6">
-              <div
-                class="prose prose-invert max-w-none prose-slate"
-                v-html="content['card-3'].body"
-              ></div>
+              <div class="prose prose-invert max-w-none prose-slate" v-html="content['card-3'].body"></div>
             </div>
           </Transition>
         </div>
@@ -99,10 +78,7 @@
           </div>
           <Transition name="expand">
             <div v-if="activeCardId === 'card-4'" class="px-6 pb-6">
-              <div
-                class="prose prose-invert max-w-none prose-slate"
-                v-html="content['card-4'].body"
-              ></div>
+              <div class="prose prose-invert max-w-none prose-slate" v-html="content['card-4'].body"></div>
             </div>
           </Transition>
         </div>
@@ -242,7 +218,7 @@ const content = {
 onMounted(() => {
   window.addEventListener('scroll', updateParallax)
   document.addEventListener('click', handleClickOutside)
-    // Parallax setup
+  // Parallax setup
   window.addEventListener('scroll', updateParallax);
   updateParallax(); // Initial call for parallax
 
@@ -261,7 +237,7 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', updateParallax)
   document.removeEventListener('click', handleClickOutside)
-    // Clean up ripple listeners
+  // Clean up ripple listeners
   if (heroSectionRef.value) {
     heroSectionRef.value.removeEventListener('mousemove', createRipple);
   }
@@ -310,7 +286,7 @@ onUnmounted(() => {
   color: #d1d5db;
 }
 
-.prose-invert ul > li::before {
+.prose-invert ul>li::before {
   background-color: #6b7280;
 }
 

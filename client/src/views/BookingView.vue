@@ -1,10 +1,12 @@
 <template lang="">
-  <div class = "booking-container">
+  <section class="booking-view">
     <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
         @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"  />
+  <div class = "booking-container">
     <BookingComponent />
     <Footer />
   </div>
+  </section>
 
 </template>
 
@@ -15,6 +17,7 @@ import BookingComponent from '@/components/BookingComponent.vue';
 import { ref } from 'vue';
 
 export default {
+  name: 'BookingView',
   components: { Navbar, BookingComponent, Footer },
   setup() {
     // --- State for Mobile Menu ---
@@ -46,16 +49,14 @@ export default {
 .booking-container {
   background-image: url('/images/cruise-vertical.png');
   background-color: #334155;
-  /* Fallback color */
   background-size: cover;
   background-position: center;
+  padding-top: 3rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
-  /* Essential for positioning the pseudo-element */
   z-index: 0;
-  /* Ensure the container is above its pseudo-element if needed */
 }
 
 .booking-container::before {

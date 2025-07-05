@@ -33,9 +33,9 @@
           <transition name="fade">
             <div v-if="isDesktopMenuOpen" class="absolute right-0 top-full bg-white p-4 rounded-lg shadow-lg">
               <ul class="flex flex-col space-y-2 text-gray-700">
-                <li><a href="#" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">Dashboard</a>
+                <li v-if="authStore.isAuthenticated" ><a href="#" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">Dashboard</a>
                 </li>
-                <li><a href="#" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">Settings</a>
+                <li v-if="authStore.isAuthenticated" ><a href="#" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">Settings</a>
                 </li>
                 <li v-if="authStore.isAuthenticated">
                   <a href="#" class="hover:text-blue-600" @click="logout">Logout</a>

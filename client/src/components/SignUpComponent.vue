@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex justify-center">
-    <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+    <div class="max-w-[900px] m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
       <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
         <div class="mt-12 flex flex-col items-center">
           <h1 class="text-2xl xl:text-3xl font-extrabold">
@@ -91,8 +91,8 @@
           </div>
         </div>
       </div>
-      <div class="flex-1 bg-indigo-100 hidden lg:flex bg-contain bg-no-repeat bg-cover"
-        style="background-image: url('/images/VectorImage.jpg');">
+      <div class="flex-1 bg-indigo-100 hidden lg:flex bg-no-repeat bg-cover"
+        style="background-image: url('/images/watergif.gif');">
         <!-- <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat rectangular-bg"
           style="background-image: url('/images/VectorImage.jpg');">
         </div> -->
@@ -205,6 +205,7 @@ export default {
         this.isSigningUp = false;
         this.email = this.email;
         this.password = '';
+        this.$router.push('/');
       } catch (error) {
         this.registerError = error.response?.data?.message || 'Registration failed. Please try again.';
         console.error('Registration error:', error);
@@ -263,7 +264,7 @@ export default {
           this.googleAuthMessage = backendResponse.data.message;
           localStorage.setItem('userToken', backendResponse.data.token);
           console.log('Google auth successful, user:', backendResponse.data.user);
-          // TODO: Redirect user
+          this.$router.push('/');
         } catch (error) {
           this.googleAuthError = error.response?.data?.message || 'Google authentication failed on backend.';
           console.error('Google auth backend error:', error);

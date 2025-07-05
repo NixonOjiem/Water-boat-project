@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="flex-1 bg-indigo-100 hidden lg:flex bg-contain bg-no-repeat bg-cover"
+      <div class="flex-1 bg-indigo-100 hidden lg:flex bg-no-repeat bg-cover"
         style="background-image: url('/images/VectorImage.jpg');">
         <!-- <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat rectangular-bg"
           style="background-image: url('/images/VectorImage.jpg');">

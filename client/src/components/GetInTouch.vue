@@ -1,33 +1,19 @@
 <template>
   <div
-    class="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#e0f2fe] to-[#bfdbfe]"
-  >
+    class="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#e0f2fe] to-[#bfdbfe]">
     <div class="absolute inset-0 overflow-hidden">
-      <div
-        class="water-ripple"
-        style="background: rgba(0, 170, 212, 0.1)"
-      ></div>
-      <div
-        class="water-ripple delay-1"
-        style="background: rgba(0, 170, 212, 0.1)"
-      ></div>
-      <div
-        class="water-ripple delay-2"
-        style="background: rgba(0, 170, 212, 0.1)"
-      ></div>
+      <div class="water-ripple" style="background: rgba(0, 170, 212, 0.1)"></div>
+      <div class="water-ripple delay-1" style="background: rgba(0, 170, 212, 0.1)"></div>
+      <div class="water-ripple delay-2" style="background: rgba(0, 170, 212, 0.1)"></div>
     </div>
 
     <div
-      class="absolute top-1/2 left-8 transform -translate-y-1/2 -rotate-90 font-extrabold text-7xl text-gray-300 opacity-80 pointer-events-none tracking-widest hidden lg:block"
-    >
+      class="absolute top-1/2 left-8 transform -translate-y-1/2 -rotate-90 font-extrabold text-7xl text-gray-300 opacity-80 pointer-events-none tracking-widest hidden lg:block">
       CONTACT US
     </div>
-    <div
-      class="relative z-10 max-w-4xl w-full bg-white bg-opacity-90 rounded-xl shadow-2xl overflow-hidden md:flex"
-    >
-      <div
-        class="md:w-1/2 p-8 sm:p-12 bg-[#002255] text-white flex flex-col justify-between"
-      >
+    <div class="relative z-10 max-w-4xl w-full bg-white bg-opacity-90 rounded-xl shadow-2xl overflow-hidden md:flex"
+      data-aos="zoom-in-up" data-aos-duration="3000">
+      <div class="md:w-1/2 p-8 sm:p-12 bg-[#002255] text-white flex flex-col justify-between">
         <div>
           <h2 class="text-3xl font-extrabold mb-4 text-center md:text-left">
             Get in Touch
@@ -39,49 +25,30 @@
           </p>
 
           <div class="space-y-6">
-            <div
-              class="flex items-start transition-transform duration-300 hover:translate-x-2"
-            >
-              <ion-icon
-                name="location-outline"
-                class="flex-shrink-0 h-7 w-7 mr-4 text-[#00aad4] text-3xl"
-              ></ion-icon>
+            <div class="flex items-start transition-transform duration-300 hover:translate-x-2">
+              <ion-icon name="location-outline" class="flex-shrink-0 h-7 w-7 mr-4 text-[#00aad4] text-3xl"></ion-icon>
               <div>
                 <h4 class="text-xl font-semibold mb-1">Our Location</h4>
                 <p class="text-lg opacity-90">Kisumu City, Kenya</p>
               </div>
             </div>
 
-            <div
-              class="flex items-start transition-transform duration-300 hover:translate-x-2"
-            >
-              <ion-icon
-                name="call-outline"
-                class="flex-shrink-0 h-7 w-7 mr-4 text-[#00aad4] text-3xl"
-              ></ion-icon>
+            <div class="flex items-start transition-transform duration-300 hover:translate-x-2">
+              <ion-icon name="call-outline" class="flex-shrink-0 h-7 w-7 mr-4 text-[#00aad4] text-3xl"></ion-icon>
               <div>
                 <h4 class="text-xl font-semibold mb-1">Call Us</h4>
                 <p class="text-lg opacity-90">
-                  <a href="tel:+254799424167" class="hover:underline"
-                    >+254 (0799) 424-167</a
-                  >
+                  <a href="tel:+254799424167" class="hover:underline">+254 (0799) 424-167</a>
                 </p>
               </div>
             </div>
 
-            <div
-              class="flex items-start transition-transform duration-300 hover:translate-x-2"
-            >
-              <ion-icon
-                name="mail-outline"
-                class="flex-shrink-0 h-7 w-7 mr-4 text-[#00aad4] text-3xl"
-              ></ion-icon>
+            <div class="flex items-start transition-transform duration-300 hover:translate-x-2">
+              <ion-icon name="mail-outline" class="flex-shrink-0 h-7 w-7 mr-4 text-[#00aad4] text-3xl"></ion-icon>
               <div>
                 <h4 class="text-xl font-semibold mb-1">Email Us</h4>
                 <p class="text-lg opacity-90">
-                  <a href="mailto:info@yiehboats.com" class="hover:underline"
-                    >info@yiehboats.com</a
-                  >
+                  <a href="mailto:info@yiehboats.com" class="hover:underline">info@yiehboats.com</a>
                 </p>
               </div>
             </div>
@@ -91,28 +58,20 @@
         <div class="mt-8 text-center md:text-left">
           <h4 class="text-xl font-semibold mb-3">Follow Us</h4>
           <div class="flex justify-center md:justify-start space-x-6">
-            <a
-              href="#"
-              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110"
-            >
+            <a href="#"
+              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110">
               <ion-icon name="logo-facebook" class="text-3xl"></ion-icon>
             </a>
-            <a
-              href="#"
-              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110"
-            >
+            <a href="#"
+              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110">
               <ion-icon name="logo-twitter" class="text-3xl"></ion-icon>
             </a>
-            <a
-              href="#"
-              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110"
-            >
+            <a href="#"
+              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110">
               <ion-icon name="logo-instagram" class="text-3xl"></ion-icon>
             </a>
-            <a
-              href="#"
-              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110"
-            >
+            <a href="#"
+              class="text-[#00aad4] hover:text-white transition-colors duration-300 transform hover:scale-110">
               <ion-icon name="logo-linkedin" class="text-3xl"></ion-icon>
             </a>
           </div>
@@ -125,105 +84,56 @@
         </h2>
         <form @submit.prevent="submitForm" class="space-y-6">
           <div>
-            <label for="name" class="block text-sm font-medium text-gray-700"
-              >Full Name</label
-            >
-            <input
-              type="text"
-              id="name"
-              v-model="form.name"
-              autocomplete="name"
-              required
+            <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+            <input type="text" id="name" v-model="form.name" autocomplete="name" required
               class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
-              placeholder="Your Full Name"
-            />
+              placeholder="Your Full Name" />
           </div>
 
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700"
-              >Email Address</label
-            >
-            <input
-              type="email"
-              id="email"
-              v-model="form.email"
-              autocomplete="email"
-              required
+            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+            <input type="email" id="email" v-model="form.email" autocomplete="email" required
               class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
-              placeholder="you@example.com"
-            />
+              placeholder="you@example.com" />
           </div>
 
           <div>
-            <label for="subject" class="block text-sm font-medium text-gray-700"
-              >Subject</label
-            >
-            <input
-              type="text"
-              id="subject"
-              v-model="form.subject"
+            <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+            <input type="text" id="subject" v-model="form.subject"
               class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
-              placeholder="Regarding boat booking, custom build, etc."
-            />
+              placeholder="Regarding boat booking, custom build, etc." />
           </div>
 
           <div>
-            <label
-              for="message"
-              class="block text-sm font-medium text-gray-700"
-              >Your Message</label
-            >
-            <textarea
-              id="message"
-              v-model="form.message"
-              rows="6"
-              required
+            <label for="message" class="block text-sm font-medium text-gray-700">Your Message</label>
+            <textarea id="message" v-model="form.message" rows="6" required
               class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
-              placeholder="Tell us more about what you need..."
-            ></textarea>
+              placeholder="Tell us more about what you need..."></textarea>
           </div>
 
           <div>
-            <button
-              type="submit"
-              class="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-semibold text-white bg-[#00aad4] hover:bg-[#002255] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00aad4] transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-            >
+            <button type="submit"
+              class="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-semibold text-white bg-[#00aad4] hover:bg-[#002255] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00aad4] transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
               <span v-if="!loading">Send Message</span>
               <span v-else class="flex items-center">
-                <svg
-                  class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    class="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    stroke-width="4"
-                  ></circle>
-                  <path
-                    class="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                  </path>
                 </svg>
                 Sending...
               </span>
             </button>
           </div>
 
-          <div
-            v-if="formStatus.message"
-            :class="[
-              'mt-4 p-3 rounded-md text-center',
-              formStatus.type === 'success'
-                ? 'bg-[#80ff3f]/10 text-[#002255]' // Subtly use green with transparency for background, text in deep blue
-                : 'bg-red-100 text-red-800', // Standard red for errors
-            ]"
-          >
+          <div v-if="formStatus.message" :class="[
+            'mt-4 p-3 rounded-md text-center',
+            formStatus.type === 'success'
+              ? 'bg-[#80ff3f]/10 text-[#002255]' // Subtly use green with transparency for background, text in deep blue
+              : 'bg-red-100 text-red-800', // Standard red for errors
+          ]">
             {{ formStatus.message }}
           </div>
         </form>
@@ -306,7 +216,8 @@ export default {
   position: absolute;
   border-radius: 50%;
   /* This style will be overridden by inline style for dynamic colors */
-  background: rgba(255, 255, 255, 0.1); /* Fallback */
+  background: rgba(255, 255, 255, 0.1);
+  /* Fallback */
   animation: ripple 15s infinite ease-in-out;
   opacity: 0;
 }
@@ -339,9 +250,11 @@ export default {
     transform: scale(0);
     opacity: 0;
   }
+
   20% {
     opacity: 0.1;
   }
+
   100% {
     transform: scale(1);
     opacity: 0;

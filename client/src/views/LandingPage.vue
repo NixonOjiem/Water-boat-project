@@ -2,16 +2,17 @@
   <section class="bg-slate-900 text-white">
     <section class="relative w-full h-screen overflow-hidden" ref="heroSectionRef">
       <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
-        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu" />
+        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu" data-aos-easing="linear"
+        data-aos="fade-down" data-aos-duration="2000" />
       <img src="/images/cruise-vertical.png" alt="Aerial view of a yacht on Lake Victoria"
         class="absolute top-0 left-0 w-full h-full object-cover hero-image"
         :style="{ transform: `scale(${parallaxScale})` }" />
       <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4"
         style="background-color: rgba(0, 0, 0, 0.6)">
-        <h1 class="text-5xl md:text-7xl font-bold text-center mb-4">
+        <h1 class="text-5xl md:text-7xl font-bold text-center mb-4" data-aos="zoom-in-up" data-aos-duration="3000">
           Experience Lake Victoria's Majesty
         </h1>
-        <p class="text-lg md:text-xl text-center max-w-2xl">
+        <p class="text-lg md:text-xl text-center max-w-2xl" data-aos="zoom-in-up" data-aos-duration="3000">
           Sail across the serene waters, captured from an unparalleled aerial perspective.
         </p>
       </div>
@@ -19,14 +20,16 @@
     </section>
 
     <main class="container mx-auto px-4 py-16 md:py-24">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+        data-aos-duration="1000">
         <h2 class="text-4xl md:text-5xl font-bold">A New Horizon for Lake Transport</h2>
         <p class="text-slate-400 mt-4 max-w-3xl mx-auto">
           Click on any card to expand it and learn more.
         </p>
       </div>
 
-      <div ref="bentoGridRef" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+      <div ref="bentoGridRef" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start"
+        data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="2000">
         <div :class="cardClasses('card-1')">
           <div @click="toggleCard('card-1')" class="p-6 cursor-pointer">
             <h3 class="text-2xl font-bold">🌊 The Challenge</h3>
@@ -94,6 +97,10 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import GetInTouch from '@/components/GetInTouch.vue'
 import Footer from '@/components/Footer.vue'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+// Initialize AOS for animations
+AOS.init();
 
 // --- Template Refs ---
 const heroSectionRef = ref(null)

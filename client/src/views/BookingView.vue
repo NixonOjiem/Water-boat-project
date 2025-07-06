@@ -1,7 +1,8 @@
 <template lang="">
   <section class="booking-view">
     <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
-        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"  />
+        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu" data-aos-easing="linear"
+        data-aos="fade-down" data-aos-duration="2000"/>
   <div class = "booking-container">
     <BookingComponent />
     <Footer />
@@ -15,6 +16,10 @@ import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import BookingComponent from '@/components/BookingComponent.vue';
 import { ref } from 'vue';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+// Initialize AOS for animations
+AOS.init();
 
 export default {
   name: 'BookingView',

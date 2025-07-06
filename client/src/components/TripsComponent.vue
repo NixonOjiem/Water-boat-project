@@ -20,8 +20,7 @@
       <div v-for="booking in bookings" :key="booking.booking_id" class="booking-card"
         :class="getTripStatus(booking.booking_date).class">
         <div class="card-header">
-          <img :src="`https://placehold.co/600x400/3498db/ffffff?text=${booking.destination}`"
-            :alt="`Image of ${booking.destination}`" class="card-image" />
+          <img :src="booking.image" :alt="`Image of ${booking.destination_name}`" class="card-image" />
           <span class="trip-status">{{ getTripStatus(booking.booking_date).text }}</span>
         </div>
         <div class="card-content">
@@ -78,6 +77,8 @@
 import { getUserFromToken } from '@/utils/UserData';
 import axios from 'axios';
 
+const apiRoute = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default {
   name: 'TripsComponent',
   data() {
@@ -111,8 +112,22 @@ export default {
       this.loading = true;
       this.error = null;
       try {
-        const response = await axios.get(`http://localhost:5000/api/user/${this.userId}`);
-        this.bookings = response.data.sort((a, b) => new Date(b.booking_date) - new Date(a.booking_date)); // Sort by most recent
+        const response = await axios.get(`${apiRoute}/api/user/${this.userId}`);
+        const bookingsData = response.data;
+
+        // **MODIFICATION HERE**
+        // We map over the data to create a full, reliable path for each image.
+        const processedBookings = bookingsData.map(booking => {
+          // Ensure booking.image is just the filename, not a full path.
+          // Then prepend the correct public path.
+          return {
+            ...booking,
+            image: `/images/${booking.image}`
+          };
+        });
+
+        this.bookings = processedBookings.sort((a, b) => new Date(b.booking_date) - new Date(a.booking_date));
+
       } catch (err) {
         this.error = 'Failed to load your bookings. Please check your connection and try again.';
         console.error("API Error:", err.response ? err.response.data : err.message);

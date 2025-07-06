@@ -4,13 +4,12 @@ const router = express.Router();
 const pool = require("../config/db"); // Adjust path as needed to reach your db.js
 
 // Route to handle booking submissions
+// Route to handle booking submissions
 router.post("/bookings", async (req, res) => {
   try {
-    // Destructure userId from req.body as well
-    const { destination, date, time, passengers, userId } = req.body;
+    // Destructure image from the request body
+    const { destination, date, time, passengers, userId, image } = req.body; // Enhanced userId check
 
-    // Explicit check for userId validity
-    // Enhanced userId check
     if (
       !userId ||
       userId === "null" ||
@@ -21,38 +20,35 @@ router.post("/bookings", async (req, res) => {
         message: "Authentication required. Please log in to book a trip.",
         error: "UNAUTHENTICATED",
       });
-    }
+    } // Basic server-side validation, now including image
 
-    // Basic server-side validation
-    if (!destination || !date || !time || !passengers || !userId) {
-      // Added userId to validation
+    if (!destination || !date || !time || !passengers || !userId || !image) {
       return res.status(400).json({
-        message: "All booking fields are required.",
+        message: "All booking fields, including an image, are required.",
       });
-    }
+    } // Validate passengers count
 
-    // Validate passengers count (should be within your frontend's maxPassengers)
     if (passengers < 1 || passengers > 20) {
       return res
         .status(400)
         .json({ message: "Number of passengers must be between 1 and 20." });
-    }
+    } // Insert booking into the database, including the image URL
 
-    // Insert booking into the database, including userId
     const [result] = await pool.execute(
-      "INSERT INTO bookings (userId, destination, booking_date, booking_time, passengers) VALUES (?, ?, ?, ?, ?)",
-      [userId, destination, date, time, passengers] // Ensure order matches columns
+      "INSERT INTO bookings (userId, destination, booking_date, booking_time, passengers, image) VALUES (?, ?, ?, ?, ?, ?)",
+      [userId, destination, date, time, passengers, image] // Add image to the array of values
     );
 
     res.status(201).json({
       message: "Booking created successfully!",
       bookingId: result.insertId,
       data: {
-        userId, // Include userId in response
+        userId,
         destination,
         date,
         time,
         passengers,
+        image, // Include image in the response data
       },
     });
   } catch (error) {
@@ -83,27 +79,26 @@ router.get("/user/:userId", async (req, res) => {
 
     if (!userId) {
       return res.status(400).json({ message: "User ID is required." });
-    }
+    } // Add the 'image' column to your SELECT statement
 
-    // Corrected query based on your 'bookings' table schema
     const [bookings] = await pool.execute(
       `SELECT
-           id AS booking_id,
-           booking_date,
-           booking_time,    -- Including booking_time as it's in your schema
-           passengers,      -- Including passengers as it's in your schema
-           destination AS destination_name, -- 'destination' column is the name
-           -- Removed destination_image as it does not exist in your 'bookings' table
-           created_at,      -- Including created_at
-           updated_at       -- Including updated_at
-         FROM bookings
-         WHERE userId = ?    -- Use 'userId' (case-sensitive as per your schema)
-         ORDER BY booking_date DESC, booking_time DESC`, // Order by time as well for consistency
+          id AS booking_id,
+          booking_date,
+          passengers,
+          booking_time,
+          destination AS destination_name,
+          image, 
+          created_at,
+          updated_at
+          FROM bookings
+          WHERE userId = ?
+          ORDER BY booking_date DESC, booking_time DESC`,
       [userId]
     );
 
     if (bookings.length === 0) {
-      return res.status(200).json([]); // Return an empty array if no bookings are found
+      return res.status(200).json([]);
     }
 
     res.status(200).json(bookings);
@@ -115,7 +110,6 @@ router.get("/user/:userId", async (req, res) => {
     });
   }
 });
-
 // Example: A GET route for fetching destinations (if your frontend needs them from the backend)
 router.get("/destinations", async (req, res) => {
   try {

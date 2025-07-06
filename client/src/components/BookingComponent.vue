@@ -93,23 +93,18 @@
     </div>
   </div>
 </template>
-
 <script>
 // For Vite, use import.meta.env.VITE_API_URL
 // For Vue CLI, use process.env.VUE_APP_API_URL
 const apiRoute = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
-// Ensure this utility exists and correctly exports getUserFromToken
-// If it's a default export, you'd do: import getUserFromToken from '@/utils/UserData';
-// If it's a named export, keep as: import { getUserFromToken } from '@/utils/UserData';
 import { getUserFromToken } from '@/utils/UserData';
-
 
 export default {
   name: 'BookingComponent',
   data() {
     return {
-      userId: null, // Will be set from token
+      userId: null,
       booking: {
         destination: '',
         date: '',
@@ -117,24 +112,22 @@ export default {
         passengers: 1,
       },
       destinations: [
-        { id: 1, name: 'Dunga Beach', pricePerPassenger: 1500 },
-        { id: 2, name: 'Coastal Cruise', pricePerPassenger: 2000 },
-        { id: 3, name: 'Hippo Point', pricePerPassenger: 1800 },
-        { id: 4, name: 'Kisumu Yatch Club', pricePerPassenger: 2200 },
-        { id: 5, name: 'Kisumu Impala Sanctuary', pricePerPassenger: 2500 },
-        { id: 6, name: 'Dunga Hill Camp', pricePerPassenger: 1700 },
-        { id: 7, name: 'Villa Del Sol', pricePerPassenger: 2100 },
-        { id: 8, name: 'Mbita & Rusinga Island', pricePerPassenger: 4500 }, // Longer trip, higher price
-        { id: 9, name: 'Mfangano Island', pricePerPassenger: 5000 }, // Longer trip, higher price
-        { id: 10, name: 'Homa Bay', pricePerPassenger: 4000 }, // Longer trip, higher price
+        { id: 1, name: 'Dunga Beach', pricePerPassenger: 1500, image: '/image/Dunga Hill Camp.jpg' },
+        { id: 2, name: 'Hippo Point', pricePerPassenger: 1800, image: '/image/hipppo point.jpg' },
+        { id: 3, name: 'Kisumu Yatch Club', pricePerPassenger: 2200, image: '/image/kisumu-yacht-club.jpg' },
+        { id: 4, name: 'Kisumu Impala Sanctuary', pricePerPassenger: 2500, image: '/image/desiretravel_kenya_KisumuImpalaSanctuary.jpg' },
+        { id: 5, name: 'Dunga Hill Camp', pricePerPassenger: 1700, image: '/image/Dunga Hill Camp.jpg' },
+        { id: 6, name: 'Villa Del Sol', pricePerPassenger: 2100, image: '/image/Villa Del Sol.jpg' },
+        { id: 7, name: 'Mbita & Rusinga Island', pricePerPassenger: 4500, image: '/image/Mbita & Rusinga Island.jpg' },
+        { id: 8, name: 'Mfangano Island', pricePerPassenger: 5000, image: '/image/Mfangano Island.jpg' },
+        { id: 9, name: 'Homa Bay', pricePerPassenger: 4000, image: '/image/Homa Bay.webp' },
       ],
-      // basePricePerPerson: 1500, // No longer needed if prices are per destination
-      bookingStatus: 'idle', // idle, loading, booked, error
+      bookingStatus: 'idle',
       showConfirmation: false,
       showError: false,
       errorMessage: '',
-      maxPassengers: 20, // Define max passengers
-      backendApiUrl: `${apiRoute}/api/bookings`, // Your backend API endpoint
+      maxPassengers: 20,
+      backendApiUrl: `${apiRoute}/api/bookings`,
     };
   },
   computed: {
@@ -142,11 +135,9 @@ export default {
       const selectedDestination = this.destinations.find(
         (dest) => dest.name === this.booking.destination
       );
-      // Use the specific price for the selected destination, default to 0 if not found
       return selectedDestination ? selectedDestination.pricePerPassenger * this.booking.passengers : 0;
     },
     today() {
-      // To prevent booking past dates
       return new Date().toISOString().split('T')[0];
     },
     formattedDate() {
@@ -176,20 +167,17 @@ export default {
       }
     },
     async submitBooking() {
-      // Reset previous error/confirmation messages
       this.showError = false;
       this.showConfirmation = false;
       this.errorMessage = '';
 
-      // Check if the user is logged in (userId exists)
       if (!this.userId) {
         this.errorMessage = 'Please log in to make a booking.';
         this.showError = true;
-        this.bookingStatus = 'error'; // Set status to error
-        return; // Stop the submission process
+        this.bookingStatus = 'error';
+        return;
       }
 
-      // Basic form field validation
       if (!this.booking.destination || !this.booking.date || !this.booking.time) {
         this.errorMessage = 'Please fill in all fields.';
         this.showError = true;
@@ -199,25 +187,28 @@ export default {
 
       this.bookingStatus = 'loading';
 
+      const selectedDestination = this.destinations.find(
+        dest => dest.name === this.booking.destination
+      );
+
       try {
         const response = await fetch(this.backendApiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            // Example for sending a token if you have one
-            'Authorization': `Bearer ${localStorage.getItem('token')}` // Assuming token is stored in localStorage
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
           },
           body: JSON.stringify({
             ...this.booking,
             userId: this.userId,
-            totalPrice: this.totalPrice // Include total price in the payload
+            totalPrice: this.totalPrice,
+            image: selectedDestination ? selectedDestination.image : null // Add the image URL to the payload
           })
         });
 
         const responseData = await response.json();
 
         if (!response.ok) {
-          // Use the error message from the server response
           throw new Error(responseData.message || 'Failed to book your trip. Please try again.');
         }
 
@@ -226,27 +217,26 @@ export default {
 
         setTimeout(() => {
           this.resetForm();
-        }, 5000); // Reset form after 5 seconds on success
+        }, 5000);
 
       } catch (error) {
         console.error('Error submitting booking:', error);
         this.bookingStatus = 'error';
         this.showError = true;
-        // Display the caught error message
         this.errorMessage = error.message;
 
         setTimeout(() => {
           this.showError = false;
           this.errorMessage = '';
-          this.bookingStatus = 'idle'; // Reset status after error message fades
-        }, 5000); // Hide error and reset status after 5 seconds
+          this.bookingStatus = 'idle';
+        }, 5000);
       }
     },
     resetForm() {
       this.booking = {
         destination: '',
-        date: this.today, // Reset date to today's date
-        time: new Date().toTimeString().split(' ')[0].substring(0, 5), // Reset time to current time
+        date: this.today,
+        time: new Date().toTimeString().split(' ')[0].substring(0, 5),
         passengers: 1,
       };
       this.bookingStatus = 'idle';
@@ -254,19 +244,14 @@ export default {
     }
   },
   mounted() {
-    // Get user ID from token on component mount
     const userData = getUserFromToken();
-    if (userData && userData.id) { // Ensure userData and userData.id exist
+    if (userData && userData.id) {
       this.userId = userData.id;
     } else {
-      // Handle case where user is not logged in or token is invalid
       console.warn("User not logged in or invalid token. Booking will require login.");
-      // You might want to redirect to login page or display a persistent message
     }
 
-    // Set initial date to today
     this.booking.date = this.today;
-    // Set initial time to current time
     const now = new Date();
     this.booking.time = now.toTimeString().split(' ')[0].substring(0, 5);
   }

@@ -21,6 +21,7 @@
         :class="getTripStatus(booking.booking_date).class">
         <div class="card-header">
           <img :src="booking.image" :alt="`Image of ${booking.destination_name}`" class="card-image" />
+          {{ console.log(booking.image) }}
           <span class="trip-status">{{ getTripStatus(booking.booking_date).text }}</span>
         </div>
         <div class="card-content">

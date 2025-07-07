@@ -1,109 +1,283 @@
 <template>
-  <header :class="[
-    'w-full fixed top-0 left-0 z-[9999] transition-all duration-300 ease-in-out',
-    { 'scrolled-nav': isScrolled }
-  ]">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="logo-nav">
-        <a href="/" class="text-2xl font-bold text-white">Yieh Boats</a>
+  <header
+    :class="[
+      'w-full fixed top-0 left-0 z-[9999] transition-all duration-300 ease-in-out',
+      'flex justify-center',
+      { 'py-2': isScrolled, 'py-5': !isScrolled },
+    ]"
+  >
+    <nav
+      ref="desktopNavRef"
+      class="hidden md:flex items-center w-full max-w-6xl mx-auto bg-white px-8 py-4 rounded-[2.75rem] shadow-md"
+    >
+      <div class="logo-nav flex-shrink-0">
+        <a href="/" class="text-2xl font-bold text-gray-800">Yieh Boats</a>
       </div>
 
-      <nav class="hidden md:flex flex-grow justify-center">
-        <ul class="flex space-x-10 bg-white p-6 rounded-[2.75rem] shadow-md">
-          <li><a href="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</a></li>
-          <li><a href="/services" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</a></li>
-          <li><a href="#" @click.prevent="$emit('open-booking-modal')"
-              class="text-gray-700 hover:text-blue-600 font-medium">Book a Trip</a></li>
-          <li><a href="/trips" class="text-gray-700 hover:text-blue-600 font-medium">Your Trips</a></li>
-          <li><a href="/gallery" class="text-gray-700 hover:text-blue-600 font-medium">Gallery</a></li>
-        </ul>
-      </nav>
+      <ul class="flex items-center space-x-8 mx-auto">
+        <li>
+          <a href="/" class="text-gray-700 hover:text-blue-600 font-medium"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="/services"
+            class="text-gray-700 hover:text-blue-600 font-medium"
+            >Our Services</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            @click.prevent="$emit('open-booking-modal')"
+            class="text-gray-700 hover:text-blue-600 font-medium"
+            >Book a Trip</a
+          >
+        </li>
+        <li>
+          <a href="/trips" class="text-gray-700 hover:text-blue-600 font-medium"
+            >Your Trips</a
+          >
+        </li>
+        <li>
+          <a
+            href="/gallery"
+            class="text-gray-700 hover:text-blue-600 font-medium"
+            >Gallery</a
+          >
+        </li>
+      </ul>
 
-      <div class="other-links flex items-center space-x-4 relative">
-        <div :class="[
-          'desktop-menu-wrapper relative transition-all duration-300 ease-in-out',
-          { 'teardrop-active bg-white rounded-[2.75rem] shadow-md': isDesktopMenuOpen }
-        ]">
-          <div :class="[
-            'desktop-menu-button hidden md:flex items-center justify-center w-12 h-12 rounded-full cursor-pointer',
-            isDesktopMenuOpen ? 'text-gray-700' : 'text-white'
-          ]" @click="$emit('toggle-desktop-menu', $event)">
-            <ion-icon name="menu-outline" class="text-2xl transition-transform duration-300 ease-in-out"></ion-icon>
+      <div class="other-links relative">
+        <div class="desktop-menu-wrapper relative">
+          <div
+            class="desktop-menu-button flex items-center justify-center w-12 h-12 rounded-full cursor-pointer text-gray-700"
+            @click="$emit('toggle-desktop-menu', $event)"
+          >
+            <ion-icon
+              name="menu-outline"
+              class="text-2xl transition-transform duration-300 ease-in-out"
+            ></ion-icon>
           </div>
 
           <transition name="fade">
-            <div v-if="isDesktopMenuOpen" class="absolute right-0 top-full bg-white p-4 rounded-lg shadow-lg">
-              <ul class="flex flex-col space-y-2 text-gray-700">
-                <li v-if="authStore.isAuthenticated"><a href="#" class="hover:text-blue-600"
-                    @click="$emit('toggle-desktop-menu', $event)">Dashboard</a>
-                </li>
-                <li v-if="authStore.isAuthenticated"><a href="#" class="hover:text-blue-600"
-                    @click="$emit('toggle-desktop-menu', $event)">Settings</a>
-                </li>
-                <li v-if="authStore.isAuthenticated">
-                  <a href="#" class="hover:text-blue-600" @click="logout">Logout</a>
-                </li>
-                <li v-else>
-                  <router-link to="/authentication" class="hover:text-blue-600">
-                    Login
-                  </router-link>
-                </li>
+            <div
+              v-if="isDesktopMenuOpen"
+              class="absolute right-0 top-full mt-2 bg-white p-4 rounded-lg shadow-lg w-40"
+            >
+              <ul class="flex flex-col space-y-3 text-gray-700">
+                <template v-if="authStore.isAuthenticated">
+                  <li>
+                    <router-link
+                      to="/dashboard"
+                      class="hover:text-blue-600"
+                      @click="$emit('toggle-desktop-menu', $event)"
+                    >
+                      Dashboard
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link
+                      to="/settings"
+                      class="hover:text-blue-600"
+                      @click="$emit('toggle-desktop-menu', $event)"
+                    >
+                      Settings
+                    </router-link>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-blue-600" @click="logout"
+                      >Logout</a
+                    >
+                  </li>
+                </template>
+
+                <template v-else>
+                  <li>
+                    <router-link
+                      to="/authentication"
+                      class="hover:text-blue-600"
+                      @click="$emit('toggle-desktop-menu', $event)"
+                    >
+                      Login
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link
+                      to="/register"
+                      class="hover:text-blue-600"
+                      @click="$emit('toggle-desktop-menu', $event)"
+                    >
+                      Register
+                    </router-link>
+                  </li>
+                </template>
               </ul>
             </div>
           </transition>
         </div>
       </div>
+    </nav>
+
+    <div ref="mobileNavRef" class="md:hidden w-full px-5">
+      <div
+        class="flex items-center justify-between bg-white px-6 py-4 rounded-full shadow-md"
+      >
+        <a href="/" class="text-xl font-bold text-gray-800">Yieh Boats</a>
+        <div
+          @click="isMobileMenuOpen = !isMobileMenuOpen"
+          class="cursor-pointer"
+        >
+          <ion-icon
+            :name="isMobileMenuOpen ? 'close-outline' : 'menu-outline'"
+            class="text-3xl text-gray-800 transition-transform duration-300 ease-in-out"
+          ></ion-icon>
+        </div>
+      </div>
+      <transition name="slide-down">
+         <div
+          v-if="isMobileMenuOpen"
+          class="mt-2 bg-white rounded-2xl shadow-lg p-5"
+        >
+          <ul class="flex flex-col space-y-4 text-gray-700">
+            <li>
+              <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li>
+              <a href="/services" class="mobile-nav-link">Our Services</a>
+            </li>
+            <li>
+              <a
+                href="#"
+                @click.prevent="$emit('open-booking-modal')"
+                class="mobile-nav-link"
+                >Book a Trip</a
+              >
+            </li>
+            <li>
+              <a href="/trips" class="mobile-nav-link">Your Trips</a>
+            </li>
+            <li>
+              <a href="/gallery" class="mobile-nav-link">Gallery</a>
+            </li>
+
+            <hr class="my-3 w-full" />
+
+            <template v-if="authStore.isAuthenticated">
+              <li>
+                <router-link to="/dashboard" class="mobile-nav-link"
+                  >Dashboard</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/settings" class="mobile-nav-link"
+                  >Settings</router-link
+                >
+              </li>
+              <li>
+                <a href="#" class="mobile-nav-link" @click="logout">Logout</a>
+              </li>
+            </template>
+
+            <template v-else>
+              <li>
+                <router-link to="/authentication" class="mobile-nav-link"
+                  >Login</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/register" class="mobile-nav-link"
+                  >Register</router-link
+                >
+              </li>
+            </template>
+          </ul>
+        </div>
+      </transition>
     </div>
   </header>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, defineProps, defineEmits } from 'vue';
-import { useRouter } from 'vue-router';
-import { authStore } from '@/store/auth';
+import { ref, onMounted, onUnmounted, defineProps, defineEmits } from "vue";
+import { useRouter } from "vue-router";
+import { authStore } from "@/store/auth";
+
+// MODIFIED: Click Outside Composable
+const useClickOutside = (elementRef, callback) => {
+  const listener = (event) => {
+    if (!elementRef.value || elementRef.value.contains(event.target)) {
+      return;
+    }
+    callback();
+  };
+
+  onMounted(() => {
+    window.addEventListener("mousedown", listener);
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener("mousedown", listener);
+  });
+};
 
 const router = useRouter();
 
 const logout = () => {
   authStore.logout();
-  router.push('/');
+  router.push("/");
+  isMobileMenuOpen.value = false;
 };
 
-// Define props that the component expects to receive
 const props = defineProps({
-  isMobileMenuOpen: Boolean,
-  isDesktopMenuOpen: Boolean
+  isDesktopMenuOpen: Boolean,
 });
 
-// MODIFIED: Added 'open-booking-modal' to the list of emitted events
-const emit = defineEmits(['toggle-mobile-menu', 'toggle-desktop-menu', 'open-booking-modal']);
+const emit = defineEmits(["toggle-desktop-menu", "open-booking-modal"]);
 
-// --- Scroll Logic ---
 const isScrolled = ref(false);
+const isMobileMenuOpen = ref(false);
+
+// MODIFIED: Template refs for click-outside detection
+const mobileNavRef = ref(null);
+const desktopNavRef = ref(null);
+
+// MODIFIED: Close menus when clicking outside
+useClickOutside(mobileNavRef, () => {
+  if (isMobileMenuOpen.value) {
+    isMobileMenuOpen.value = false;
+  }
+});
+
+useClickOutside(desktopNavRef, () => {
+  if (props.isDesktopMenuOpen) {
+    emit("toggle-desktop-menu", new Event('click'));
+  }
+});
 
 const handleScroll = () => {
-  // Check if the user has scrolled more than 50px from the top
   isScrolled.value = window.scrollY > 50;
 };
 
-// Add and remove the scroll event listener
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener("scroll", handleScroll);
 
   router.afterEach(() => {
     if (props.isDesktopMenuOpen) {
-      emit('toggle-desktop-menu', new Event('click')); // Emit a dummy event to close the menu
+      emit("toggle-desktop-menu", new Event("click"));
     }
+    isMobileMenuOpen.value = false;
   });
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener("scroll", handleScroll);
 });
 </script>
 
 <style scoped>
-/* Styles remain unchanged */
+/* Common Transition Styles */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -122,17 +296,35 @@ onUnmounted(() => {
   align-items: center;
 }
 
-.desktop-menu-wrapper.teardrop-active {
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-}
-
 .desktop-menu-button {
   transition: all 0.3s ease-in-out;
-  background-color: transparent !important;
-  box-shadow: none !important;
 }
 
-.desktop-menu-wrapper.teardrop-active .desktop-menu-button ion-icon {
-  transform: rotate(90deg);
+/* MODIFIED: New mobile menu animation for a smoother dropdown */
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-down-enter-from,
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* MODIFIED: Custom styles for mobile navigation links */
+.mobile-nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+}
+
+.mobile-nav-link:hover {
+  background-color: #bfdbfe;
+  color: #002255;
 }
 </style>

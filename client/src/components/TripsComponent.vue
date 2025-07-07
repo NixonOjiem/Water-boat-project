@@ -1,6 +1,6 @@
 <template>
-  <div class="trips-container">
-    <header class="trips-header">
+  <div class="trips-container" style="background-color: white;">
+    <header class=" trips-header">
       <h1>My Trips</h1>
       <p>Here you can view and manage all your upcoming and past adventures.</p>
     </header>
@@ -171,14 +171,17 @@ export default {
 }
 
 .trips-container {
-  padding: 2rem 1.5rem;
-  max-width: 1200px;
+  padding: 2rem 0rem;
+  /* max-width: 1200px; */
   margin: auto;
+  width: 100vw;
+  background-color: var(--background-color);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--background-color);
 }
 
 .trips-header {
+  background-color: var(--background-color);
   text-align: center;
   margin-bottom: 2.5rem;
 }
@@ -258,6 +261,8 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
+  width: 100vw;
+  background-color: #fff;
 }
 
 .booking-card {

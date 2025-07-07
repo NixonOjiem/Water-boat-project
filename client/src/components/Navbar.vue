@@ -12,7 +12,8 @@
         <ul class="flex space-x-10 bg-white p-6 rounded-[2.75rem] shadow-md">
           <li><a href="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</a></li>
           <li><a href="/services" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</a></li>
-          <li><a href="/booking" class="text-gray-700 hover:text-blue-600 font-medium">Book a Trip</a></li>
+          <li><a href="#" @click.prevent="$emit('open-booking-modal')"
+              class="text-gray-700 hover:text-blue-600 font-medium">Book a Trip</a></li>
           <li><a href="/trips" class="text-gray-700 hover:text-blue-600 font-medium">Your Trips</a></li>
           <li><a href="/gallery" class="text-gray-700 hover:text-blue-600 font-medium">Gallery</a></li>
         </ul>
@@ -33,9 +34,11 @@
           <transition name="fade">
             <div v-if="isDesktopMenuOpen" class="absolute right-0 top-full bg-white p-4 rounded-lg shadow-lg">
               <ul class="flex flex-col space-y-2 text-gray-700">
-                <li v-if="authStore.isAuthenticated" ><a href="#" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">Dashboard</a>
+                <li v-if="authStore.isAuthenticated"><a href="#" class="hover:text-blue-600"
+                    @click="$emit('toggle-desktop-menu', $event)">Dashboard</a>
                 </li>
-                <li v-if="authStore.isAuthenticated" ><a href="#" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">Settings</a>
+                <li v-if="authStore.isAuthenticated"><a href="#" class="hover:text-blue-600"
+                    @click="$emit('toggle-desktop-menu', $event)">Settings</a>
                 </li>
                 <li v-if="authStore.isAuthenticated">
                   <a href="#" class="hover:text-blue-600" @click="logout">Logout</a>
@@ -72,8 +75,8 @@ const props = defineProps({
   isDesktopMenuOpen: Boolean
 });
 
-// Define custom events that the component can emit
-const emit = defineEmits(['toggle-mobile-menu', 'toggle-desktop-menu']);
+// MODIFIED: Added 'open-booking-modal' to the list of emitted events
+const emit = defineEmits(['toggle-mobile-menu', 'toggle-desktop-menu', 'open-booking-modal']);
 
 // --- Scroll Logic ---
 const isScrolled = ref(false);
@@ -87,8 +90,6 @@ const handleScroll = () => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
 
-  // NEW: Listen for route changes to close the desktop menu
-  // This ensures the menu closes when navigating via router-link
   router.afterEach(() => {
     if (props.isDesktopMenuOpen) {
       emit('toggle-desktop-menu', new Event('click')); // Emit a dummy event to close the menu
@@ -102,9 +103,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* This class will be applied when the user scrolls down */
-
-/* Scoped styles for the Navbar component */
+/* Styles remain unchanged */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;

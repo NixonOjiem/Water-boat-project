@@ -1,12 +1,20 @@
 <template>
-  <div class="min-h-screen bg-transparent font-sans flex items-center justify-center p-4">
-    <div class="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+  <div
+    class="fixed inset-0 bg-black bg-opacity-60 z-[10000] flex items-center justify-center p-4 transition-opacity duration-300"
+    @click.self="$emit('close')">
+    <div class="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row relative"
+      @click.stop>
+      <button @click="$emit('close')"
+        class="absolute top-3 right-3 z-20 text-gray-500 hover:text-gray-900 transition-colors">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
       <div class="w-full md:w-1/2 relative">
-        <!-- <img src="/images/solarboat.webp" alt="A beautiful boat on the water at sunset"
-          class="h-64 md:h-full w-full object-cover"> -->
         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-8 text-white
-            bg-cover bg-center" style="background-image: url('/images/Kennedy_Cargo_Sailboats.gif');">
-          <h2 class="text-3xl font-bold leading-tight">Your Lakeside Adventure Awaits</h2>
+             bg-cover bg-center" style="background-image: url('/images/Kennedy_Cargo_Sailboats.gif');">
+          <h2 class="text-3xl font-bold leading-tight ">Your Lakeside Adventure Awaits</h2>
           <p class="mt-2 text-lg opacity-90">Book your boat trip today and explore the stunning beauty of Lake Victoria.
           </p>
         </div>
@@ -44,7 +52,6 @@
             <input type="time" id="trip-time" v-model="booking.time" required
               class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
           </div>
-
 
           <div>
             <label for="passengers" class="block text-sm font-medium text-gray-700 mb-1">Passengers (Max: {{
@@ -93,6 +100,7 @@
     </div>
   </div>
 </template>
+
 <script>
 // For Vite, use import.meta.env.VITE_API_URL
 // For Vue CLI, use process.env.VUE_APP_API_URL
@@ -101,7 +109,8 @@ const apiRoute = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 import { getUserFromToken } from '@/utils/UserData';
 
 export default {
-  name: 'BookingComponent',
+  name: 'BookingModal', // Renamed component
+  emits: ['close'], // Declare the close event
   data() {
     return {
       userId: null,
@@ -202,7 +211,7 @@ export default {
             ...this.booking,
             userId: this.userId,
             totalPrice: this.totalPrice,
-            image: selectedDestination ? selectedDestination.image : null // Add the image URL to the payload
+            image: selectedDestination ? selectedDestination.image : null
           })
         });
 
@@ -217,7 +226,8 @@ export default {
 
         setTimeout(() => {
           this.resetForm();
-        }, 5000);
+          this.$emit('close'); // Close the modal on successful booking after a delay
+        }, 3000); // Increased delay to allow user to read confirmation
 
       } catch (error) {
         console.error('Error submitting booking:', error);

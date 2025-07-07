@@ -2,8 +2,9 @@
   <section class="bg-slate-900 text-white">
     <section class="relative w-full h-screen overflow-hidden" ref="heroSectionRef">
       <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
-        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu" data-aos-easing="linear"
-        data-aos="fade-down" data-aos-duration="2000" />
+        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"
+        @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="1000" />
+
       <img src="/images/cruise-vertical.png" alt="Aerial view of a yacht on Lake Victoria"
         class="absolute top-0 left-0 w-full h-full object-cover hero-image"
         :style="{ transform: `scale(${parallaxScale})` }" />
@@ -89,6 +90,9 @@
     </main>
     <GetInTouch />
     <Footer />
+    <transition name="modal-fade">
+      <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" />
+    </transition>
   </section>
 </template>
 
@@ -97,6 +101,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import GetInTouch from '@/components/GetInTouch.vue'
 import Footer from '@/components/Footer.vue'
+import BookingModal from '@/components/BookingModal.vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 // Initialize AOS for animations
@@ -115,6 +120,19 @@ const toggleMobileMenu = () => {
 const toggleDesktopMenu = (event) => {
   event.stopPropagation()
   isDesktopMenuOpen.value = !isDesktopMenuOpen.value
+}
+
+// --- NEW: Booking Modal State ---
+const isBookingModalOpen = ref(false)
+const openBookingModal = () => {
+  isBookingModalOpen.value = true;
+  // Optional: prevent background scroll when modal is open
+  document.body.style.overflow = 'hidden';
+}
+const closeBookingModal = () => {
+  isBookingModalOpen.value = false;
+  // Optional: restore background scroll
+  document.body.style.overflow = '';
 }
 
 // --- Parallax Effect Logic ---
@@ -252,6 +270,17 @@ onUnmounted(() => {
 </script>
 
 <style>
+/* ADDED: Transition for the modal appearing and disappearing */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
 /* Base styling for all cards */
 .card-container {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));

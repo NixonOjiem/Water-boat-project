@@ -14,7 +14,7 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
-import BookingComponent from '@/components/BookingComponent.vue';
+import BookingComponent from '@/components/BookingModal.vue'
 import { ref } from 'vue';
 import AOS from 'aos'
 import 'aos/dist/aos.css'

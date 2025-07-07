@@ -1,14 +1,14 @@
 <template>
   <section class="py-20 bg-gradient-to-b from-slate-900 to-blue-900 text-white overflow-hidden">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-16" data-aos="fade-up">
+      <!-- <div class="text-center mb-16" data-aos="fade-up">
         <h1 class="text-4xl md:text-6xl font-bold mb-6">
           <span class="text-blue-400">🚤</span> Versatile by Design
         </h1>
         <p class="text-xl text-blue-200 max-w-3xl mx-auto">
           Your All-in-One Solar Catamaran Experience on Lake Victoria
         </p>
-      </div>
+      </div> -->
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
         <div class="flex flex-col justify-center" data-aos="fade-right">
@@ -30,11 +30,12 @@
         </div>
         <div class="relative" data-aos="fade-left">
           <div class="aspect-video rounded-3xl overflow-hidden border-4 border-blue-500/30 shadow-xl">
-            <div class="w-full h-full bg-gradient-to-r from-blue-700 to-cyan-600 flex items-center justify-center">
+            <div class="w-full h-full bg-gradient-to-r from-blue-700 to-cyan-600 flex items-center justify-center"
+              style="background-image: url('/images/boat-paddle.gif'); background-repeat: no-repeat; background-size: cover; background-position: center;">
               <div class="text-center p-8">
-                <div class="text-7xl mb-4">⛵</div>
+                <!-- <div class="text-7xl mb-4">⛵</div> -->
                 <h3 class="text-2xl font-bold">Experience Lake Victoria</h3>
-                <p class="mt-2 text-blue-100">Sustainable, safe, and serene</p>
+                <p class="mt-2 text-blue-300">Sustainable, safe, and serene</p>
               </div>
             </div>
           </div>
@@ -286,7 +287,8 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="relative" data-aos="fade-right">
           <div class="relative aspect-square rounded-3xl overflow-hidden border-4 border-blue-500/30 shadow-2xl">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-700 flex items-center justify-center">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-700 flex items-center justify-center"
+              style="background-image: url('/images/BoatMoving1.gif');background-repeat: no-repeat; background-size: cover; background-position: center;">
               <div class="text-center p-8">
                 <div class="text-7xl mb-4">⚓</div>
                 <h3 class="text-3xl font-bold">Yieh Boats</h3>

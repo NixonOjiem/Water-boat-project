@@ -20,12 +20,11 @@
       <div v-for="booking in bookings" :key="booking.booking_id" class="booking-card"
         :class="getTripStatus(booking.booking_date).class">
         <div class="card-header">
-          <img :src="booking.image" :alt="`Image of ${booking.destination_name}`" class="card-image" />
-          {{ console.log(booking.image) }}
+          <img src="/images/Dunga Hill Camp.jpg" alt="Boat trip" class="card-image" />
           <span class="trip-status">{{ getTripStatus(booking.booking_date).text }}</span>
         </div>
         <div class="card-content">
-          <h3 class="destination-name">{{ booking.destination_name }}</h3>
+          <h3 class="destination-name">{{ booking.duration }} Hour Boat Trip</h3>
           <div class="booking-details">
             <p class="booking-info">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -51,6 +50,24 @@
                   d="M15 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.264.26h-3.004a.278.278 0 0 1-.26-.26zM11 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.904 2.803a.5.5 0 1 0-.707-.707L4.5 9.293V7.5a.5.5 0 0 0-1 0v2.293l-1.146-1.147a.5.5 0 0 0-.708.707l1.5 1.5a.5.5 0 0 0 .708 0zM5 5a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
               </svg>
               <span>{{ booking.passengers }} Passenger(s)</span>
+            </p>
+            <p class="booking-info">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-clock-history" viewBox="0 0 16 16">
+                <path
+                  d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123q-.04.52-.07 1.02zm1.196 2.478a8 8 0 0 1-2.276 2.453l-.188-.092a7 7 0 0 0 2.169-2.207zm-11.35-.779a7 7 0 0 0 .277.488l-.895.446q-.276-.486-.498-1z" />
+              </svg>
+              <span>{{ booking.duration }} Hours</span>
+            </p>
+
+            <p class="booking-info">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash"
+                viewBox="0 0 16 16">
+                <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                <path
+                  d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2z" />
+              </svg>
+              <span>Ksh {{ booking.total_price.toLocaleString() }}</span>
             </p>
           </div>
         </div>
@@ -116,14 +133,12 @@ export default {
         const response = await axios.get(`${apiRoute}/api/user/${this.userId}`);
         const bookingsData = response.data;
 
-        // **MODIFICATION HERE**
-        // We map over the data to create a full, reliable path for each image.
+        // Process bookings with static image and duration-based title
         const processedBookings = bookingsData.map(booking => {
-          // Ensure booking.image is just the filename, not a full path.
-          // Then prepend the correct public path.
           return {
             ...booking,
-            image: `/images/${booking.image}`
+            image: '/images/download (1).jpg', // Static boat image
+            destination_name: `${booking.duration}-Hour Boat Trip` // Generate title
           };
         });
 

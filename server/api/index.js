@@ -7,9 +7,10 @@ const pool = require("../config/db"); // Adjust path as needed to reach your db.
 // Route to handle booking submissions
 router.post("/bookings", async (req, res) => {
   try {
-    // Destructure image from the request body
-    const { destination, date, time, passengers, userId, image } = req.body; // Enhanced userId check
+    // Updated parameters
+    const { duration, date, time, passengers, userId } = req.body;
 
+    // Authentication check
     if (
       !userId ||
       userId === "null" ||
@@ -20,23 +21,45 @@ router.post("/bookings", async (req, res) => {
         message: "Authentication required. Please log in to book a trip.",
         error: "UNAUTHENTICATED",
       });
-    } // Basic server-side validation, now including image
+    }
 
-    if (!destination || !date || !time || !passengers || !userId || !image) {
+    // Validation
+    if (!duration || !date || !time || !passengers || !userId) {
       return res.status(400).json({
-        message: "All booking fields, including an image, are required.",
+        message: "All booking fields are required.",
       });
-    } // Validate passengers count
+    }
 
+    // Validate inputs
     if (passengers < 1 || passengers > 20) {
-      return res
-        .status(400)
-        .json({ message: "Number of passengers must be between 1 and 20." });
-    } // Insert booking into the database, including the image URL
+      return res.status(400).json({
+        message: "Number of passengers must be between 1 and 20.",
+      });
+    }
 
+    if (duration < 1 || duration > 8) {
+      return res.status(400).json({
+        message: "Duration must be between 1-8 hours.",
+      });
+    }
+
+    // Pricing configuration (move to config file in production)
+    const BASE_PRICE = 3000;
+    const PRICE_PER_HOUR = 1500;
+    const PRICE_PER_PASSENGER = 200;
+
+    // Calculate total price
+    const totalPrice =
+      BASE_PRICE +
+      PRICE_PER_HOUR * duration +
+      PRICE_PER_PASSENGER * passengers * duration;
+
+    // Insert booking
     const [result] = await pool.execute(
-      "INSERT INTO bookings (userId, destination, booking_date, booking_time, passengers, image) VALUES (?, ?, ?, ?, ?, ?)",
-      [userId, destination, date, time, passengers, image] // Add image to the array of values
+      `INSERT INTO bookings 
+        (userId, booking_date, booking_time, passengers, duration, total_price) 
+       VALUES (?, ?, ?, ?, ?, ?)`,
+      [userId, date, time, passengers, duration, totalPrice]
     );
 
     res.status(201).json({
@@ -44,27 +67,19 @@ router.post("/bookings", async (req, res) => {
       bookingId: result.insertId,
       data: {
         userId,
-        destination,
+        duration,
         date,
         time,
         passengers,
-        image, // Include image in the response data
+        totalPrice,
       },
     });
   } catch (error) {
     console.error("Error processing booking:", error);
-    if (error.code === "ER_DUP_ENTRY") {
-      res.status(409).json({
-        message:
-          "A booking for this exact time and destination already exists.",
-        error: error.message,
-      });
-    } else {
-      res.status(500).json({
-        message: "Internal server error. Failed to save booking.",
-        error: error.message,
-      });
-    }
+    res.status(500).json({
+      message: "Internal server error. Failed to save booking.",
+      error: error.message,
+    });
   }
 });
 
@@ -79,21 +94,22 @@ router.get("/user/:userId", async (req, res) => {
 
     if (!userId) {
       return res.status(400).json({ message: "User ID is required." });
-    } // Add the 'image' column to your SELECT statement
+    }
 
+    // Updated query to match new booking structure
     const [bookings] = await pool.execute(
       `SELECT
           id AS booking_id,
           booking_date,
           passengers,
           booking_time,
-          destination AS destination_name,
-          image, 
+          duration,
+          total_price,
           created_at,
           updated_at
-          FROM bookings
-          WHERE userId = ?
-          ORDER BY booking_date DESC, booking_time DESC`,
+        FROM bookings
+        WHERE userId = ?
+        ORDER BY booking_date DESC, booking_time DESC`,
       [userId]
     );
 

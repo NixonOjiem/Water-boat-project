@@ -24,7 +24,7 @@
               <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
                 <span class="text-xl">🇰🇪</span>
               </div>
-              <p class="text-blue-200">Proudly built in Kenya with locally sourced materials</p>
+              <p class="text-black-900">Proudly built in Kenya with locally sourced materials</p>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
               <div class="text-center p-8">
                 <!-- <div class="text-7xl mb-4">⛵</div> -->
                 <h3 class="text-2xl font-bold">Experience Lake Victoria</h3>
-                <p class="mt-2 text-blue-300">Sustainable, safe, and serene</p>
+                <p class="mt-2 text-black-900">Sustainable, safe, and serene</p>
               </div>
             </div>
           </div>
@@ -181,7 +181,7 @@
       <div class="mb-20" data-aos="fade-up">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold mb-4">A Bright Solution: The Solar Catamaran</h2>
-          <p class="text-blue-200 max-w-2xl mx-auto">
+          <p class="text-blue-900 max-w-2xl mx-auto">
             Our solar-powered catamaran is designed to revolutionize lake transport
           </p>
         </div>
@@ -193,7 +193,7 @@
               🌞
             </div>
             <h3 class="text-xl font-bold mb-2">Solar-Powered</h3>
-            <p class="text-blue-200">Clean, renewable energy with zero emissions</p>
+            <p class="text-blue-900">Clean, renewable energy with zero emissions</p>
           </div>
           <div
             class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
@@ -201,7 +201,7 @@
               🛶
             </div>
             <h3 class="text-xl font-bold mb-2">Catamaran Design</h3>
-            <p class="text-blue-200">Stable and safe, minimizing the risk of capsizing</p>
+            <p class="text-blue-900">Stable and safe, minimizing the risk of capsizing</p>
           </div>
           <div
             class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
@@ -209,7 +209,7 @@
               🔋
             </div>
             <h3 class="text-xl font-bold mb-2">Battery Storage</h3>
-            <p class="text-blue-200">Reliable performance even during cloudy weather</p>
+            <p class="text-blue-900">Reliable performance even during cloudy weather</p>
           </div>
           <div
             class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
@@ -217,7 +217,7 @@
               💸
             </div>
             <h3 class="text-xl font-bold mb-2">Low Operating Costs</h3>
-            <p class="text-blue-200">No fuel needed—affordable for operators and passengers alike</p>
+            <p class="text-blue-900">No fuel needed—affordable for operators and passengers alike</p>
           </div>
           <div
             class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
@@ -225,7 +225,7 @@
               🛠️
             </div>
             <h3 class="text-xl font-bold mb-2">Locally Built</h3>
-            <p class="text-blue-200">Made in Kenya using local materials and skilled craftsmanship</p>
+            <p class="text-blue-900">Made in Kenya using local materials and skilled craftsmanship</p>
           </div>
           <div
             class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
@@ -233,7 +233,7 @@
               🌍
             </div>
             <h3 class="text-xl font-bold mb-2">Eco-Friendly</h3>
-            <p class="text-blue-200">Protects Lake Victoria's delicate ecosystem</p>
+            <p class="text-blue-900">Protects Lake Victoria's delicate ecosystem</p>
           </div>
         </div>
       </div>

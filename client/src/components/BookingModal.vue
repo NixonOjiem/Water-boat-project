@@ -14,7 +14,7 @@
       <div class="w-full md:w-1/2 relative">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-8 text-white
              bg-cover bg-center" style="background-image: url('/images/Kennedy_Cargo_Sailboats.gif');">
-          <h2 class="text-3xl font-bold leading-tight">Your Lakeside Adventure Awaits</h2>
+          <h2 class="text-3xl font-bold leading-tight ">Your Lakeside Adventure Awaits</h2>
           <p class="mt-2 text-lg opacity-90">Book your boat trip today and explore the stunning beauty of Lake Victoria.
           </p>
         </div>

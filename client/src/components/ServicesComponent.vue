@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 bg-gradient-to-b from-slate-900 to-blue-900 text-white overflow-hidden">
+  <section class="py-20 bg-[#D8EDFF] text-gray-900 overflow-hidden">
     <div class="container mx-auto px-4">
       <!-- <div class="text-center mb-16" data-aos="fade-up">
         <h1 class="text-4xl md:text-6xl font-bold mb-6">
@@ -291,8 +291,8 @@
               style="background-image: url('/images/BoatMoving1.gif');background-repeat: no-repeat; background-size: cover; background-position: center;">
               <div class="text-center p-8">
                 <div class="text-7xl mb-4">⚓</div>
-                <h3 class="text-3xl font-bold">Yieh Boats</h3>
-                <p class="mt-4 text-xl">Innovating Water Transport</p>
+                <h3 class="text-3xl font-bold text-blue-900">Yieh Boats</h3>
+                <p class="mt-4 text-xl text-blue-900">Innovating Water Transport</p>
               </div>
             </div>
           </div>

@@ -1,19 +1,47 @@
 <template>
-  <div>
-    <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
-      @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"
-      @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="1000" />
-    <main class="flex flex-col items-center justify-center min-h-[500px] bg-gray-900 text-white">
+  <!-- Outer container to establish a relative context for fixed positioning -->
+  <div class="relative min-h-screen">
+    <!--
+      The main section is now fixed, covering the entire viewport.
+      It acts as a background layer (z-index: 0) while its content remains visible.
+      'inset-0' is a Tailwind utility for 'top: 0; right: 0; bottom: 0; left: 0;'.
+      'h-full' and 'w-full' ensure it takes up the full dimensions of its parent (the viewport in this case).
+    -->
+    <main class="fixed inset-0 w-full h-[500px] bg-gray-900 text-white z-0 flex flex-col items-center justify-center">
       <h1 class="text-4xl font-bold mb-6">Gallery</h1>
       <p class="text-lg mb-12">Explore our collection of stunning boat images.</p>
     </main>
-    <GalleryComponent />
-    <Footer />
+
+    <!--
+      This container holds all the scrollable content and is positioned above the fixed main section.
+      'relative' ensures z-index works, and 'z-10' places it in the foreground.
+    -->
+    <div class="relative z-10">
+      <!-- The Navbar is now part of the scrollable foreground content -->
+      <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
+        @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"
+        @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="1000" />
+
+      <!--
+        This spacer div is crucial. Since the 'main' section is fixed and out of the normal document flow,
+        other elements would appear at the very top of the page. This 'h-screen' (height: 100vh) div
+        creates a visual space equal to the viewport height, pushing down the 'GalleryComponent'
+        and 'Footer' so they start scrolling *after* the fixed 'main' section is initially displayed.
+      -->
+      <div class="h-[500px] w-full"></div>
+
+      <!-- These components will scroll up over the fixed main section -->
+      <GalleryComponent />
+      <Footer />
+    </div>
+
+    <!-- The BookingModal remains outside the scrollable content for proper modal overlay behavior -->
     <transition name="modal-fade">
       <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" />
     </transition>
   </div>
 </template>
+
 
 <script>
 import { ref } from 'vue';

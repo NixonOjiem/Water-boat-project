@@ -174,6 +174,8 @@ export default {
   padding: 2rem 1.5rem;
   max-width: 1200px;
   margin: auto;
+  width: 100vw;
+  background-color: var(--background-color);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--background-color);
 }
@@ -258,6 +260,8 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
+  width: 100vw;
+  background-color: #fff;
 }
 
 .booking-card {

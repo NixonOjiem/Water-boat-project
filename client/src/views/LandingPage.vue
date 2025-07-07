@@ -3,7 +3,7 @@
     <section class="relative w-full h-screen overflow-hidden" ref="heroSectionRef">
       <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
         @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"
-        @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="2000" />
+        @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="1000" />
 
       <img src="/images/cruise-vertical.png" alt="Aerial view of a yacht on Lake Victoria"
         class="absolute top-0 left-0 w-full h-full object-cover hero-image"

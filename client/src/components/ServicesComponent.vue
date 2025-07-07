@@ -1,311 +1,327 @@
 <template>
-  <div class="font-inter bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-
-      <!-- Hero Section: Versatile by Design -->
-      <section class="text-center mb-16">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-          🚤 Versatile by Design: Your All-in-One Solar Catamaran
+  <section class="py-20 bg-gradient-to-b from-slate-900 to-blue-900 text-white overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          <span class="text-blue-400">🚤</span> Versatile by Design
         </h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          From scenic getaways to practical water transport, our solar-powered catamaran adapts to every journey on Lake
-          Victoria. Whether you're planning a leisurely escape or a commercial mission, this vessel delivers unmatched
-          functionality and comfort.
+        <p class="text-xl text-blue-200 max-w-3xl mx-auto">
+          Your All-in-One Solar Catamaran Experience on Lake Victoria
         </p>
-      </section>
+      </div>
 
-      <!-- Leisure & Commercial Applications -->
-      <div class="grid md:grid-cols-2 gap-12 mb-16">
-        <!-- Leisure & Lifestyle Experiences -->
+      <!-- Intro Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+        <div class="flex flex-col justify-center" data-aos="fade-right">
+          <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-blue-500/30">
+            <h2 class="text-3xl font-bold mb-6 text-blue-300">Your Solar-Powered Adventure</h2>
+            <p class="text-lg mb-6">
+              From scenic getaways to practical water transport, our solar-powered catamaran adapts to every journey on
+              Lake Victoria.
+              Whether you're planning a leisurely escape or a commercial mission, this vessel delivers unmatched
+              functionality and comfort.
+            </p>
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+                <span class="text-xl">🇰🇪</span>
+              </div>
+              <p class="text-blue-200">Proudly built in Kenya with locally sourced materials</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative" data-aos="fade-left">
+          <div class="aspect-video rounded-3xl overflow-hidden border-4 border-blue-500/30 shadow-xl">
+            <div class="w-full h-full bg-gradient-to-r from-blue-700 to-cyan-600 flex items-center justify-center">
+              <div class="text-center p-8">
+                <div class="text-7xl mb-4">⛵</div>
+                <h3 class="text-2xl font-bold">Experience Lake Victoria</h3>
+                <p class="mt-2 text-blue-100">Sustainable, safe, and serene</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-blue-500/20 backdrop-blur-sm border border-blue-300/30">
+          </div>
+          <div
+            class="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-cyan-500/20 backdrop-blur-sm border border-cyan-300/30">
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Categories -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+        <!-- Leisure Section -->
         <div
-          class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center">
-            <span class="mr-3 text-yellow-500">☀️</span> Leisure & Lifestyle Experiences
-          </h2>
-          <ul class="space-y-4 text-lg text-gray-700">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-3 mt-1">🍔</span>
-              <span><strong class="font-semibold">Onboard BBQs & Drinks:</strong> Host lively day trips with food,
-                drinks, and sunshine</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-500 mr-3 mt-1">🌅</span>
-              <span><strong class="font-semibold">Guided Lake Tours:</strong> Discover the beauty and biodiversity of
-                Lake Victoria</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple-500 mr-3 mt-1">🎉</span>
-              <span><strong class="font-semibold">Private Functions:</strong> Celebrate birthdays, anniversaries, or
-                small events in style</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-pink-500 mr-3 mt-1">🎨</span>
-              <span><strong class="font-semibold">Paint & Sip Sessions:</strong> Bring creativity afloat with art, wine,
-                and open water views</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-indigo-500 mr-3 mt-1">🛏️</span>
-              <span><strong class="font-semibold">Overnight Cruises:</strong> Enjoy multi-day expeditions with
-                accommodation on board</span>
-            </li>
-          </ul>
+          class="bg-gradient-to-br from-blue-800/30 to-cyan-800/30 backdrop-blur-sm rounded-3xl border border-cyan-500/30 p-8"
+          data-aos="fade-up">
+          <div class="flex items-center mb-8">
+            <div class="w-16 h-16 rounded-xl bg-blue-500 flex items-center justify-center mr-4">
+              <span class="text-3xl">☀️</span>
+            </div>
+            <h2 class="text-3xl font-bold">Leisure & Lifestyle</h2>
+          </div>
+
+          <div class="space-y-6">
+            <ServiceCard icon="🍔" title="Onboard BBQs & Drinks"
+              description="Host lively day trips with food, drinks, and sunshine" />
+            <ServiceCard icon="🌅" title="Guided Lake Tours"
+              description="Discover the beauty and biodiversity of Lake Victoria" />
+            <ServiceCard icon="🎉" title="Private Functions"
+              description="Celebrate birthdays, anniversaries, or small events in style" />
+            <ServiceCard icon="🎨" title="Paint & Sip Sessions"
+              description="Bring creativity afloat with art, wine, and open water views" />
+            <ServiceCard icon="🛏️" title="Overnight Cruises"
+              description="Enjoy multi-day expeditions with accommodation on board" />
+          </div>
         </div>
 
-        <!-- Commercial Applications -->
+        <!-- Commercial Section -->
         <div
-          class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center">
-            <span class="mr-3 text-teal-500">🛠️</span> Commercial Applications
-          </h2>
-          <ul class="space-y-4 text-lg text-gray-700">
-            <li class="flex items-start">
-              <span class="text-orange-500 mr-3 mt-1">🐟</span>
-              <span><strong class="font-semibold">Fish Farm Supply Vessel:</strong> Efficient, low-impact delivery of
-                supplies to aquaculture sites</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-cyan-500 mr-3 mt-1">🎣</span>
-              <span><strong class="font-semibold">Fishing Boat:</strong> Stable, silent, and eco-friendly for artisanal
-                or recreational fishing</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-lime-500 mr-3 mt-1">🚢</span>
-              <span><strong class="font-semibold">Cargo & Passenger Transport:</strong> A sustainable solution for
-                moving people and goods across the lake</span>
-            </li>
-          </ul>
+          class="bg-gradient-to-br from-slate-800/30 to-blue-800/30 backdrop-blur-sm rounded-3xl border border-blue-500/30 p-8"
+          data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center mb-8">
+            <div class="w-16 h-16 rounded-xl bg-cyan-500 flex items-center justify-center mr-4">
+              <span class="text-3xl">🛠️</span>
+            </div>
+            <h2 class="text-3xl font-bold">Commercial Applications</h2>
+          </div>
+
+          <div class="space-y-6">
+            <ServiceCard icon="🐟" title="Fish Farm Supply Vessel"
+              description="Efficient, low-impact delivery of supplies to aquaculture sites" />
+            <ServiceCard icon="🎣" title="Fishing Boat"
+              description="Stable, silent, and eco-friendly for artisanal or recreational fishing" />
+            <ServiceCard icon="🚢" title="Cargo & Passenger Transport"
+              description="A sustainable solution for moving people and goods across the lake" />
+            <ServiceCard icon="📦" title="Logistics Support"
+              description="Reliable transport for supplies to island communities" />
+            <ServiceCard icon="🛟" title="Safety & Rescue Operations"
+              description="Emergency response capabilities with solar reliability" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Table -->
+      <div class="mb-20" data-aos="fade-up">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">A Bright Solution: The Solar Catamaran</h2>
+          <p class="text-blue-200 max-w-2xl mx-auto">
+            Our solar-powered catamaran is designed to revolutionize lake transport
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <FeatureCard icon="🌞" title="Solar-Powered" description="Clean, renewable energy with zero emissions" />
+          <FeatureCard icon="🛶" title="Catamaran Design"
+            description="Stable and safe, minimizing the risk of capsizing" />
+          <FeatureCard icon="🔋" title="Battery Storage"
+            description="Reliable performance even during cloudy weather" />
+          <FeatureCard icon="💸" title="Low Operating Costs"
+            description="No fuel needed—affordable for operators and passengers alike" />
+          <FeatureCard icon="🛠️" title="Locally Built"
+            description="Made in Kenya using local materials and skilled craftsmanship" />
+          <FeatureCard icon="🌍" title="Eco-Friendly" description="Protects Lake Victoria's delicate ecosystem" />
+        </div>
+      </div>
+
+      <!-- Why It Matters -->
+      <div
+        class="bg-gradient-to-r from-blue-900/50 to-cyan-900/50 backdrop-blur-sm rounded-3xl border border-cyan-500/30 p-8 mb-16"
+        data-aos="fade-up">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Why It Matters</h2>
+          <p class="text-blue-200 max-w-3xl mx-auto">
+            Transforming Lake Victoria's transport while empowering communities
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <ImpactCard icon="✅" title="Reduces Pollution"
+            description="Zero emissions protect Lake Victoria's delicate ecosystem" color="text-green-400" />
+          <ImpactCard icon="❤️" title="Saves Lives" description="Safer design reduces the risk of accidents on the lake"
+            color="text-red-400" />
+          <ImpactCard icon="💡" title="Empowers Communities"
+            description="Creates green jobs and supports local innovation" color="text-yellow-400" />
+          <ImpactCard icon="🌱" title="Sustainable Model" description="Sets a blueprint for eco-transport across Africa"
+            color="text-emerald-400" />
         </div>
       </div>
 
       <!-- About Yieh Boats -->
-      <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-xl shadow-xl p-10 mb-16">
-        <h2 class="text-4xl font-bold text-center mb-8">⚓ About Yieh Boats</h2>
-        <p class="text-xl text-center max-w-4xl mx-auto mb-10">
-          At Yieh Boats, we’re more than boatbuilders—we’re innovators charting a new course for water transport across
-          Lake Victoria and beyond.
-        </p>
-        <div class="grid md:grid-cols-3 gap-8 text-center">
-          <div class="flex flex-col items-center">
-            <span class="text-6xl mb-4">🌞</span>
-            <h3 class="text-2xl font-semibold mb-2">Powered by the Sun</h3>
-            <p class="text-lg opacity-90">We design and build safe, reliable boats propelled entirely by solar energy.
-              No fossil fuels. No pollution. Just clean, renewable power harnessed from Africa’s abundant sunshine.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="relative" data-aos="fade-right">
+          <div class="relative aspect-square rounded-3xl overflow-hidden border-4 border-blue-500/30 shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-700 flex items-center justify-center">
+              <div class="text-center p-8">
+                <div class="text-7xl mb-4">⚓</div>
+                <h3 class="text-3xl font-bold">Yieh Boats</h3>
+                <p class="mt-4 text-xl">Innovating Water Transport</p>
+              </div>
+            </div>
           </div>
-          <div class="flex flex-col items-center">
-            <span class="text-6xl mb-4">🛶</span>
-            <h3 class="text-2xl font-semibold mb-2">Tailored to Your Journey</h3>
-            <p class="text-lg opacity-90">Whether you're a transport operator, community initiative, or private client,
-              we custom-build each vessel to meet your unique needs—balancing functionality, sustainability, and design.
+          <div
+            class="absolute -top-6 -left-6 w-32 h-32 rounded-full bg-blue-500/20 backdrop-blur-sm border border-blue-300/30 z-[-1]">
+          </div>
+          <div
+            class="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-cyan-500/20 backdrop-blur-sm border border-cyan-300/30 z-[-1]">
+          </div>
+        </div>
+
+        <div data-aos="fade-left">
+          <div class="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-blue-500/30">
+            <h2 class="text-3xl font-bold mb-6 text-cyan-300">About Yieh Boats</h2>
+            <p class="text-lg mb-6">
+              At Yieh Boats, we're more than boatbuilders—we're innovators charting a new course for water transport
+              across Lake Victoria and beyond.
             </p>
+
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start">
+                <div class="mt-1 w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <span class="text-lg">🌞</span>
+                </div>
+                <p><strong>Powered by the Sun:</strong> We design and build safe, reliable boats propelled entirely by
+                  solar energy.</p>
+              </div>
+
+              <div class="flex items-start">
+                <div class="mt-1 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <span class="text-lg">🛶</span>
+                </div>
+                <p><strong>Tailored to Your Journey:</strong> Custom-built vessels to meet your unique needs—balancing
+                  functionality, sustainability, and design.</p>
+              </div>
+
+              <div class="flex items-start">
+                <div class="mt-1 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <span class="text-lg">🇰🇪</span>
+                </div>
+                <p><strong>Made in Kenya, Made with Purpose:</strong> Crafted by skilled Kenyan teams using locally
+                  sourced materials—supporting regional industries and empowering green innovation.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-800/50 p-4 rounded-xl border border-blue-500/30">
+              <p class="italic text-blue-200">"We believe in local innovation. That's why our catamarans are constructed
+                with materials sourced from Kenyan suppliers, built by Kenyan engineers, and supporting sustainable
+                development."</p>
+            </div>
           </div>
-          <div class="flex flex-col items-center">
-            <span class="text-6xl mb-4">🇰🇪</span>
-            <h3 class="text-2xl font-semibold mb-2">Made in Kenya, Made with Purpose</h3>
-            <p class="text-lg opacity-90">Our boats are proudly crafted by skilled Kenyan teams using locally sourced
-              materials—supporting regional industries and empowering green innovation.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- A Bright Solution: The Solar Catamaran (Table) -->
-      <section class="mb-16 bg-white rounded-xl shadow-lg p-8">
-        <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">A Bright Solution: The Solar Catamaran</h2>
-        <p class="text-lg text-gray-700 text-center mb-8">Our solar-powered catamaran is designed to revolutionize lake
-          transport with:</p>
-        <div class="overflow-x-auto">
-          <table class="min-w-full bg-white rounded-lg shadow-md overflow-hidden">
-            <thead class="bg-blue-700 text-white">
-              <tr>
-                <th class="py-3 px-6 text-left text-sm font-medium uppercase tracking-wider rounded-tl-lg">Feature</th>
-                <th class="py-3 px-6 text-left text-sm font-medium uppercase tracking-wider rounded-tr-lg">Benefit</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              <tr class="hover:bg-gray-50">
-                <td class="py-4 px-6 whitespace-nowrap text-lg text-gray-800 flex items-center"><span
-                    class="mr-2">🌞</span> Solar-Powered</td>
-                <td class="py-4 px-6 text-lg text-gray-700">Clean, renewable energy with zero emissions</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="py-4 px-6 whitespace-nowrap text-lg text-gray-800 flex items-center"><span
-                    class="mr-2">🛶</span> Catamaran Design</td>
-                <td class="py-4 px-6 text-lg text-gray-700">Stable and safe, minimizing the risk of capsizing</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="py-4 px-6 whitespace-nowrap text-lg text-gray-800 flex items-center"><span
-                    class="mr-2">🔋</span> Battery Storage</td>
-                <td class="py-4 px-6 text-lg text-gray-700">Reliable performance even during cloudy weather</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="py-4 px-6 whitespace-nowrap text-lg text-gray-800 flex items-center"><span
-                    class="mr-2">💸</span> Low Operating Costs</td>
-                <td class="py-4 px-6 text-lg text-gray-700">No fuel needed—affordable for operators and passengers alike
-                </td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="py-4 px-6 whitespace-nowrap text-lg text-gray-800 flex items-center"><span
-                    class="mr-2">🛠️</span> Locally Built</td>
-                <td class="py-4 px-6 text-lg text-gray-700">Made in Kenya using local materials and skilled
-                  craftsmanship</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- Built in Kenya, for East Africa & Why It Matters -->
-      <div class="grid md:grid-cols-2 gap-12 mb-16">
-        <!-- Built in Kenya, for East Africa -->
-        <div
-          class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center">
-            <span class="mr-3 text-red-500">🇰🇪</span> Built in Kenya, for East Africa
-          </h2>
-          <p class="text-lg text-gray-700 mb-4">We believe in local innovation. That’s why our catamarans are:</p>
-          <ul class="space-y-3 text-lg text-gray-700">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-3 mt-1">🧱</span>
-              <span><strong class="font-semibold">Constructed</strong> with materials sourced from Kenyan
-                suppliers</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-3 mt-1">👷‍♂️</span>
-              <span><strong class="font-semibold">Built</strong> by Kenyan engineers and boatbuilders</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-3 mt-1">💼</span>
-              <span><strong class="font-semibold">Supporting</strong> local jobs and sustainable development</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Why It Matters -->
-        <div
-          class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center">
-            <span class="mr-3 text-green-600">🌍</span> Why It Matters
-          </h2>
-          <ul class="space-y-3 text-lg text-gray-700">
-            <li class="flex items-start">
-              <span class="text-green-500 mr-3 mt-1">✅</span>
-              <span>Reduces pollution in Lake Victoria</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-3 mt-1">✅</span>
-              <span>Saves lives through safer transport</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-3 mt-1">✅</span>
-              <span>Empowers local communities with clean technology</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-500 mr-3 mt-1">✅</span>
-              <span>Sets a model for sustainable transport across Africa</span>
-            </li>
-          </ul>
         </div>
       </div>
-
-      <!-- A Safer, Cleaner Future for Lake Victoria -->
-      <section class="bg-blue-50 rounded-xl shadow-lg p-8 mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">🌊 A Safer, Cleaner Future for Lake Victoria</h2>
-        <p class="text-lg text-gray-700 max-w-3xl mx-auto text-center mb-8">
-          For generations, water transport on Lake Victoria has relied heavily on petrol-powered two-stroke outboard
-          canoes. While widely used, these vessels pose serious challenges:
-        </p>
-        <div class="grid md:grid-cols-3 gap-8 text-center mb-10">
-          <div class="bg-white rounded-lg p-6 shadow-md">
-            <span class="text-5xl text-red-500 mb-4 inline-block">⚠️</span>
-            <h3 class="text-xl font-semibold mb-2">Safety Risks</h3>
-            <p class="text-gray-700">Prone to capsizing, they have tragically contributed to numerous fatalities.</p>
-          </div>
-          <div class="bg-white rounded-lg p-6 shadow-md">
-            <span class="text-5xl text-green-500 mb-4 inline-block">🛢️</span>
-            <h3 class="text-xl font-semibold mb-2">Environmental Harm</h3>
-            <p class="text-gray-700">Their engines leak oil and emit pollutants, degrading the lake’s delicate
-              ecosystem.</p>
-          </div>
-          <div class="bg-white rounded-lg p-6 shadow-md">
-            <span class="text-5xl text-yellow-500 mb-4 inline-block">💸</span>
-            <h3 class="text-xl font-semibold mb-2">High Operating Costs</h3>
-            <p class="text-gray-700">Fuel dependency makes transport expensive and unsustainable.</p>
-          </div>
-        </div>
-
-        <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">☀️ Harnessing the Sun for Sustainable Transport
-        </h2>
-        <p class="text-lg text-gray-700 max-w-3xl mx-auto text-center mb-8">
-          With abundant sunlight year-round, Lake Victoria is perfectly suited for solar-powered solutions. Enter the
-          solar-powered catamaran — a game-changer in water mobility:
-        </p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          <div class="bg-white rounded-lg p-6 shadow-md">
-            <span class="text-5xl text-green-500 mb-4 inline-block">✅</span>
-            <h3 class="text-xl font-semibold mb-2">Safe</h3>
-            <p class="text-gray-700">Stable catamaran design reduces the risk of capsizing.</p>
-          </div>
-          <div class="bg-white rounded-lg p-6 shadow-md">
-            <span class="text-5xl text-green-500 mb-4 inline-block">🌱</span>
-            <h3 class="text-xl font-semibold mb-2">Clean</h3>
-            <p class="text-gray-700">Zero emissions protect the lake’s biodiversity.</p>
-          </div>
-          <div class="bg-white rounded-lg p-6 shadow-md">
-            <span class="text-5xl text-green-500 mb-4 inline-block">🔋</span>
-            <h3 class="text-xl font-semibold mb-2">Reliable</h3>
-            <p class="text-gray-700">Solar energy ensures consistent performance without fuel shortages.</p>
-          </div>
-          <div class="bg-white rounded-lg p-6 shadow-md">
-            <span class="text-5xl text-green-500 mb-4 inline-block">💰</span>
-            <h3 class="text-xl font-semibold mb-2">Affordable</h3>
-            <p class="text-gray-700">Low operating costs make transport accessible to more people.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Built in Kenya, by Kenyans -->
-      <section class="bg-white rounded-xl shadow-lg p-8 text-center">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center justify-center">
-          <span class="mr-3 text-red-500">🇰🇪</span> Built in Kenya, by Kenyans
-        </h2>
-        <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-6">This innovative vessel is proudly:</p>
-        <ul class="space-y-3 text-lg text-gray-700 inline-block text-left">
-          <li class="flex items-start">
-            <span class="text-green-500 mr-3 mt-1">🛠️</span>
-            <span><strong class="font-semibold">Constructed</strong> in Kenya by skilled local craftsmen</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-3 mt-1">🧱</span>
-            <span><strong class="font-semibold">Made</strong> with locally sourced materials, supporting regional
-              industries and reducing carbon footprint.</span>
-          </li>
-        </ul>
-      </section>
-
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
+import { defineComponent } from 'vue';
+
+// Service Card Component
+const ServiceCard = defineComponent({
+  props: {
+    icon: String,
+    title: String,
+    description: String
+  },
+  template: `
+    <div class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+      <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+        {{ icon }}
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-1">{{ title }}</h3>
+        <p class="text-blue-200">{{ description }}</p>
+      </div>
+    </div>
+  `
+});
+
+// Feature Card Component
+const FeatureCard = defineComponent({
+  props: {
+    icon: String,
+    title: String,
+    description: String
+  },
+  template: `
+    <div class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
+      <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+        {{ icon }}
+      </div>
+      <h3 class="text-xl font-bold mb-2">{{ title }}</h3>
+      <p class="text-blue-200">{{ description }}</p>
+    </div>
+  `
+});
+
+// Impact Card Component
+const ImpactCard = defineComponent({
+  props: {
+    icon: String,
+    title: String,
+    description: String,
+    color: String
+  },
+  template: `
+    <div class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300">
+      <div :class="['text-4xl mb-4', color]">
+        {{ icon }}
+      </div>
+      <h3 class="text-xl font-bold mb-2">{{ title }}</h3>
+      <p class="text-blue-200">{{ description }}</p>
+    </div>
+  `
+});
+
 export default {
   name: 'ServicesComponent',
-  // No specific data or methods needed for this static content component
-};
+  components: {
+    ServiceCard,
+    FeatureCard,
+    ImpactCard
+  },
+  mounted() {
+    // Initialize animations if using AOS
+    if (window.AOS) {
+      window.AOS.init({
+        duration: 800,
+        once: true
+      });
+    }
+  }
+}
 </script>
 
-<style>
-/* Import Google Font - Inter */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+<style scoped>
+/* Custom gradient background */
+.bg-gradient-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0c4a6e 100%);
+}
 
-/* Tailwind CSS CDN - Ensure this is loaded in your main HTML file or build process */
-/* <script src="https://cdn.tailwindcss.com"></script> */
-/* You might also need to configure Tailwind to include 'font-inter' in your theme */
+/* Animation for floating elements */
+@keyframes float {
 
-/* Basic styling for the body if this component is used as a standalone page */
-body {
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  padding: 0;
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glowing effect for cards */
+.card-glow {
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
 }
 </style>

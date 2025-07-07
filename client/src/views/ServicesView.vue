@@ -3,7 +3,7 @@
         <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
         @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"
         @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="1000" />
-    <main class="flex flex-col items-center justify-center min-h-[700px] bg-gray-900 text-white">
+    <main class="flex flex-col items-center justify-center min-h-[500px] bg-gray-900 text-white">
       <h1 class="text-4xl font-bold mb-6">Our Services</h1>
       <p class="text-lg mb-12">Explore the services we offer for your boating adventures.</p>
       <!-- Add your services content here -->

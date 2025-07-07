@@ -10,7 +10,6 @@
         </p>
       </div>
 
-      <!-- Intro Section -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
         <div class="flex flex-col justify-center" data-aos="fade-right">
           <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-blue-500/30">
@@ -48,9 +47,7 @@
         </div>
       </div>
 
-      <!-- Service Categories -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-        <!-- Leisure Section -->
         <div
           class="bg-gradient-to-br from-blue-800/30 to-cyan-800/30 backdrop-blur-sm rounded-3xl border border-cyan-500/30 p-8"
           data-aos="fade-up">
@@ -62,20 +59,59 @@
           </div>
 
           <div class="space-y-6">
-            <ServiceCard icon="🍔" title="Onboard BBQs & Drinks"
-              description="Host lively day trips with food, drinks, and sunshine" />
-            <ServiceCard icon="🌅" title="Guided Lake Tours"
-              description="Discover the beauty and biodiversity of Lake Victoria" />
-            <ServiceCard icon="🎉" title="Private Functions"
-              description="Celebrate birthdays, anniversaries, or small events in style" />
-            <ServiceCard icon="🎨" title="Paint & Sip Sessions"
-              description="Bring creativity afloat with art, wine, and open water views" />
-            <ServiceCard icon="🛏️" title="Overnight Cruises"
-              description="Enjoy multi-day expeditions with accommodation on board" />
+            <div
+              class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                🍔
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Onboard BBQs & Drinks</h3>
+                <p class="text-blue-200">Host lively day trips with food, drinks, and sunshine</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                🌅
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Guided Lake Tours</h3>
+                <p class="text-blue-200">Discover the beauty and biodiversity of Lake Victoria</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                🎉
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Private Functions</h3>
+                <p class="text-blue-200">Celebrate birthdays, anniversaries, or small events in style</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                🎨
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Paint & Sip Sessions</h3>
+                <p class="text-blue-200">Bring creativity afloat with art, wine, and open water views</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                🛏️
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Overnight Cruises</h3>
+                <p class="text-blue-200">Enjoy multi-day expeditions with accommodation on board</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Commercial Section -->
         <div
           class="bg-gradient-to-br from-slate-800/30 to-blue-800/30 backdrop-blur-sm rounded-3xl border border-blue-500/30 p-8"
           data-aos="fade-up" data-aos-delay="100">
@@ -87,21 +123,60 @@
           </div>
 
           <div class="space-y-6">
-            <ServiceCard icon="🐟" title="Fish Farm Supply Vessel"
-              description="Efficient, low-impact delivery of supplies to aquaculture sites" />
-            <ServiceCard icon="🎣" title="Fishing Boat"
-              description="Stable, silent, and eco-friendly for artisanal or recreational fishing" />
-            <ServiceCard icon="🚢" title="Cargo & Passenger Transport"
-              description="A sustainable solution for moving people and goods across the lake" />
-            <ServiceCard icon="📦" title="Logistics Support"
-              description="Reliable transport for supplies to island communities" />
-            <ServiceCard icon="🛟" title="Safety & Rescue Operations"
-              description="Emergency response capabilities with solar reliability" />
+            <div
+              class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                🐟
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Fish Farm Supply Vessel</h3>
+                <p class="text-blue-200">Efficient, low-impact delivery of supplies to aquaculture sites</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                🎣
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Fishing Boat</h3>
+                <p class="text-blue-200">Stable, silent, and eco-friendly for artisanal or recreational fishing</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                🚢
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Cargo & Passenger Transport</h3>
+                <p class="text-blue-200">A sustainable solution for moving people and goods across the lake</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                📦
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Logistics Support</h3>
+                <p class="text-blue-200">Reliable transport for supplies to island communities</p>
+              </div>
+            </div>
+            <div
+              class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+              <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+                🛟
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Safety & Rescue Operations</h3>
+                <p class="text-blue-200">Emergency response capabilities with solar reliability</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Features Table -->
       <div class="mb-20" data-aos="fade-up">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold mb-4">A Bright Solution: The Solar Catamaran</h2>
@@ -111,20 +186,57 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <FeatureCard icon="🌞" title="Solar-Powered" description="Clean, renewable energy with zero emissions" />
-          <FeatureCard icon="🛶" title="Catamaran Design"
-            description="Stable and safe, minimizing the risk of capsizing" />
-          <FeatureCard icon="🔋" title="Battery Storage"
-            description="Reliable performance even during cloudy weather" />
-          <FeatureCard icon="💸" title="Low Operating Costs"
-            description="No fuel needed—affordable for operators and passengers alike" />
-          <FeatureCard icon="🛠️" title="Locally Built"
-            description="Made in Kenya using local materials and skilled craftsmanship" />
-          <FeatureCard icon="🌍" title="Eco-Friendly" description="Protects Lake Victoria's delicate ecosystem" />
+          <div
+            class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
+            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+              🌞
+            </div>
+            <h3 class="text-xl font-bold mb-2">Solar-Powered</h3>
+            <p class="text-blue-200">Clean, renewable energy with zero emissions</p>
+          </div>
+          <div
+            class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
+            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+              🛶
+            </div>
+            <h3 class="text-xl font-bold mb-2">Catamaran Design</h3>
+            <p class="text-blue-200">Stable and safe, minimizing the risk of capsizing</p>
+          </div>
+          <div
+            class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
+            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+              🔋
+            </div>
+            <h3 class="text-xl font-bold mb-2">Battery Storage</h3>
+            <p class="text-blue-200">Reliable performance even during cloudy weather</p>
+          </div>
+          <div
+            class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
+            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+              💸
+            </div>
+            <h3 class="text-xl font-bold mb-2">Low Operating Costs</h3>
+            <p class="text-blue-200">No fuel needed—affordable for operators and passengers alike</p>
+          </div>
+          <div
+            class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
+            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+              🛠️
+            </div>
+            <h3 class="text-xl font-bold mb-2">Locally Built</h3>
+            <p class="text-blue-200">Made in Kenya using local materials and skilled craftsmanship</p>
+          </div>
+          <div
+            class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
+            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+              🌍
+            </div>
+            <h3 class="text-xl font-bold mb-2">Eco-Friendly</h3>
+            <p class="text-blue-200">Protects Lake Victoria's delicate ecosystem</p>
+          </div>
         </div>
       </div>
 
-      <!-- Why It Matters -->
       <div
         class="bg-gradient-to-r from-blue-900/50 to-cyan-900/50 backdrop-blur-sm rounded-3xl border border-cyan-500/30 p-8 mb-16"
         data-aos="fade-up">
@@ -136,18 +248,41 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <ImpactCard icon="✅" title="Reduces Pollution"
-            description="Zero emissions protect Lake Victoria's delicate ecosystem" color="text-green-400" />
-          <ImpactCard icon="❤️" title="Saves Lives" description="Safer design reduces the risk of accidents on the lake"
-            color="text-red-400" />
-          <ImpactCard icon="💡" title="Empowers Communities"
-            description="Creates green jobs and supports local innovation" color="text-yellow-400" />
-          <ImpactCard icon="🌱" title="Sustainable Model" description="Sets a blueprint for eco-transport across Africa"
-            color="text-emerald-400" />
+          <div
+            class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300">
+            <div :class="['text-4xl mb-4', 'text-green-400']">
+              ✅
+            </div>
+            <h3 class="text-xl font-bold mb-2">Reduces Pollution</h3>
+            <p class="text-blue-200">Zero emissions protect Lake Victoria's delicate ecosystem</p>
+          </div>
+          <div
+            class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300">
+            <div :class="['text-4xl mb-4', 'text-red-400']">
+              ❤️
+            </div>
+            <h3 class="text-xl font-bold mb-2">Saves Lives</h3>
+            <p class="text-blue-200">Safer design reduces the risk of accidents on the lake</p>
+          </div>
+          <div
+            class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300">
+            <div :class="['text-4xl mb-4', 'text-yellow-400']">
+              💡
+            </div>
+            <h3 class="text-xl font-bold mb-2">Empowers Communities</h3>
+            <p class="text-blue-200">Creates green jobs and supports local innovation</p>
+          </div>
+          <div
+            class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300">
+            <div :class="['text-4xl mb-4', 'text-emerald-400']">
+              🌱
+            </div>
+            <h3 class="text-xl font-bold mb-2">Sustainable Model</h3>
+            <p class="text-blue-200">Sets a blueprint for eco-transport across Africa</p>
+          </div>
         </div>
       </div>
 
-      <!-- About Yieh Boats -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="relative" data-aos="fade-right">
           <div class="relative aspect-square rounded-3xl overflow-hidden border-4 border-blue-500/30 shadow-2xl">
@@ -214,74 +349,62 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-
-// Service Card Component
-const ServiceCard = defineComponent({
-  props: {
-    icon: String,
-    title: String,
-    description: String
-  },
-  template: `
-    <div class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
-      <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
-        {{ icon }}
-      </div>
-      <div>
-        <h3 class="text-xl font-bold mb-1">{{ title }}</h3>
-        <p class="text-blue-200">{{ description }}</p>
-      </div>
-    </div>
-  `
-});
-
-// Feature Card Component
-const FeatureCard = defineComponent({
-  props: {
-    icon: String,
-    title: String,
-    description: String
-  },
-  template: `
-    <div class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
-      <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
-        {{ icon }}
-      </div>
-      <h3 class="text-xl font-bold mb-2">{{ title }}</h3>
-      <p class="text-blue-200">{{ description }}</p>
-    </div>
-  `
-});
-
-// Impact Card Component
-const ImpactCard = defineComponent({
-  props: {
-    icon: String,
-    title: String,
-    description: String,
-    color: String
-  },
-  template: `
-    <div class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300">
-      <div :class="['text-4xl mb-4', color]">
-        {{ icon }}
-      </div>
-      <h3 class="text-xl font-bold mb-2">{{ title }}</h3>
-      <p class="text-blue-200">{{ description }}</p>
-    </div>
-  `
-});
-
 export default {
   name: 'ServicesComponent',
   components: {
-    ServiceCard,
-    FeatureCard,
-    ImpactCard
+    ServiceCard: {
+      props: {
+        icon: String,
+        title: String,
+        description: String
+      },
+      template: `
+        <div class="flex items-start p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-blue-500/20 hover:border-cyan-400/50 transition-all duration-300 group">
+          <div class="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+            {{ icon }}
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-1">{{ title }}</h3>
+            <p class="text-blue-200">{{ description }}</p>
+          </div>
+        </div>
+      `
+    },
+    FeatureCard: {
+      props: {
+        icon: String,
+        title: String,
+        description: String
+      },
+      template: `
+        <div class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 group">
+          <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+            {{ icon }}
+          </div>
+          <h3 class="text-xl font-bold mb-2">{{ title }}</h3>
+          <p class="text-blue-200">{{ description }}</p>
+        </div>
+      `
+    },
+    ImpactCard: {
+      props: {
+        icon: String,
+        title: String,
+        description: String,
+        color: String
+      },
+      template: `
+        <div class="bg-slate-800/30 backdrop-blur-sm p-6 rounded-2xl border border-blue-500/30 hover:border-cyan-400/50 transition-all duration-300">
+          <div :class="['text-4xl mb-4', color]">
+            {{ icon }}
+          </div>
+          <h3 class="text-xl font-bold mb-2">{{ title }}</h3>
+          <p class="text-blue-200">{{ description }}</p>
+        </div>
+      `
+    }
   },
   mounted() {
-    // Initialize animations if using AOS
     if (window.AOS) {
       window.AOS.init({
         duration: 800,
@@ -291,7 +414,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 /* Custom gradient background */
 .bg-gradient-section {

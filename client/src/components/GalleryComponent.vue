@@ -1,10 +1,11 @@
 <template>
-  <div class="bg-[#101828] py-8">
+  <div class="bg-[#D8EDFF] py-8">
     <section class="grid w-full max-w-6xl grid-cols-1 gap-4 p-4 mx-auto md:grid-cols-3">
 
       <div class="relative flex flex-col items-start justify-end h-64 p-6 overflow-hidden rounded-xl md:col-span-2">
         <div class="absolute inset-0 z-0">
-          <img src="https://images.unsplash.com/photo-1744996746100-a144a225c9be?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          <img
+            src="https://images.unsplash.com/photo-1744996746100-a144a225c9be?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             class="absolute inset-0 object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
             alt="A modern yacht sailing on the open water.">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>

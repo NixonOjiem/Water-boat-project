@@ -98,7 +98,7 @@
             </li>
             <li>
               <router-link to="#" @click.prevent="$emit('open-booking-modal')" class="mobile-nav-link">Book a
-                Trip</router-link>>
+                Trip</router-link>
             </li>
             <li>
               <router-link to="/trips" class="mobile-nav-link">Your Trips</router-link>

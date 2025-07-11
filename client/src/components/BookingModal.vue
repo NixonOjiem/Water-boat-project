@@ -1,7 +1,6 @@
 <template>
-  <div
-    class="fixed inset-0 bg-black bg-opacity-60 z-[10000] flex items-center justify-center p-4 transition-opacity duration-300"
-    @click.self="$emit('close')">
+  <div class="fixed inset-0 z-[10000] flex items-center justify-center p-4 transition-opacity duration-300"
+    style="background-color: rgba(0, 0, 0, 0.8);" @click.self="$emit('close')">
     <div class="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row relative"
       @click.stop>
       <button @click="$emit('close')"

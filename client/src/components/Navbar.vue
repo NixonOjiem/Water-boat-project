@@ -7,7 +7,12 @@
     <nav ref="desktopNavRef"
       class="hidden md:flex items-center w-full max-w-6xl mx-auto bg-white px-8 py-4 rounded-[2.75rem] shadow-md">
       <div class="logo-nav flex-shrink-0">
-        <router-link to="/" class="text-2xl font-bold text-gray-800">YiehBoats</router-link>
+        <!-- Added 'flex items-center space-x-2' to make content horizontal and add spacing -->
+        <router-link to="/" class="flex items-center space-x-2 text-2xl font-bold text-gray-800">
+          <!-- Changed h-8 to h-10 and added w-10 for explicit width, plus rounded-md for aesthetics -->
+          <img src="/logo-web.svg" alt="YiehBoats Logo" class="h-15 w-15 rounded-md">
+          <span>YiehBoats</span>
+        </router-link>
       </div>
 
       <ul class="flex items-center space-x-8 mx-auto">
@@ -23,7 +28,7 @@
             class="text-gray-700 hover:text-blue-600 font-medium">Book a Trip</a>
         </li>
         <li>
-          <router-link to="/trips" class="text-gray-700 hover:text-blue-600 font-medium">Your Trips</router-link>
+          <router-link to="/trips" class="text-gray-700 hover:text-blue-600 font-medium">Trips</router-link>
         </li>
         <li>
           <router-link to="/gallery" class="text-gray-700 hover:text-blue-600 font-medium">Gallery</router-link>

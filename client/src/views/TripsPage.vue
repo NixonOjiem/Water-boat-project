@@ -41,6 +41,7 @@
     <transition name="modal-fade">
       <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" />
     </transition>
+    <FloatingBar @open-booking-modal="openBookingModal" />
   </div>
 </template>
 <script>
@@ -49,6 +50,7 @@ import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import TripsComponent from '@/components/TripsComponent.vue'
 import BookingModal from '@/components/BookingModal.vue'
+import FloatingBar from '@/components/FloatingBar.vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -58,7 +60,8 @@ export default {
     Navbar,
     TripsComponent,
     Footer,
-    BookingModal
+    BookingModal,
+    FloatingBar
   },
   setup() {
     // Initialize AOS for animations

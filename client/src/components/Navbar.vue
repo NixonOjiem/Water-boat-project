@@ -12,10 +12,11 @@
 
       <ul class="flex items-center space-x-8 mx-auto">
         <li>
-          <router-link to="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</router-link>
+          <router-link to="/services" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</router-link>
         </li>
         <li>
-          <router-link to="/services" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</router-link>
+          <router-link to="/custom-boat" class="text-gray-700 hover:text-blue-600 font-medium">Custom
+            Boats</router-link>
         </li>
         <li>
           <a href="#" @click.prevent="$emit('open-booking-modal')"
@@ -93,9 +94,7 @@
       <transition name="slide-down">
         <div v-if="isMobileMenuOpen" class="mt-2 bg-white rounded-2xl shadow-lg p-5">
           <ul class="flex flex-col space-y-4 text-gray-700">
-            <li>
-              <router-link to="/" class="mobile-nav-link">Home</router-link>
-            </li>
+
             <li>
               <router-link to="/services" class="mobile-nav-link">Our Services</router-link>
             </li>

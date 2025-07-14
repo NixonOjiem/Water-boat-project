@@ -5,6 +5,7 @@
         data-aos="fade-down" data-aos-duration="2000"/>
   <div class = "booking-container">
     <BookingComponent />
+    <FloatingBar @open-booking-modal="openBookingModal" />
     <Footer />
   </div>
   </section>
@@ -15,6 +16,7 @@
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import BookingComponent from '@/components/BookingModal.vue'
+import FloatingBar from '@/components/FloatingBar.vue'
 import { ref } from 'vue';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -23,7 +25,7 @@ AOS.init();
 
 export default {
   name: 'BookingView',
-  components: { Navbar, BookingComponent, Footer },
+  components: { Navbar, BookingComponent, Footer, FloatingBar },
   setup() {
     // --- State for Mobile Menu ---
     const isMobileMenuOpen = ref(false);

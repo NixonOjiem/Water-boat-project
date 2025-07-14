@@ -1,51 +1,31 @@
 <template>
-  <header
-    :class="[
-      'w-full fixed top-0 left-0 z-[9999] transition-all duration-300 ease-in-out',
-      'flex justify-center',
-      { 'py-2': isScrolled, 'py-5': !isScrolled },
-    ]"
-  >
-    <nav
-      ref="desktopNavRef"
-      class="hidden md:flex items-center w-full max-w-6xl mx-auto bg-white px-8 py-4 rounded-[2.75rem] shadow-md"
-    >
+  <header :class="[
+    'w-full fixed top-0 left-0 z-[9999] transition-all duration-300 ease-in-out',
+    'flex justify-center',
+    { 'py-2': isScrolled, 'py-5': !isScrolled },
+  ]">
+    <nav ref="desktopNavRef"
+      class="hidden md:flex items-center w-full max-w-6xl mx-auto bg-white px-8 py-4 rounded-[2.75rem] shadow-md">
       <div class="logo-nav flex-shrink-0">
-        <a href="/" class="text-2xl font-bold text-gray-800">Yieh Boats</a>
+        <router-link to="/" class="text-2xl font-bold text-gray-800">YiehBoats</router-link>
       </div>
 
       <ul class="flex items-center space-x-8 mx-auto">
         <li>
-          <a href="/" class="text-gray-700 hover:text-blue-600 font-medium"
-            >Home</a
-          >
+          <router-link to="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</router-link>
         </li>
         <li>
-          <a
-            href="/services"
-            class="text-gray-700 hover:text-blue-600 font-medium"
-            >Our Services</a
-          >
+          <router-link to="/services" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</router-link>
         </li>
         <li>
-          <a
-            href="#"
-            @click.prevent="$emit('open-booking-modal')"
-            class="text-gray-700 hover:text-blue-600 font-medium"
-            >Book a Trip</a
-          >
+          <a href="#" @click.prevent="$emit('open-booking-modal')"
+            class="text-gray-700 hover:text-blue-600 font-medium">Book a Trip</a>
         </li>
         <li>
-          <a href="/trips" class="text-gray-700 hover:text-blue-600 font-medium"
-            >Your Trips</a
-          >
+          <router-link to="/trips" class="text-gray-700 hover:text-blue-600 font-medium">Your Trips</router-link>
         </li>
         <li>
-          <a
-            href="/gallery"
-            class="text-gray-700 hover:text-blue-600 font-medium"
-            >Gallery</a
-          >
+          <router-link to="/gallery" class="text-gray-700 hover:text-blue-600 font-medium">Gallery</router-link>
         </li>
       </ul>
 
@@ -53,62 +33,41 @@
         <div class="desktop-menu-wrapper relative">
           <div
             class="desktop-menu-button flex items-center justify-center w-12 h-12 rounded-full cursor-pointer text-gray-700"
-            @click="$emit('toggle-desktop-menu', $event)"
-          >
-            <ion-icon
-              name="menu-outline"
-              class="text-2xl transition-transform duration-300 ease-in-out"
-            ></ion-icon>
+            @click="$emit('toggle-desktop-menu', $event)">
+            <ion-icon name="menu-outline" class="text-2xl transition-transform duration-300 ease-in-out"></ion-icon>
           </div>
 
           <transition name="fade">
-            <div
-              v-if="isDesktopMenuOpen"
-              class="absolute right-0 top-full mt-2 bg-white p-4 rounded-lg shadow-lg w-40"
-            >
+            <div v-if="isDesktopMenuOpen" class="absolute right-0 top-full mt-2 bg-white p-4 rounded-lg shadow-lg w-40">
               <ul class="flex flex-col space-y-3 text-gray-700">
                 <template v-if="authStore.isAuthenticated">
                   <li>
-                    <router-link
-                      to="/dashboard"
-                      class="hover:text-blue-600"
-                      @click="$emit('toggle-desktop-menu', $event)"
-                    >
+                    <router-link to="/dashboard" class="hover:text-blue-600"
+                      @click="$emit('toggle-desktop-menu', $event)">
                       Dashboard
                     </router-link>
                   </li>
                   <li>
-                    <router-link
-                      to="/settings"
-                      class="hover:text-blue-600"
-                      @click="$emit('toggle-desktop-menu', $event)"
-                    >
+                    <router-link to="/settings" class="hover:text-blue-600"
+                      @click="$emit('toggle-desktop-menu', $event)">
                       Settings
                     </router-link>
                   </li>
                   <li>
-                    <a href="#" class="hover:text-blue-600" @click="logout"
-                      >Logout</a
-                    >
+                    <a href="#" class="hover:text-blue-600" @click="logout">Logout</a>
                   </li>
                 </template>
 
                 <template v-else>
                   <li>
-                    <router-link
-                      to="/authentication"
-                      class="hover:text-blue-600"
-                      @click="$emit('toggle-desktop-menu', $event)"
-                    >
+                    <router-link to="/authentication" class="hover:text-blue-600"
+                      @click="$emit('toggle-desktop-menu', $event)">
                       Login
                     </router-link>
                   </li>
                   <li>
-                    <router-link
-                      to="/register"
-                      class="hover:text-blue-600"
-                      @click="$emit('toggle-desktop-menu', $event)"
-                    >
+                    <router-link to="/register" class="hover:text-blue-600"
+                      @click="$emit('toggle-desktop-menu', $event)">
                       Register
                     </router-link>
                   </li>
@@ -121,75 +80,53 @@
     </nav>
 
     <div ref="mobileNavRef" class="md:hidden w-full px-5">
-      <div
-        class="flex items-center justify-between bg-white px-6 py-4 rounded-full shadow-md"
-      >
-        <a href="/" class="text-xl font-bold text-gray-800">Yieh Boats</a>
-        <div
-          @click="isMobileMenuOpen = !isMobileMenuOpen"
-          class="cursor-pointer"
-        >
-          <ion-icon
-            :name="isMobileMenuOpen ? 'close-outline' : 'menu-outline'"
-            class="text-3xl text-gray-800 transition-transform duration-300 ease-in-out"
-          ></ion-icon>
+      <div class="flex items-center justify-between bg-white px-6 py-4 rounded-full shadow-md">
+        <router-link to="/" class="text-xl font-bold text-gray-800">Yieh Boats</router-link>
+        <div @click="isMobileMenuOpen = !isMobileMenuOpen" class="cursor-pointer">
+          <ion-icon :name="isMobileMenuOpen ? 'close-outline' : 'menu-outline'"
+            class="text-3xl text-gray-800 transition-transform duration-300 ease-in-out"></ion-icon>
         </div>
       </div>
       <transition name="slide-down">
-         <div
-          v-if="isMobileMenuOpen"
-          class="mt-2 bg-white rounded-2xl shadow-lg p-5"
-        >
+        <div v-if="isMobileMenuOpen" class="mt-2 bg-white rounded-2xl shadow-lg p-5">
           <ul class="flex flex-col space-y-4 text-gray-700">
             <li>
-              <a href="/" class="mobile-nav-link">Home</a>
+              <router-link to="/" class="mobile-nav-link">Home</router-link>
             </li>
             <li>
-              <a href="/services" class="mobile-nav-link">Our Services</a>
+              <router-link to="/services" class="mobile-nav-link">Our Services</router-link>
             </li>
             <li>
-              <a
-                href="#"
-                @click.prevent="$emit('open-booking-modal')"
-                class="mobile-nav-link"
-                >Book a Trip</a
-              >
+              <router-link to="#" @click.prevent="$emit('open-booking-modal')" class="mobile-nav-link">Book a
+                Trip</router-link>
             </li>
             <li>
-              <a href="/trips" class="mobile-nav-link">Your Trips</a>
+              <router-link to="/trips" class="mobile-nav-link">Your Trips</router-link>
             </li>
             <li>
-              <a href="/gallery" class="mobile-nav-link">Gallery</a>
+              <router-link to="/gallery" class="mobile-nav-link">Gallery</router-link>
             </li>
 
             <hr class="my-3 w-full" />
 
             <template v-if="authStore.isAuthenticated">
               <li>
-                <router-link to="/dashboard" class="mobile-nav-link"
-                  >Dashboard</router-link
-                >
+                <router-link to="/dashboard" class="mobile-nav-link">Dashboard</router-link>
               </li>
               <li>
-                <router-link to="/settings" class="mobile-nav-link"
-                  >Settings</router-link
-                >
+                <router-link to="/settings" class="mobile-nav-link">Settings</router-link>
               </li>
               <li>
-                <a href="#" class="mobile-nav-link" @click="logout">Logout</a>
+                <router-link to="#" class="mobile-nav-link" @click="logout">Logout</router-link>
               </li>
             </template>
 
             <template v-else>
               <li>
-                <router-link to="/authentication" class="mobile-nav-link"
-                  >Login</router-link
-                >
+                <router-link to="/authentication" class="mobile-nav-link">Login</router-link>
               </li>
               <li>
-                <router-link to="/register" class="mobile-nav-link"
-                  >Register</router-link
-                >
+                <router-link to="/register" class="mobile-nav-link">Register</router-link>
               </li>
             </template>
           </ul>

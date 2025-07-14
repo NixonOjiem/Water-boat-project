@@ -14,7 +14,7 @@
           Experience Lake Victoria's Majesty
         </h1>
         <p class="text-lg md:text-xl text-center max-w-2xl" data-aos="zoom-in-up" data-aos-duration="3000">
-          Sail across the serene waters, captured from an unparalleled aerial perspective.
+          Solar boats for Africa.
         </p>
       </div>
       <canvas ref="rippleCanvas" class="absolute inset-0 z-[100] cursor-pointer"></canvas>

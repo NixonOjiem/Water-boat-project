@@ -31,6 +31,8 @@
               Trips</router-link>
             <router-link to="/gallery"
               class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">Gallery</router-link>
+            <router-link to="/about"
+              class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">About Us</router-link>
           </nav>
         </div>
 

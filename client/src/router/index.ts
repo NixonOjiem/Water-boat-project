@@ -5,6 +5,7 @@ import BookingView from '@/views/BookingView.vue'
 import TripsPage from '@/views/TripsPage.vue'
 import GalleryView from '@/views/GalleryView.vue'
 import ServicesView from '@/views/ServicesView.vue'
+import AboutView from '@/views/AboutView.vue'
 import CustomBoats from '@/views/CustomBoats.vue'
 
 
@@ -41,6 +42,11 @@ const router = createRouter({
       path: '/services',
       name: 'Services',
       component: ServicesView,
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: AboutView,
     },
     {
       path: '/custom-boat',

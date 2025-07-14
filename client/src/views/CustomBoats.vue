@@ -14,18 +14,21 @@
     </div>
 
     <FloatingBar @open-booking-modal="openBookingModal" />
+      <Footer />
   </div>
 </template>
 
 <script>
-import CustomBoatComponent from '@/components/CustomBoatComponent.vue';
 import Navbar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue';
+import CustomBoatComponent from '@/components/CustomBoatComponent.vue';
 import FloatingBar from '@/components/FloatingBar.vue';
 
 export default {
   components: {
     CustomBoatComponent,
     Navbar,
+    Footer,
     FloatingBar,
   },
   methods: {

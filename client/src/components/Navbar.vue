@@ -33,6 +33,9 @@
         <li>
           <router-link to="/gallery" class="text-gray-700 hover:text-blue-600 font-medium">Gallery</router-link>
         </li>
+        <li>
+          <router-link to="/about" class="text-gray-700 hover:text-blue-600 font-medium">About Us</router-link>
+        </li>
       </ul>
 
       <div class="other-links relative">
@@ -109,6 +112,9 @@
             </li>
             <li>
               <router-link to="/gallery" class="mobile-nav-link">Gallery</router-link>
+            </li>
+            <li>
+              <router-link to="/about" class="mobile-nav-link">About Us</router-link>
             </li>
 
             <hr class="my-3 w-full" />

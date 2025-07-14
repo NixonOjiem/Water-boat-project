@@ -3,7 +3,7 @@
     <div
       class="floating-content bg-white shadow-lg rounded-t-xl p-2 md:p-3 flex items-center justify-around max-w-2xl mx-auto space-x-2 border border-gray-200">
 
-      <router-link to="/"
+      <router-link to="#" @click.prevent="$emit('open-booking-modal')"
         class="flex flex-col items-center justify-center text-center bg-blue-50 rounded-lg w-1/2 transition-all duration-300 hover:shadow-sm hover:bg-blue-100 h-full">
 
         <div class="flex flex-col items-center justify-center p-2 md:hidden">

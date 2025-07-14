@@ -1,5 +1,5 @@
 <template>
-  <div class="solar-boat-showcase">
+  <div class="solar-boat-showcase z-900">
     <div class="hero-section">
       <img src="https://images.unsplash.com/photo-1629091347713-a93589947322?q=80&w=2070&auto=format&fit=crop"
         alt="Solar Boat Background" class="background-image">
@@ -19,12 +19,8 @@
           environmental impact of traditional combustion engines.</p>
       </div>
       <div class="renders-grid">
-        <img
-          src="https://images.pexels.com/photos/11540302/pexels-photo-11540302.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="Solar Boat Render 1" class="render-image">
-        <img
-          src="https://images.pexels.com/photos/9813151/pexels-photo-9813151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="Solar Boat Render 2" class="render-image">
+        <img src="/images/cruise-vertical.png" alt="Solar Boat Render 1" class="render-image">
+        <img src="/images/cruise-vertical.png" alt="Solar Boat Render 2" class="render-image">
       </div>
     </div>
 
@@ -109,6 +105,7 @@ export default {
   font-family: 'Arial', sans-serif;
   color: #333;
   background-color: #f4f7f6;
+  position: relative;
 }
 
 .hero-section {

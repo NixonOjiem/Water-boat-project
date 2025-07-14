@@ -12,9 +12,10 @@
     <div class="pt-[50vh]">
       <CustomBoatComponent />
     </div>
-
+    <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" />
     <FloatingBar @open-booking-modal="openBookingModal" />
-      <Footer />
+
+    <Footer />
   </div>
 </template>
 
@@ -23,13 +24,14 @@ import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import CustomBoatComponent from '@/components/CustomBoatComponent.vue';
 import FloatingBar from '@/components/FloatingBar.vue';
-
+import BookingModal from '@/components/BookingModal.vue';
 export default {
   components: {
     CustomBoatComponent,
     Navbar,
     Footer,
     FloatingBar,
+    BookingModal,
   },
   methods: {
     openBookingModal() {

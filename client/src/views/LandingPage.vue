@@ -14,8 +14,21 @@
           Experience Lake Victoria's Majesty
         </h1>
         <p class="text-lg md:text-xl text-center max-w-2xl" data-aos="zoom-in-up" data-aos-duration="3000">
-          Sail across the serene waters, captured from an unparalleled aerial perspective.
+          Solar boats for Africa.
         </p>
+        <div class="flex flex-col md:flex-row gap-4">
+          <button @click="openBookingModal" class="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+            data-aos="fade-up" data-aos-duration="1000">
+            Book Now
+          </button>
+          <button class="mt-4 px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
+            data-aos="fade-up" data-aos-duration="1200">
+            Own a custom boat
+          </button>
+        </div>
+        <div class="mt-6 text-center" data-aos="fade-up" data-aos-duration="1500">
+          <p class="text-lg">Click to create ripples in the water</p>
+        </div>
       </div>
       <canvas ref="rippleCanvas" class="absolute inset-0 z-[100] cursor-pointer"></canvas>
     </section>

@@ -14,8 +14,10 @@
           Experience the Ocean's Majesty
         </h1>
         <p class="text-lg md:text-xl text-center max-w-2xl">
-          Sail across the serene waters, captured from an unparalleled aerial perspective.
+          Solar boats for Africa.
         </p>
+        <button>Book Now</button>
+        <button>Own a custom boat</button>
       </div>
       <canvas ref="rippleCanvas" class="absolute inset-0 z-[100] cursor-pointer"></canvas>
     </section>

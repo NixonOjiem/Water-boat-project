@@ -19,8 +19,8 @@
       </div>
       <canvas ref="rippleCanvas" class="absolute inset-0 z-[100] cursor-pointer"></canvas>
     </section>
-
-    <main class="container mx-auto px-4 py-16 md:py-24 pb-32">
+    <BookTripComponent />
+    <!-- <main class="container mx-auto px-4 py-16 md:py-24 pb-32">
       <div class="text-center mb-12" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
         data-aos-duration="1000">
         <h2 class="text-4xl md:text-5xl font-bold">A New Horizon for Lake Transport</h2>
@@ -87,7 +87,7 @@
           </Transition>
         </div>
       </div>
-    </main>
+    </main> -->
     <GetInTouch />
     <Footer />
     <FloatingBar @open-booking-modal="openBookingModal" />
@@ -105,6 +105,7 @@ import Footer from '@/components/Footer.vue'
 import BookingModal from '@/components/BookingModal.vue'
 import FloatingBar from '@/components/FloatingBar.vue'
 import AOS from 'aos'
+import BookTripComponent from '@/components/BookTripComponent.vue'
 import 'aos/dist/aos.css'
 // Initialize AOS for animations
 AOS.init();

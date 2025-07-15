@@ -12,7 +12,7 @@
       CONTACT US
     </div>
     <div class="relative z-10 max-w-4xl w-full bg-white bg-opacity-90 rounded-xl shadow-2xl overflow-hidden md:flex"
-      data-aos="zoom-in-up" data-aos-duration="3000">
+      data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
       <div class="md:w-1/2 p-8 sm:p-12 bg-[#002255] text-white flex flex-col justify-between">
         <div>
           <h2 class="text-3xl font-extrabold mb-4 text-center md:text-left">

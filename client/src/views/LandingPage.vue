@@ -11,11 +11,19 @@
       <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4"
         style="background-color: rgba(0, 0, 0, 0.6)">
         <h1 class="text-5xl md:text-7xl font-bold text-center mb-4" data-aos="zoom-in-up" data-aos-duration="3000">
-          Experience Lake Victoria's Majesty
+          Solar Boats For Africa.
         </h1>
         <p class="text-lg md:text-xl text-center max-w-2xl" data-aos="zoom-in-up" data-aos-duration="3000">
-          Solar boats for Africa.
+          Experience Lake Victoria's Majesty
         </p>
+        <div class="z-9999">
+          <button class="mt-8 px-6 py-3 bg-cyan-500 text-white rounded-full hover:bg-cyan-600 transition-colors"
+            @click.prevent="openBookingModal">Book a Trip</button>
+          <router-link to="/custom-boat"
+            class="mt-4 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">Own a
+            Custom Boat</router-link>
+        </div>
+
       </div>
       <canvas ref="rippleCanvas" class="absolute inset-0 z-[100] cursor-pointer"></canvas>
     </section>
@@ -33,17 +41,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, defineEmits } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import AboutSection from '@/components/AboutSection.vue'
 import GetInTouch from '@/components/GetInTouch.vue'
 import Footer from '@/components/Footer.vue'
 import BookingModal from '@/components/BookingModal.vue'
 import FloatingBar from '@/components/FloatingBar.vue'
-import AOS from 'aos'
 import BookTripComponent from '@/components/BookTripComponent.vue'
 import OwnABoat from '@/components/OwnABoat.vue'
 import 'aos/dist/aos.css'
+import AOS from 'aos'
 // Initialize AOS for animations
 AOS.init();
 
@@ -74,6 +82,12 @@ const closeBookingModal = () => {
   // Optional: restore background scroll
   document.body.style.overflow = '';
 }
+
+//--- Toggle booking modal for buttons on hero section
+// The 'open-booking-modal' emit is no longer needed here for the local button,
+// but it's kept for the Navbar and FloatingBar if they emit this event.
+const emit = defineEmits(["toggle-desktop-menu", "open-booking-modal"]);
+
 
 // --- Parallax Effect Logic ---
 const parallaxScale = ref(1)

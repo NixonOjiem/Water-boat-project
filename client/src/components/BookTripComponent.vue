@@ -3,7 +3,7 @@
     <div class="container mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-        <div class="text-white z-10">
+        <div class="text-white z-10" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
           <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
             Book a Trip <span class="text-cyan-400">Eco-Tourism at the lake front</span>
           </h1>
@@ -53,7 +53,8 @@
           </router-link>
         </div>
 
-        <div class="relative h-96 lg:h-full flex items-center justify-center">
+        <div class="relative h-96 lg:h-full flex items-center justify-center" data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
           <div class="w-[500px] h-[500px] absolute bg-cyan-500/20 blur-3xl rounded-full"></div>
           <img src="/images/Trip_on_lake.webp" alt="A modern catamaran on a calm lake"
             class="w-full h-full object-cover z-10 animated-shape">
@@ -65,6 +66,9 @@
 </template>
 
 <script>
+import 'aos/dist/aos.css'
+import AOS from 'aos'
+AOS.init();
 export default {
   data() {
     return {

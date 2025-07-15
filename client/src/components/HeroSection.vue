@@ -1,26 +1,21 @@
 <template>
-    <section class="relative w-full h-screen overflow-hidden" ref="heroSectionRef">
-      <img
-        src="/images/cruise-vertical.png"
-        alt="Aerial view of a yacht on Lake Victoria"
-        class="absolute top-0 left-0 w-full h-full object-cover hero-image"
-        :style="{ transform: `scale(${parallaxScale})` }"
-      />
-      <div
-        class="absolute inset-0 flex flex-col justify-center items-center text-white p-4"
-        style="background-color: rgba(0, 0, 0, 0.6)"
-      >
-        <h1 class="text-5xl md:text-7xl font-bold text-center mb-4">
-          Experience the Ocean's Majesty
-        </h1>
-        <p class="text-lg md:text-xl text-center max-w-2xl">
-          Solar boats for Africa.
-        </p>
-        <button>Book Now</button>
-        <button>Own a custom boat</button>
-      </div>
-      <canvas ref="rippleCanvas" class="absolute inset-0 z-[100] cursor-pointer"></canvas>
-    </section>
+  <section class="relative w-full h-screen overflow-hidden" ref="heroSectionRef">
+    <img src="/images/cruise-vertical.png" alt="Aerial view of a yacht on Lake Victoria"
+      class="absolute top-0 left-0 w-full h-full object-cover hero-image"
+      :style="{ transform: `scale(${parallaxScale})` }" />
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4"
+      style="background-color: rgba(0, 0, 0, 0.6)">
+      <h1 class="text-5xl md:text-7xl font-bold text-center mb-4">
+        Experience the Ocean's Majesty
+      </h1>
+      <p class="text-lg md:text-xl text-center max-w-2xl">
+        Solar boats for Africa.
+      </p>
+      <button>Book Now</button>
+      <button>Own a custom boat</button>
+    </div>
+    <canvas ref="rippleCanvas" class="absolute inset-0 z-[100] cursor-pointer"></canvas>
+  </section>
 </template>
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
@@ -105,7 +100,7 @@ const animateRipples = () => {
 onMounted(() => {
   window.addEventListener('scroll', updateParallax)
   document.addEventListener('click', handleClickOutside)
-    // Parallax setup
+  // Parallax setup
   window.addEventListener('scroll', updateParallax);
   updateParallax(); // Initial call for parallax
 
@@ -124,7 +119,7 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', updateParallax)
   document.removeEventListener('click', handleClickOutside)
-    // Clean up ripple listeners
+  // Clean up ripple listeners
   if (heroSectionRef.value) {
     heroSectionRef.value.removeEventListener('mousemove', createRipple);
   }

@@ -103,9 +103,9 @@
         <div v-if="isMobileMenuOpen" class="mt-2 bg-white rounded-2xl shadow-lg p-5">
           <ul class="flex flex-col space-y-4 text-gray-700">
 
-            <li>
+            <!-- <li>
               <router-link to="/services" class="mobile-nav-link">Our Services</router-link>
-            </li>
+            </li> -->
             <li>
               <router-link to="#" @click.prevent="$emit('open-booking-modal')" class="mobile-nav-link">Book a
                 Trip</router-link>

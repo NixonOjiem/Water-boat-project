@@ -14,9 +14,9 @@
       </div>
 
       <ul class="flex items-center space-x-8 mx-auto">
-        <li>
+        <!-- <li>
           <router-link to="/services" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</router-link>
-        </li>
+        </li> -->
         <li>
           <router-link to="/custom-boat" class="text-gray-700 hover:text-blue-600 font-medium">Custom
             Boats</router-link>

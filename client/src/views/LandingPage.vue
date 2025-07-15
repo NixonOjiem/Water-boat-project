@@ -88,6 +88,7 @@
         </div>
       </div>
     </main>
+    <AboutSection />
     <GetInTouch />
     <Footer />
     <FloatingBar @open-booking-modal="openBookingModal" />
@@ -100,6 +101,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import Navbar from '@/components/Navbar.vue'
+import AboutSection from '@/components/AboutSection.vue'
 import GetInTouch from '@/components/GetInTouch.vue'
 import Footer from '@/components/Footer.vue'
 import BookingModal from '@/components/BookingModal.vue'

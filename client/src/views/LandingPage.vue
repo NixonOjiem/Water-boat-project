@@ -21,74 +21,8 @@
     </section>
     <BookTripComponent />
     <OwnABoat />
-    <!-- <main class="container mx-auto px-4 py-16 md:py-24 pb-32">
-      <div class="text-center mb-12" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
-        data-aos-duration="1000">
-        <h2 class="text-4xl md:text-5xl font-bold">A New Horizon for Lake Transport</h2>
-        <p class="text-slate-400 mt-4 max-w-3xl mx-auto">
-          Click on any card to expand it and learn more.
-        </p>
-      </div>
+    <AboutSection />
 
-      <div ref="bentoGridRef" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start"
-        data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="2000">
-        <div :class="cardClasses('card-1')">
-          <div @click="toggleCard('card-1')" class="p-6 cursor-pointer">
-            <h3 class="text-2xl font-bold">🌊 The Challenge</h3>
-            <p class="mt-2 text-slate-300">
-              Petrol-powered canoes have long posed safety and environmental risks on Lake Victoria.
-            </p>
-          </div>
-          <Transition name="expand">
-            <div v-if="activeCardId === 'card-1'" class="px-6 pb-6">
-              <div class="prose prose-invert max-w-none prose-slate" v-html="content['card-1'].body"></div>
-            </div>
-          </Transition>
-        </div>
-
-        <div :class="cardClasses('card-2')">
-          <div @click="toggleCard('card-2')" class="p-6 cursor-pointer">
-            <h3 class="text-2xl font-bold">☀️ The Solution</h3>
-            <p class="mt-2 text-slate-300">
-              A solar-powered catamaran combining clean energy with a safe, stable, and locally-built design.
-            </p>
-          </div>
-          <Transition name="expand">
-            <div v-if="activeCardId === 'card-2'" class="px-6 pb-6">
-              <div class="prose prose-invert max-w-none prose-slate" v-html="content['card-2'].body"></div>
-            </div>
-          </Transition>
-        </div>
-
-        <div :class="cardClasses('card-3')">
-          <div @click="toggleCard('card-3')" class="p-6 cursor-pointer">
-            <h3 class="text-2xl font-bold">⚓ About Yieh Boats</h3>
-            <p class="mt-2 text-slate-300">
-              Innovators charting a new course for water transport, powered entirely by the sun.
-            </p>
-          </div>
-          <Transition name="expand">
-            <div v-if="activeCardId === 'card-3'" class="px-6 pb-6">
-              <div class="prose prose-invert max-w-none prose-slate" v-html="content['card-3'].body"></div>
-            </div>
-          </Transition>
-        </div>
-
-        <div :class="cardClasses('card-4')">
-          <div @click="toggleCard('card-4')" class="p-6 cursor-pointer">
-            <h3 class="text-2xl font-bold">🚤 Versatile by Design</h3>
-            <p class="mt-2 text-slate-300">
-              From leisure cruises and guided tours to commercial transport and fishing.
-            </p>
-          </div>
-          <Transition name="expand">
-            <div v-if="activeCardId === 'card-4'" class="px-6 pb-6">
-              <div class="prose prose-invert max-w-none prose-slate" v-html="content['card-4'].body"></div>
-            </div>
-          </Transition>
-        </div>
-      </div>
-    </main> -->
     <GetInTouch />
     <Footer />
     <FloatingBar @open-booking-modal="openBookingModal" />
@@ -101,6 +35,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import Navbar from '@/components/Navbar.vue'
+import AboutSection from '@/components/AboutSection.vue'
 import GetInTouch from '@/components/GetInTouch.vue'
 import Footer from '@/components/Footer.vue'
 import BookingModal from '@/components/BookingModal.vue'

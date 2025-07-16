@@ -1,21 +1,18 @@
 <template>
   <div class="yieh-boats-showcase">
-    <!-- <header class="showcase-header">
-      <h1>YiehBoats</h1>
-      <p>Navigating the Future, Powered by the Sun ☀️</p>
-    </header> -->
-
     <section id="applications" class="feature-section">
-      <div class="feature-image">
-        <img src="/images/download (2).jpg" alt="Custom YiehBoats solar boat on the water" />
+      <div class="feature-image image-slider-container">
+        <div class="image-slider-track" :style="sliderStyle">
+          <img v-for="(pic, index) in slidePictures_B" :key="`slide-1-${index}`" :src="pic"
+            alt="Solar boat application" />
+        </div>
       </div>
       <div class="feature-content">
         <h2>Endless Applications</h2>
         <p>From serene lake cruises and fishing trips to commercial transport and research, our solar boats are designed
           for versatility.</p>
-
         <div class="scroll-gallery">
-          <div v-for="(pic, index) in slidePictures" :key="index" class="gallery-item">
+          <div v-for="(pic, index) in slidePictures" :key="`gallery-${index}`" class="gallery-item">
             <img :src="pic" :alt="'Solar boat application ' + (index + 1)" />
           </div>
         </div>
@@ -36,25 +33,32 @@
           <li>🔧 <strong>Low Maintenance:</strong> Fewer moving parts means less upkeep and more time on the water.</li>
         </ul>
       </div>
-      <div class="feature-image">
-        <img src="/images/download (2).jpg" alt="A sleek YiehBoats solar vessel" />
+      <div class="feature-image image-slider-container">
+        <div class="image-slider-track" :style="sliderStyle">
+          <img v-for="(pic, index) in slidePictures_A" :key="`slide-2-${index}`" :src="pic"
+            alt="A sleek YiehBoats solar vessel" />
+        </div>
       </div>
     </section>
 
     <hr class="section-divider">
 
     <section id="customization" class="feature-section">
-      <div class="feature-image">
-        <img src="/images/download (2).jpg" alt="Detailed view of a YiehBoats custom build" />
+      <div class="feature-image image-slider-container">
+        <div class="image-slider-track" :style="sliderStyle">
+          <img v-for="(pic, index) in slidePictures" :key="`slide-3-${index}`" :src="pic"
+            alt="Detailed view of a YiehBoats custom build" />
+        </div>
       </div>
       <div class="feature-content">
         <h2>Tailored to Your Vision</h2>
-        <p>Your boat, your rules. We work with you to build a solar boat that perfectly fits your needs. Customization
-          options include:</p>
+        <p>Your boat, your rules. Whether you want a boat for easy cruising, fishing, a party
+          boat or a multiday cruiser. We can create a boat with the
+          deck layout that suits your needs:</p>
         <ul class="custom-options-list">
-          <li>Hull Size & Layout</li>
-          <li>Deck Materials & Seating</li>
-          <li>Battery Capacity & Solar Array Size</li>
+          <li>Hull Size & Layout: Depending on your applications we can choose different hull materials</li>
+          <li>Size: Depending on you needs we can size the boat accordingly</li>
+          <li>Speed: We can design your boat for your required speed</li>
           <li>Navigation & Tech Gadgets</li>
         </ul>
         <button class="cta-button">Design Your Boat Today</button>
@@ -69,6 +73,11 @@ import boat1 from '/images/download (1).jpg';
 import boat2 from '/images/download (2).jpg';
 import boat3 from '/images/download (3).jpg';
 import boat4 from '/images/own_boat.jpg';
+import boat5 from '/images/images.jpg';
+import boat6 from '/images/istockphoto-1191503410-612x612.jpg';
+import boat7 from '/images/Rideau0625web.jpg';
+import boat8 from '/images/221013_LASAI_0936.jpg';
+import boat9 from '/images/wwf_solar_ok.jpg';
 
 export default {
   name: 'YiehBoatsShowcase',
@@ -78,13 +87,44 @@ export default {
         boat1,
         boat2,
         boat3,
-        boat4,
       ],
+      slidePictures_A: [
+        boat4,
+        boat5,
+        boat6,
+      ],
+      slidePictures_B: [
+        boat7,
+        boat8,
+        boat9,
+      ],
+      currentSlideIndex: 0,
+      slideInterval: null,
     };
   },
-  methods: {
-    // Methods can be added here if needed
+  computed: {
+    sliderStyle() {
+      // This computed property calculates the CSS transform to slide the images
+      return {
+        transform: `translateX(-${this.currentSlideIndex * 100}%)`
+      };
+    }
   },
+  methods: {
+    nextSlide() {
+      // Moves to the next slide, or loops back to the first
+      const newIndex = this.currentSlideIndex + 1;
+      this.currentSlideIndex = newIndex >= this.slidePictures.length ? 0 : newIndex;
+    }
+  },
+  mounted() {
+    // Start the automatic sliding every 4 seconds
+    this.slideInterval = setInterval(this.nextSlide, 4000);
+  },
+  beforeUnmount() {
+    // Clean up the interval when the component is removed to prevent memory leaks
+    clearInterval(this.slideInterval);
+  }
 }
 </script>
 
@@ -96,16 +136,13 @@ export default {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   background-color: #f4f7f6;
-  /* Light, clean background */
   overflow-x: hidden;
-  /* Prevents horizontal scroll on the main page */
 }
 
 .showcase-header {
   text-align: center;
   padding: 3rem 1rem;
   background-color: #004266;
-  /* Deep blue for a professional, watery feel */
   color: white;
 }
 
@@ -139,7 +176,6 @@ export default {
   margin: 0 auto;
 }
 
-/* Alternates the layout for visual interest */
 .feature-section.reverse-layout {
   flex-direction: row-reverse;
 }
@@ -147,16 +183,43 @@ export default {
 .feature-image,
 .feature-content {
   flex: 1;
-  /* Each takes up half the space */
   min-width: 300px;
-  /* Prevents them from getting too squished */
 }
 
-.feature-image img {
-  width: 100%;
-  height: auto;
+/* --- NEW: Image Slider Styles --- */
+.image-slider-container {
+  overflow: hidden;
+  /* This is crucial to hide the other images */
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.image-slider-track {
+  display: flex;
+  /* Aligns images horizontally */
+  transition: transform 0.5s ease-in-out;
+  /* The sliding animation */
+}
+
+.image-slider-track-B {
+  display: flex;
+  /* Aligns images horizontally */
+  transition: transform 0.7s ease-in-out;
+  /* The sliding animation */
+}
+
+.image-slider-track-A {
+  display: flex;
+  /* Aligns images horizontally */
+  transition: transform 0.9s ease-in-out;
+  /* The sliding animation */
+}
+
+.image-slider-track img {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  /* Prevents images from shrinking */
   object-fit: cover;
 }
 
@@ -165,7 +228,6 @@ export default {
   font-size: 2.5rem;
   font-weight: bold;
   color: #005a8c;
-  /* Brand color */
   margin-bottom: 1rem;
 }
 
@@ -197,16 +259,12 @@ export default {
 .scroll-gallery {
   display: flex;
   overflow-x: auto;
-  /* This enables horizontal scrolling */
   gap: 1rem;
   padding: 1rem 0.5rem 1rem 0;
   scrollbar-width: thin;
-  /* For Firefox */
   scrollbar-color: #0077be #e0e0e0;
-  /* For Firefox */
 }
 
-/* Scrollbar styling for Webkit browsers (Chrome, Safari) */
 .scroll-gallery::-webkit-scrollbar {
   height: 8px;
 }
@@ -243,14 +301,12 @@ export default {
 /* --- Call to Action Button --- */
 .cta-button {
   background-color: #101828;
-  /* A vibrant, action-oriented color */
   color: white;
   border: none;
   padding: 1rem 2rem;
   font-size: 1.1rem;
   font-weight: bold;
   border-radius: 50px;
-  /* Modern pill shape */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   margin-top: 1rem;
@@ -262,26 +318,21 @@ export default {
 }
 
 /* --- Responsive Design --- */
-/* --- Responsive Design --- */
 @media (max-width: 768px) {
 
   .feature-section,
   .feature-section.reverse-layout {
     flex-direction: column;
-    /* Stacks image and content vertically */
     padding: 2rem 1rem;
     gap: 2rem;
   }
 
-  /* Specific adjustment for the "Tailored to Your Vision" section */
   #customization .feature-image {
     order: 2;
-    /* Puts the image second (after the content) */
   }
 
   #customization .feature-content {
     order: 1;
-    /* Puts the content first */
   }
 
   .showcase-header h1 {

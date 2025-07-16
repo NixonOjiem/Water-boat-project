@@ -11,8 +11,17 @@
           </h1>
 
           <p class="mt-6 text-lg text-gray-600 max-w-xl">
-            Experience freedom on the water with our premium solar catamarans. Harness the power of the sun for silent,
-            sustainable cruising with zero emissions and minimal operating costs.
+            Yieh boats provides solar boats for Lake
+            Victoria. The boats are built and
+            designed in Kenya. Pick one of our
+            standard designs, or get a fully
+            customised design to your needs. Our
+            boats have infinite sailing range.
+            Whether you want a boat for easy
+            cruising, fishing, a party boat or a
+            multiday cruiser. We can create a deck
+            layout that suits your needs. We can
+            supply boats all over africa.
           </p>
 
           <div class="mt-10">

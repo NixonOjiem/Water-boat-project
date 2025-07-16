@@ -4,7 +4,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" data-aos="fade-up"
         data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
 
-        <div class="text-gray-800 z-10 order-1 lg:order-1">
+        <div class="text-gray-800 z-10 order-1 lg:order-2">
           <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
             <span class="block">Own The Future</span>
             <span class="text-cyan-500">Solar-Powered Luxury</span>
@@ -49,7 +49,7 @@
           </button>
         </div>
 
-        <div class="relative min-h-[500px] lg:min-h-[600px] flex items-center justify-center order-2 lg:order-2">
+        <div class="relative min-h-[500px] lg:min-h-[600px] flex items-center justify-center order-2 lg:order-1">
           <div class="w-[500px] h-[500px] absolute bg-cyan-400/20 blur-3xl rounded-full"></div>
 
           <div class="relative z-20 w-full max-w-2xl">

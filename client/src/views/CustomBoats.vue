@@ -2,19 +2,18 @@
   <div class="relative">
     <Navbar />
     <main
-      class="fixed top-0 left-0 w-full h-[50vh] bg-gray-900 text-white flex flex-col items-center justify-center z-0">
+      class="fixed top-0 left-0 w-full h-[50vh] bg-gray-900 text-white flex flex-col items-center justify-center z-[-999]">
       <h1 class="text-4xl font-bold mb-6">Build Your Custom Boat</h1>
       <p class="text-lg mb-12">
         Design your dream boat with our experts. From concept to launch, we make it happen.
       </p>
     </main>
 
-    <div class="pt-[50vh]">
+    <div class="pt-[50vh] z-99999">
       <CustomBoatComponent />
     </div>
     <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" />
     <FloatingBar @open-booking-modal="openBookingModal" />
-
     <Footer />
   </div>
 </template>

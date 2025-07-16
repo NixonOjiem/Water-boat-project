@@ -1,30 +1,33 @@
 <template>
   <div ref="heroRootRef" class="relative w-full h-full">
     <img src="/images/cruise-vertical.png" alt="Aerial view of a yacht on Lake Victoria"
-         class="absolute top-0 left-0 w-full h-full object-cover hero-image"
-         :style="{ transform: `scale(${parallaxScale})` }" />
+      class="absolute top-0 left-0 w-full h-full object-cover hero-image"
+      :style="{ transform: `scale(${parallaxScale})` }" />
 
     <canvas ref="rippleCanvas" class="absolute inset-0 w-full h-full z-10 cursor-pointer"></canvas>
 
     <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4 z-20"
-         style="background-color: rgba(0, 0, 0, 0.5)">
-        <h1 class="text-5xl md:text-7xl font-bold text-center mb-4" data-aos="zoom-in-up" data-aos-duration="3000">
-          Solar Boats For Africa.
-        </h1>
-        <p class="text-lg md:text-xl text-center max-w-2xl" data-aos="zoom-in-up" data-aos-duration="3000">
-          Experience Lake Victoria's Majesty
-        </p>
-        <div class="mt-8">
-            <button class="px-6 py-3 bg-cyan-500 text-white rounded-xl hover:bg-cyan-600 transition-colors mr-4"
-                @click.prevent="openBookingModal">Book a Trip</button>
-            <router-link to="/custom-boat"
-                class="px-6 py-3 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors">Custom Boat</router-link>
-        </div>
+      style="background-color: rgba(0, 0, 0, 0.5)">
+      <h1 class="text-5xl md:text-7xl font-bold text-center mb-4" data-aos="zoom-in-up" data-aos-duration="3000">
+        Solar Boats For Africa.
+      </h1>
+      <p class="text-lg md:text-xl text-center max-w-2xl" data-aos="zoom-in-up" data-aos-duration="3000">
+        Experience Lake Victoria's Majesty
+      </p>
+      <div class="button-container">
+        <button class="btn btn-glass" @click.prevent="openBookingModal">
+          Book a Trip
+        </button>
+        <router-link to="/custom-boat" class="btn btn-glass">
+          Custom Boat
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
+
 import { ref, onMounted, onUnmounted, defineEmits } from 'vue';
 
 // --- Component Refs ---
@@ -131,3 +134,55 @@ onUnmounted(() => {
   }
 });
 </script>
+<style scoped>
+.button-container {
+  /* Example styles for the container to showcase the glass effect */
+  background-image: url('https://images.unsplash.com/photo-1559128010-4c1ad8e1b4a5?q=80&w=2070');
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 2rem;
+  border-radius: 1rem;
+
+  /* Layout styles to replace Tailwind's `mt-8` and `mr-4` */
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* This creates space between the buttons */
+}
+
+/* Base style for the buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Glass effect for the buttons */
+.btn-glass {
+  background: rgba(1, 83, 49, 0.644);
+  /* Semi-transparent white */
+  backdrop-filter: blur(12px);
+  /* The blur effect */
+  -webkit-backdrop-filter: blur(12px);
+  /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+</style>

@@ -2,16 +2,16 @@
   <div class="bg-[#D8EDFF] py-8 overflow-hidden">
     <div class="container mx-auto px-4">
       <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-        <div class="h-full w-full flex items-center justify-center" data-aos="fade-right" data-aos-duration="1200">
+        <div class="h-full w-full flex items-center justify-center" data-aos="fade-up" data-aos-duration="1200">
           <img src="/images/Mbita & Rusinga Island.jpg" alt="A solar-powered boat gliding on a calm lake"
             class="animated-shape w-full h-full max-h-[500px] object-cover shadow-xl">
         </div>
 
         <div class="flex flex-col justify-center">
-          <h1 class="text-4xl md:text-5xl font-bold mb-6 text-slate-800" data-aos="fade-left" data-aos-duration="1000">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 text-slate-800" data-aos="fade-up" data-aos-duration="1000">
             About Yieh Boats
           </h1>
-          <p class="text-lg md:text-xl text-sky-600 font-semibold mb-8" data-aos="fade-left" data-aos-duration="1200">
+          <p class="text-lg md:text-xl text-sky-600 font-semibold mb-8" data-aos="fade-up" data-aos-duration="1200">
             Proudly built and designed in Kenya, we are pioneering a cleaner future for Lake Victoria's waters.
           </p>
           <div class="space-y-4 text-md md:text-lg text-gray-600">
@@ -64,7 +64,7 @@
           </div>
         </div>
 
-        <div class="h-full w-full flex items-center justify-center" data-aos="fade-left" data-aos-duration="1200">
+        <div class="h-full w-full flex items-center justify-center" data-aos="fade-up" data-aos-duration="1200">
           <img src="/images/kisumu-yacht-club.jpg" alt="A blueprint for engineering and investment"
             class="animated-shape w-full h-full max-h-[500px] object-cover shadow-xl">
         </div>
@@ -72,7 +72,7 @@
 
 
       <div class="mt-16 md:mt-24">
-        <div class="flex flex-col justify-center" data-aos="fade-right" data-aos-duration="1000">
+        <div class="flex flex-col justify-center" data-aos="fade-up" data-aos-duration="1000">
           <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-800">
             Invest in the Current of Change
           </h2>

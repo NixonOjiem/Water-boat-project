@@ -12,10 +12,8 @@
             that respects nature, providing a peaceful escape without compromise.
           </p>
 
-          <!-- Advantages Carousel -->
           <div class="mt-8">
             <div class="relative h-40 overflow-hidden rounded-xl bg-[#1d293b] p-4 border border-cyan-500/20">
-              <!-- Carousel Items -->
               <div v-for="(item, index) in advantages" :key="index"
                 class="absolute inset-0 p-4 transition-all duration-500 ease-in-out" :class="{
                   'opacity-100 translate-y-0': currentAdvantage === index,
@@ -35,7 +33,6 @@
               </div>
             </div>
 
-            <!-- Carousel Controls -->
             <div class="flex justify-center mt-4 space-x-2">
               <button v-for="(_, index) in advantages" :key="index" @click="currentAdvantage = index"
                 class="w-3 h-3 rounded-full transition-all" :class="{
@@ -56,10 +53,11 @@
         <div class="relative h-96 lg:h-full flex items-center justify-center" data-aos="fade-up"
           data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
           <div class="w-[500px] h-[500px] absolute bg-cyan-500/20 blur-3xl rounded-full"></div>
-          <img src="/images/Trip_on_lake.webp" alt="A modern catamaran on a calm lake"
-            class="w-full h-full object-cover z-10 animated-shape">
-        </div>
 
+          <img v-for="(slide, index) in pictureSlides" :key="index" :src="slide" alt="A modern catamaran on a calm lake"
+            class="absolute inset-0 w-full h-full object-cover z-10 animated-shape transition-opacity duration-1000 ease-in-out"
+            :class="{ 'opacity-100': currentImageIndex === index, 'opacity-0': currentImageIndex !== index }" />
+        </div>
       </div>
     </div>
   </div>
@@ -68,11 +66,25 @@
 <script>
 import 'aos/dist/aos.css'
 import AOS from 'aos'
+
+import pic1 from '/images/download (2).jpg'
+import pic2 from '/images/download (1).jpg'
+import pic3 from '/images/221013_LASAI_0936.jpg'
+import pic4 from '/images/221013_LASAI_0917.jpg'
+
 AOS.init();
 export default {
   data() {
     return {
       currentAdvantage: 0,
+      // MODIFICATION: Add index to track the current image
+      currentImageIndex: 0,
+      pictureSlides: [
+        pic1,
+        pic2,
+        pic3,
+        pic4
+      ],
       advantages: [
         {
           title: "Wildlife Encounters",
@@ -98,14 +110,21 @@ export default {
     }
   },
   mounted() {
-    // Start auto-rotation of advantages
     this.startCarousel();
+    // MODIFICATION: Call the new method to start the image slideshow
+    this.startImageSlideshow();
   },
   methods: {
     startCarousel() {
       setInterval(() => {
         this.currentAdvantage = (this.currentAdvantage + 1) % this.advantages.length;
       }, 4000);
+    },
+    // MODIFICATION: Add a new method to handle the image slideshow logic
+    startImageSlideshow() {
+      setInterval(() => {
+        this.currentImageIndex = (this.currentImageIndex + 1) % this.pictureSlides.length;
+      }, 5000); // Using a 5-second interval for the images
     }
   }
 }
@@ -137,7 +156,8 @@ export default {
   }
 }
 
-/* New carousel styles */
+/* No new styles needed. The transition is handled by Tailwind classes. */
+/* You can remove the old .carousel-item styles if they are no longer used elsewhere. */
 .carousel-item-enter-active,
 .carousel-item-leave-active {
   transition: all 0.8s ease;

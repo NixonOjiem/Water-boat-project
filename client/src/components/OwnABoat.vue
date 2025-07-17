@@ -61,11 +61,12 @@
         <div class="relative min-h-[500px] lg:min-h-[600px] flex items-center justify-center order-2 lg:order-1">
           <div class="w-[500px] h-[500px] absolute bg-cyan-400/20 blur-3xl rounded-full"></div>
 
-          <div class="relative z-20 w-full max-w-2xl">
-            <img src="/images/own_boat.jpg" alt="Solar-powered catamaran"
-              class="w-full h-[500px] lg:h-[600px] object-cover rounded-xl shadow-xl glow animated-shape">
+          <div class="relative z-20 w-full max-w-2xl h-[500px] lg:h-[600px]">
+            <img v-for="(slide, index) in pictureSlides" :key="index" :src="slide" alt="Solar-powered catamaran"
+              class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl glow animated-shape transition-opacity duration-1000 ease-in-out"
+              :class="{ 'opacity-100': currentImageIndex === index, 'opacity-0': currentImageIndex !== index }" />
 
-            <div class="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg p-4 border border-cyan-100 w-48">
+            <div class="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg p-4 border border-cyan-100 w-48 z-10">
               <div class="flex items-center">
                 <div class="solar-panel w-10 h-10 rounded-lg flex items-center justify-center mr-3">
                   <i class="fas fa-solar-panel text-cyan-400"></i>
@@ -117,11 +118,25 @@
 <script>
 import 'aos/dist/aos.css'
 import AOS from 'aos'
+
+import pic1 from '/images/images.jpg'
+import pic2 from '/images/Rideau0625web.jpg'
+import pic3 from '/images/own_boat.jpg'
+import pic4 from '/images/download (3).jpg'
+
 AOS.init();
 export default {
   data() {
     return {
       currentAdvantage: 0,
+      // MODIFICATION: Add index to track the current image
+      currentImageIndex: 0,
+      pictureSlides: [
+        pic1,
+        pic2,
+        pic3,
+        pic4
+      ],
       advantages: [
         {
           title: "Sustainable Luxury",
@@ -147,14 +162,21 @@ export default {
     }
   },
   mounted() {
-    // Start auto-rotation of advantages
     this.startCarousel();
+    // MODIFICATION: Call the new method to start the image slideshow
+    this.startImageSlideshow();
   },
   methods: {
     startCarousel() {
       setInterval(() => {
         this.currentAdvantage = (this.currentAdvantage + 1) % this.advantages.length;
       }, 4000);
+    },
+    // MODIFICATION: Add a new method to handle the image slideshow logic
+    startImageSlideshow() {
+      setInterval(() => {
+        this.currentImageIndex = (this.currentImageIndex + 1) % this.pictureSlides.length;
+      }, 5000); // Images will change every 5 seconds
     }
   }
 }

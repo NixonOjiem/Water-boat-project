@@ -25,6 +25,12 @@
               people living around the lake.
             </p>
           </div>
+          <div class="m-8" style="display: inline-block;">
+            <a href="#" @click.prevent="$emit('open-investment-form')"
+              class="inline-block bg-[#002255] text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-opacity-90 transition-colors duration-300">
+              Invest in YiehBoats
+            </a>
+          </div>
         </div>
       </div>
 
@@ -104,7 +110,9 @@
                 No poverty, hunger, good and well-being.
               </h2>
               <p class="text-lg text-sky-600 font-medium mb-8">
-                The boat will be able to provide jobs and make sure the ecology of the lake improves. This results in a lake that can produce more fish in a sustainable way, eliminating hunger and ensuring the people can live healthily in and around the lake.
+                The boat will be able to provide jobs and make sure the ecology of the lake improves. This results in a
+                lake that can produce more fish in a sustainable way, eliminating hunger and ensuring the people can
+                live healthily in and around the lake.
               </p>
               <!-- SDG Squares for Card 1 -->
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-auto">
@@ -188,12 +196,12 @@
                 <span class="sdg-text">Responsible Consumption</span>
               </div>
             </div>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script setup>

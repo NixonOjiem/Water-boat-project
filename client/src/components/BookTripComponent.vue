@@ -42,9 +42,10 @@
             </div>
           </div>
 
-          <router-link to="/book-trip" class="group mt-10 inline-block">
+          <router-link class="group mt-10 inline-block">
             <span
-              class="px-8 py-4 font-bold text-white inline-block bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg transition-all duration-300 ease-in-out group-hover:shadow-lg group-hover:shadow-cyan-500/50 group-hover:-translate-y-1">
+              class="px-8 py-4 font-bold text-white inline-block bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg transition-all duration-300 ease-in-out group-hover:shadow-lg group-hover:shadow-cyan-500/50 group-hover:-translate-y-1"
+              @click.prevent="openBookingModal">
               Book Your Voyage
             </span>
           </router-link>
@@ -72,8 +73,11 @@ import pic2 from '/images/download (1).jpg'
 import pic3 from '/images/221013_LASAI_0936.jpg'
 import pic4 from '/images/221013_LASAI_0917.jpg'
 
+
+
 AOS.init();
 export default {
+  emits: ['openBookingModal'],
   data() {
     return {
       currentAdvantage: 0,
@@ -119,6 +123,10 @@ export default {
       setInterval(() => {
         this.currentAdvantage = (this.currentAdvantage + 1) % this.advantages.length;
       }, 4000);
+    },
+    //A method to open the booking modal
+    openBookingModal() {
+      this.$emit('openBookingModal');
     },
     // MODIFICATION: Add a new method to handle the image slideshow logic
     startImageSlideshow() {

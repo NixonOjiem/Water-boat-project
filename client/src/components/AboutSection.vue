@@ -67,7 +67,7 @@
               </a>
             </div>
             <div class="m-8" style="display: inline-block;">
-              <a href="/about"
+              <a href="#" @click.prevent="$emit('open-investment-form')"
                 class="inline-block bg-[#002255] text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-opacity-90 transition-colors duration-300">
                 Invest in YiehBoats
               </a>
@@ -81,12 +81,17 @@
 
 <script>
 // Simplified AOS initialization to match the example component
+import { defineEmits } from 'vue'
 import 'aos/dist/aos.css'
 import AOS from 'aos'
+
+// This correctly defines the event that this component can emit
+defineEmits(['open-investment-form']);
 
 AOS.init();
 
 export default {
+  emit,
   name: 'AboutSection',
   // The mounted hook is no longer needed for AOS initialization
 };

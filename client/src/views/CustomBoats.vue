@@ -12,12 +12,16 @@
     </main>
 
     <div class="pt-[50vh] z-99999">
-      <CustomBoatComponent />
+      <CustomBoatComponent @open-design-boat="openDesignBoatForm" />
     </div>
     <transition name="modal-fade">
       <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" class="Z-9999999999" />
     </transition>
+
     <FloatingBar @open-booking-modal="openBookingModal" />
+    <transition name="modal-fade">
+      <DesignBoatForm v-if="designBoatFormOpen" @close="closeDesignBoatForm" />
+    </transition>
     <Footer />
   </div>
 </template>
@@ -29,21 +33,32 @@ import Footer from '@/components/Footer.vue';
 import CustomBoatComponent from '@/components/CustomBoatComponent.vue';
 import FloatingBar from '@/components/FloatingBar.vue';
 import BookingModal from '@/components/BookingModal.vue';
+import DesignBoatForm from '@/components/DesignBoatForm.vue';
 
 // --- Booking Modal State ---
 const isBookingModalOpen = ref(false);
-
 const openBookingModal = () => {
   isBookingModalOpen.value = true;
   document.body.style.overflow = 'hidden';
   //console.log('Booking modal opened!'); // Added for debugging
 };
-
 const closeBookingModal = () => {
   isBookingModalOpen.value = false;
   document.body.style.overflow = '';
   //console.log('Booking modal closed!'); // Added for debugging
 };
+
+// --- Design Boat Form State ---
+const designBoatFormOpen = ref(false);
+const openDesignBoatForm = () => {
+  designBoatFormOpen.value = true;
+  document.body.style.overflow = 'hidden';
+}
+const closeDesignBoatForm = () => {
+  designBoatFormOpen.value = false;
+  document.body.style.overflow = '';
+}
+
 </script>
 
 <style scoped>

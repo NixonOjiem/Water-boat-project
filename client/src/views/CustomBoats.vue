@@ -48,6 +48,17 @@ const closeBookingModal = () => {
   //console.log('Booking modal closed!'); // Added for debugging
 };
 
+// --- Menu State ---
+const isMobileMenuOpen = ref(false)
+const isDesktopMenuOpen = ref(false)
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+const toggleDesktopMenu = (event) => {
+  event.stopPropagation()
+  isDesktopMenuOpen.value = !isDesktopMenuOpen.value
+}
+
 // --- Design Boat Form State ---
 const designBoatFormOpen = ref(false);
 const openDesignBoatForm = () => {
@@ -58,6 +69,8 @@ const closeDesignBoatForm = () => {
   designBoatFormOpen.value = false;
   document.body.style.overflow = '';
 }
+
+
 
 </script>
 

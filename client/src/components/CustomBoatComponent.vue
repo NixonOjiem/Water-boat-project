@@ -61,7 +61,7 @@
           <li>Speed: We can design your boat for your required speed</li>
           <li>Navigation & Tech Gadgets</li>
         </ul>
-        <button class="cta-button">Design Your Boat Today</button>
+        <a href='#' @click.prevent="$emit('open-design-boat')" class="cta-button">Design Your Boat Today</a>
       </div>
     </section>
 
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import { defineEmits } from "vue";
 import boat1 from '/images/download (1).jpg';
 import boat2 from '/images/download (2).jpg';
 import boat3 from '/images/download (3).jpg';
@@ -79,10 +80,14 @@ import boat7 from '/images/Rideau0625web.jpg';
 import boat8 from '/images/221013_LASAI_0936.jpg';
 import boat9 from '/images/wwf_solar_ok.jpg';
 
+const emit = defineEmits(["open-design-boat"]);
+
+
 export default {
   name: 'YiehBoatsShowcase',
   data() {
     return {
+      emit,
       slidePictures: [
         boat1,
         boat2,

@@ -8,9 +8,9 @@
       <HeroSection @open-booking-modal="openBookingModal" />
     </section>
 
-    <BookTripComponent />
+    <BookTripComponent @open-booking-modal="openBookingModal" />
     <OwnABoat />
-    <AboutSection />
+    <AboutSection @open-investment-form="openInvestmentForm" />
     <GetInTouch />
     <Footer />
     <FloatingBar @open-booking-modal="openBookingModal" />
@@ -18,6 +18,8 @@
     <transition name="modal-fade">
       <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" />
     </transition>
+
+    <InvestmentForm v-if="investmentFormOpen" @close="closeInvestmentForm" />
   </section>
 </template>
 
@@ -34,6 +36,7 @@ import BookTripComponent from '@/components/BookTripComponent.vue'
 import OwnABoat from '@/components/OwnABoat.vue'
 import 'aos/dist/aos.css'
 import AOS from 'aos'
+import InvestmentForm from '@/components/InvestmentForm.vue'
 
 // Initialize AOS for animations
 AOS.init();
@@ -60,10 +63,21 @@ const closeBookingModal = () => {
   document.body.style.overflow = '';
 }
 
+//--Investment Form State---
+const investmentFormOpen = ref(false)
+const openInvestmentForm = () => {
+  investmentFormOpen.value = true;
+  document.body.style.overflow = 'hidden';
+}
+const closeInvestmentForm = () => {
+  investmentFormOpen.value = false;
+  document.body.style.overflow = '';
+}
+
 // --- Emits ---
 // This is kept for communication between components if needed, but not strictly
 // necessary for the booking modal logic as it's handled locally now.
-const emit = defineEmits(["toggle-desktop-menu", "open-booking-modal"]);
+const emit = defineEmits(["toggle-desktop-menu", "open-booking-modal, "]);
 
 // All parallax, ripple, and bento-grid logic has been removed from here.
 // It should reside within the specific components that use it.

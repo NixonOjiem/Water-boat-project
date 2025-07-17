@@ -49,13 +49,13 @@
             </div>
           </div>
 
-          <button class="group mt-10 inline-block">
+          <router-link to="/custom-boat" class="group mt-10 inline-block">
             <span
               class="px-8 py-4 font-bold text-white inline-block solar-gradient rounded-xl transition-all duration-300 ease-in-out group-hover:shadow-lg group-hover:shadow-cyan-300/50 group-hover:-translate-y-1 solar-shine">
               Own A Solar Boat
               <i class="fas fa-arrow-right ml-2 text-sm"></i>
             </span>
-          </button>
+          </router-link>
         </div>
 
         <div class="relative min-h-[500px] lg:min-h-[600px] flex items-center justify-center order-2 lg:order-1">

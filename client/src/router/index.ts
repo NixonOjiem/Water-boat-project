@@ -7,6 +7,7 @@ import GalleryView from '@/views/GalleryView.vue'
 import ServicesView from '@/views/ServicesView.vue'
 import AboutView from '@/views/AboutView.vue'
 import CustomBoats from '@/views/CustomBoats.vue'
+import Test from '@/views/Test.vue'
 
 
 const router = createRouter({
@@ -52,6 +53,11 @@ const router = createRouter({
       path: '/custom-boat',
       name: 'CustomBoats',
       component: CustomBoats,
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: Test,
     },
   ],
 })

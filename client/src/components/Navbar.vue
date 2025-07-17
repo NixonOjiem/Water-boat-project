@@ -88,7 +88,10 @@
 
     <div ref="mobileNavRef" class="md:hidden w-full px-5">
       <div class="flex items-center justify-between bg-white px-6 py-4 rounded-full shadow-md">
-        <router-link to="/" class="text-xl font-bold text-gray-800">Yieh Boats</router-link>
+        <router-link to="/" class="text-xl font-bold text-gray-800">
+          <img src="/logo-web.svg" alt="YiehBoats Logo" class="h-16 w-16 md:h-20 md:w-20 rounded-md">
+          <span class="text-xl md:text-2xl font-bold text-gray-800">YiehBoats</span>
+        </router-link>
         <div @click="isMobileMenuOpen = !isMobileMenuOpen" class="cursor-pointer">
           <ion-icon :name="isMobileMenuOpen ? 'close-outline' : 'menu-outline'"
             class="text-3xl text-gray-800 transition-transform duration-300 ease-in-out"></ion-icon>

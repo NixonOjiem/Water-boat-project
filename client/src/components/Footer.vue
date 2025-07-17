@@ -9,8 +9,7 @@
             <span class="text-blue-400">Yieh</span>Boats
           </h3>
           <p class="text-sm leading-relaxed">
-            We are innovators charting a new course for sustainable water transport. We design and build safe, reliable,
-            and clean boats propelled entirely by solar energy.
+            Proudly built and designed in Kenya, we are pioneering a cleaner future for Lake Victoria's waters.
           </p>
         </div>
 

@@ -8,15 +8,15 @@
       class="hidden md:flex items-center w-full max-w-6xl mx-auto bg-white px-8 py-4 rounded-[2.75rem] shadow-md">
       <div class="logo-nav flex-shrink-0">
         <router-link to="/" class="flex items-center space-x-2">
-          <img src="/logo-web.svg" alt="YiehBoats Logo" class="h-16 w-16 md:h-20 md:w-20 rounded-md">
+          <img src="/logo-web.svg" alt="YiehBoats Logo" class="h-[50px] w-[50px] rounded-md">
           <span class="text-xl md:text-2xl font-bold text-gray-800">YiehBoats</span>
         </router-link>
       </div>
 
       <ul class="flex items-center space-x-8 mx-auto">
-        <li>
+        <!-- <li>
           <router-link to="/services" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</router-link>
-        </li>
+        </li> -->
         <li>
           <router-link to="/custom-boat" class="text-gray-700 hover:text-blue-600 font-medium">Custom
             Boats</router-link>
@@ -88,10 +88,12 @@
 
     <div ref="mobileNavRef" class="md:hidden w-full px-5">
       <div class="flex items-center justify-between bg-white px-6 py-4 rounded-full shadow-md">
-        <router-link to="/" class="text-xl font-bold text-gray-800">
-          <img src="/logo-web.svg" alt="YiehBoats Logo" class="h-16 w-16 md:h-20 md:w-20 rounded-md">
-          <span class="text-xl md:text-2xl font-bold text-gray-800">YiehBoats</span>
-        </router-link>
+        <div class="logo-nav flex-shrink-0">
+          <router-link to="/" class="flex items-center space-x-2">
+            <img src="/logo-web.svg" alt="YiehBoats Logo" class="h-[50px] w-[50px] rounded-md">
+            <span class="text-xl md:text-2xl font-bold text-gray-800">YiehBoats</span>
+          </router-link>
+        </div>
         <div @click="isMobileMenuOpen = !isMobileMenuOpen" class="cursor-pointer">
           <ion-icon :name="isMobileMenuOpen ? 'close-outline' : 'menu-outline'"
             class="text-3xl text-gray-800 transition-transform duration-300 ease-in-out"></ion-icon>
@@ -101,9 +103,9 @@
         <div v-if="isMobileMenuOpen" class="mt-2 bg-white rounded-2xl shadow-lg p-5">
           <ul class="flex flex-col space-y-4 text-gray-700">
 
-            <li>
+            <!-- <li>
               <router-link to="/services" class="mobile-nav-link">Our Services</router-link>
-            </li>
+            </li> -->
             <li>
               <router-link to="#" @click.prevent="$emit('open-booking-modal')" class="mobile-nav-link">Book a
                 Trip</router-link>

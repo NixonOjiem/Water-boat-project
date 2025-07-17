@@ -4,7 +4,7 @@
       <!-- Top Section: About Yieh Boats -->
       <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div class="h-full w-full flex items-center justify-center" data-aos="fade-up" data-aos-duration="1200">
-          <img src="/images/Mbita & Rusinga Island.jpg" alt="A solar-powered boat gliding on a calm lake"
+          <img :src="currentSlide1" alt="A solar-powered boat gliding on a calm lake"
             class="animated-shape w-full h-full max-h-[500px] object-cover shadow-xl">
         </div>
 
@@ -85,7 +85,7 @@
         </div>
 
         <div class="h-full w-full flex items-center justify-center" data-aos="fade-up" data-aos-duration="1200">
-          <img src="/images/kisumu-yacht-club.jpg" alt="A blueprint for engineering and investment"
+          <img :src="currentSlide2" alt="A blueprint for engineering and investment"
             class="animated-shape w-full h-full max-h-[500px] object-cover shadow-xl">
         </div>
       </div>
@@ -188,57 +188,92 @@
                 <span class="sdg-text">Responsible Consumption</span>
               </div>
             </div>
-          </div>
         </div>
       </div>
 
     </div>
   </div>
+</div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 
-// This function will run after the component's template has been rendered to the DOM.
-onMounted(() => {
-  // Array of appealing, contrasting background colors (using hex codes for more variety)
-  const colors = [
-    '#f97316', // orange-500
-    '#84cc16', // lime-500
-    '#10b981', // emerald-500
-    '#06b6d4', // cyan-500
-    '#6366f1', // indigo-500
-    '#d946ef', // fuchsia-500
-    '#ec4899', // pink-500
-    '#f43f5e', // rose-500
-    '#22c55e', // green-500
-    '#3b82f6', // blue-500
-    '#8b5cf6', // violet-500
-    '#a855f7'  // purple-500
-  ];
+// Array of appealing, contrasting background colors (using hex codes for more variety)
+const colors = [
+  '#f97316', // orange-500
+  '#84cc16', // lime-500
+  '#10b981', // emerald-500
+  '#06b6d4', // cyan-500
+  '#6366f1', // indigo-500
+  '#d946ef', // fuchsia-500
+  '#ec4899', // pink-500
+  '#f43f5e', // rose-500
+  '#22c55e', // green-500
+  '#3b82f6', // blue-500
+  '#8b5cf6', // violet-500
+  '#a855f7'  // purple-500
+];
 
-  // Function to shuffle an array (Fisher-Yates shuffle)
-  function shuffle(array) {
-    let currentIndex = array.length, randomIndex;
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-    }
-    return array;
+// Function to shuffle an array (Fisher-Yates shuffle)
+function shuffle(array) {
+  let currentIndex = array.length, randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
   }
+  return array;
+}
 
-  // Get all the square elements from the container
+import pic1 from '/images/Rideau0625web.jpg';
+import pic2 from '/images/own_boat.jpg';
+import pic3 from '/images/download (3).jpg';
+
+import pic4 from '/images/download (1).jpg';
+import pic5 from '/images/221013_LASAI_0936.jpg';
+import pic6 from '/images/221013_LASAI_0917.jpg';
+
+const pictureSlides1 = [pic1, pic2, pic3];
+const pictureSlides2 = [pic4, pic5, pic6];
+
+const currentSlideIndex1 = ref(0);
+const currentSlideIndex2 = ref(0);
+let slideInterval1 = null;
+let slideInterval2 = null;
+
+// Computed properties to get the current image source
+const currentSlide1 = computed(() => pictureSlides1[currentSlideIndex1.value]);
+const currentSlide2 = computed(() => pictureSlides2[currentSlideIndex2.value]);
+
+// Function to advance the slide
+const nextSlide = (indexRef, slidesArray) => {
+  indexRef.value = (indexRef.value + 1) % slidesArray.length;
+};
+
+onMounted(() => {
+  // Assign random colors to SDG squares
   const squares = document.querySelectorAll('#random-color-squares .sdg-square');
-
-  // Shuffle the colors array to ensure no immediate repeats if possible
   const shuffledColors = shuffle([...colors]);
-
-  // Assign a unique random color to each square
   squares.forEach((square, index) => {
-    // Use the shuffled color, and loop back to the start if there are more squares than colors
     square.style.backgroundColor = shuffledColors[index % shuffledColors.length];
   });
+
+  // Start the first slider
+  slideInterval1 = setInterval(() => {
+    nextSlide(currentSlideIndex1, pictureSlides1);
+  }, 4000); // Change image every 4 seconds
+
+  // Start the second slider
+  slideInterval2 = setInterval(() => {
+    nextSlide(currentSlideIndex2, pictureSlides2);
+  }, 4000); // Change image every 4 seconds
+});
+
+onUnmounted(() => {
+  // Clear intervals when the component is unmounted to prevent memory leaks
+  if (slideInterval1) clearInterval(slideInterval1);
+  if (slideInterval2) clearInterval(slideInterval2);
 });
 </script>
 

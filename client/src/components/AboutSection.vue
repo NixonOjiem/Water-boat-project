@@ -91,7 +91,7 @@ defineEmits(['open-investment-form']);
 AOS.init();
 
 export default {
-  emit,
+
   name: 'AboutSection',
   // The mounted hook is no longer needed for AOS initialization
 };

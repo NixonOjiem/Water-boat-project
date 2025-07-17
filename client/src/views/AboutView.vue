@@ -10,13 +10,16 @@
         @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"
         @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="1000" />
       <div class="h-[500px] w-full"></div>
-      <AboutComponent />
+      <AboutComponent @open-investment-form="openInvestmentForm" />
       <FloatingBar @open-booking-modal="openBookingModal" />
 
       <transition name="modal-fade">
         <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" />
       </transition>
 
+      <transition name="modal-fade">
+        <InvestmentForm v-if="investmentFormOpen" @close="closeInvestmentForm" />
+      </transition>
     </div>
     <Footer />
   </section>
@@ -30,6 +33,7 @@ import Footer from '@/components/Footer.vue';
 import AboutComponent from '@/components/AboutComponent.vue';
 import FloatingBar from '@/components/FloatingBar.vue';
 import BookingModal from '@/components/BookingModal.vue';
+import InvestmentForm from '@/components/InvestmentForm.vue';
 
 // Initialize AOS for animations
 onMounted(() => {
@@ -63,6 +67,17 @@ const openBookingModal = () => {
 }
 const closeBookingModal = () => {
   isBookingModalOpen.value = false;
+  document.body.style.overflow = '';
+}
+
+// --- Investment Form State ---
+const investmentFormOpen = ref(false)
+const openInvestmentForm = () => {
+  investmentFormOpen.value = true;
+  document.body.style.overflow = 'hidden';
+}
+const closeInvestmentForm = () => {
+  investmentFormOpen.value = false;
   document.body.style.overflow = '';
 }
 

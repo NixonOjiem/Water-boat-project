@@ -11,22 +11,35 @@
         @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="1000" />
       <div class="h-[500px] w-full"></div>
       <AboutComponent />
+      <FloatingBar @open-booking-modal="openBookingModal" />
+
+      <transition name="modal-fade">
+        <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" />
+      </transition>
+
     </div>
     <Footer />
   </section>
 
 </template>
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineEmits } from 'vue';
 import AOS from 'aos';
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import AboutComponent from '@/components/AboutComponent.vue';
+import FloatingBar from '@/components/FloatingBar.vue';
+import BookingModal from '@/components/BookingModal.vue';
 
 // Initialize AOS for animations
 onMounted(() => {
   AOS.init();
 });
+
+// --- Emits ---
+// This is kept for communication between components if needed, but not strictly
+// necessary for the booking modal logic as it's handled locally now.
+const emit = defineEmits(["toggle-desktop-menu", "open-booking-modal"]);
 
 // --- State for Mobile Menu ---
 const isMobileMenuOpen = ref(false);
@@ -43,14 +56,15 @@ const toggleDesktopMenu = (event) => {
 };
 
 // --- Booking Modal State ---
-const isBookingModalOpen = ref(false);
+const isBookingModalOpen = ref(false)
 const openBookingModal = () => {
   isBookingModalOpen.value = true;
   document.body.style.overflow = 'hidden';
-};
+}
 const closeBookingModal = () => {
   isBookingModalOpen.value = false;
   document.body.style.overflow = '';
-};
+}
+
 </script>
 <style></style>

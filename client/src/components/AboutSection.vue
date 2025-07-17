@@ -58,11 +58,20 @@
                 significant returns.</span>
             </li>
           </ul>
-          <div class="mt-8">
-            <a href="/about"
-              class="inline-block bg-gray-500 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-opacity-90 transition-colors duration-300">
-              Learn More
-            </a>
+          <div
+            class="display: flex; justify-content: center; margin-top: 20px; flex-direction: row; align-items: center;">
+            <div class="m-8" style="display: inline-block;">
+              <a href="/about"
+                class="inline-block bg-[#002255] text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-opacity-90 transition-colors duration-300">
+                Learn More
+              </a>
+            </div>
+            <div class="m-8" style="display: inline-block;">
+              <a href="/about"
+                class="inline-block bg-[#002255] text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-opacity-90 transition-colors duration-300">
+                Invest in YiehBoats
+              </a>
+            </div>
           </div>
         </div>
       </div>

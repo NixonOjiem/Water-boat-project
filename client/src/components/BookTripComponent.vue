@@ -67,7 +67,7 @@
 import 'aos/dist/aos.css'
 import AOS from 'aos'
 
-import pic1 from '/images/download (2).jpg'
+// import pic1 from '/images/download (2).jpg'
 import pic2 from '/images/download (1).jpg'
 import pic3 from '/images/221013_LASAI_0936.jpg'
 import pic4 from '/images/221013_LASAI_0917.jpg'
@@ -80,7 +80,7 @@ export default {
       // MODIFICATION: Add index to track the current image
       currentImageIndex: 0,
       pictureSlides: [
-        pic1,
+        // pic1,
         pic2,
         pic3,
         pic4

@@ -8,7 +8,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" data-aos="fade-up"
         data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
         <div>
-          <img src="/images/Mbita & Rusinga Island.jpg" alt="Our Team"
+          <img src="/images/Solar boat.jpg" alt="Our Team"
             class="w-full h-auto object-cover rounded-xl shadow-lg animated-shape glow" />
         </div>
 
@@ -91,7 +91,6 @@ defineEmits(['open-investment-form']);
 AOS.init();
 
 export default {
-
   name: 'AboutSection',
   // The mounted hook is no longer needed for AOS initialization
 };

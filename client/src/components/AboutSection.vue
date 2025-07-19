@@ -9,7 +9,7 @@
         data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
         <div>
           <img src="/images/Solar boat.jpg" alt="Our Team"
-            class="w-full h-auto object-cover rounded-xl shadow-lg animated-shape glow" />
+            class="w-full h-auto object-cover rounded-xl shadow-lg glow" />
         </div>
 
         <div>

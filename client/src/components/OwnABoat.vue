@@ -63,7 +63,7 @@
 
           <div class="relative z-20 w-full max-w-2xl h-[500px] lg:h-[600px]">
             <img v-for="(slide, index) in pictureSlides" :key="index" :src="slide" alt="Solar-powered catamaran"
-              class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl glow animated-shape transition-opacity duration-1000 ease-in-out"
+              class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl glow transition-opacity duration-1000 ease-in-out"
               :class="{ 'opacity-100': currentImageIndex === index, 'opacity-0': currentImageIndex !== index }" />
 
             <div class="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg p-4 border border-cyan-100 w-48 z-10">
@@ -231,7 +231,7 @@ body {
   animation: shine 8s infinite;
 }
 
-@keyframes shine {
+/* @keyframes shine {
   0% {
     transform: translateX(-100%) rotate(30deg);
   }
@@ -243,7 +243,7 @@ body {
   100% {
     transform: translateX(100%) rotate(30deg);
   }
-}
+} */
 
 .glow {
   filter: drop-shadow(0 0 10px rgba(56, 178, 172, 0.5));
@@ -259,7 +259,7 @@ body {
   clip-path: polygon(0 25%, 25% 0, 100% 15%, 100% 85%, 75% 100%, 0 75%);
 }
 
-@keyframes morph {
+/* @keyframes morph {
   0% {
     clip-path: polygon(0% 15%, 15% 0%, 100% 25%, 85% 100%, 15% 100%, 0% 85%);
   }
@@ -271,5 +271,5 @@ body {
   100% {
     clip-path: polygon(0% 15%, 15% 0%, 100% 25%, 85% 100%, 15% 100%, 0% 85%);
   }
-}
+} */
 </style>

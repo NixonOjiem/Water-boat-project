@@ -1,10 +1,10 @@
 <template>
   <div class="floating-container sticky bottom-0 z-[9999]">
     <div
-      class="floating-content bg-white shadow-lg rounded-t-xl p-2 flex items-center justify-around max-w-2xl mx-auto space-x-2 border border-gray-200">
+      class="floating-content shadow-lg rounded-t-xl flex items-center justify-around max-w-2xl mx-auto">
 
       <router-link to="#" @click.prevent="$emit('open-booking-modal')"
-        class="flex flex-col items-center justify-center text-center bg-blue-50 rounded-lg w-1/2 transition-all duration-300 hover:shadow-sm hover:bg-blue-100 h-full">
+        class="flex flex-col items-center justify-center text-center bg-blue-50 rounded-tl-lg w-1/2 transition-all duration-300 hover:shadow-sm hover:bg-blue-100 h-full">
 
         <div class="flex flex-col items-center justify-center p-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -17,7 +17,7 @@
       </router-link>
 
       <router-link to="/custom-boat"
-        class="flex flex-col items-center justify-center text-center bg-green-50 rounded-lg w-1/2 transition-all duration-300 hover:shadow-sm hover:bg-green-100 h-full">
+        class="flex flex-col items-center justify-center text-center bg-green-50 rounded-tr-lg w-1/2 transition-all duration-300 hover:shadow-sm hover:bg-green-100 h-full">
 
         <div class="flex flex-col items-center justify-center p-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

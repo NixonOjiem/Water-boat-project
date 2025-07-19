@@ -1,75 +1,97 @@
 <template>
   <div class="yieh-boats-showcase">
-    <section id="applications" class="feature-section">
+    <section id="applications" class="feature-section px-5">
       <div class="feature-image image-slider-container">
-        <div class="image-slider-track" :style="sliderStyle">
-          <img v-for="(pic, index) in slidePictures_B" :key="`slide-1-${index}`" :src="pic"
-            alt="Solar boat application" />
+        <div class="image-slider-track" :style="sliderStyles.applications">
+          <img v-for="(pic, index) in sliders.applications.pictures" :key="`slide-app-${index}`" :src="pic" class="rounded-2xl"
+            alt="Solar boat in a serene lake application" />
         </div>
       </div>
       <div class="feature-content">
-        <h2>Endless Applications</h2>
-        <p>From serene lake cruises and fishing trips to commercial transport and research, our solar boats are designed
-          for versatility.</p>
+        <h2>Endless Applications, Zero Compromises</h2>
+        <p>
+          Our solar electric boats are engineered for unparalleled versatility. Forget the limitations of traditional
+          boating; embrace the freedom of silent, sustainable power. Whether for personal leisure or commercial
+          enterprise,
+          there's a YiehBoat for every purpose.
+        </p>
+        <ul class="custom-options-list">
+          <li><strong>Eco-Tourism & Charters:</strong> Offer silent, emission-free tours that don't disturb wildlife,
+            providing an immersive nature experience.</li>
+          <li><strong>Water Taxis & Ferries:</strong> Reduce operational costs and your carbon footprint with reliable,
+            solar-powered public transport solutions.</li>
+          <li><strong>Fishing & Angling:</strong> Approach your favorite fishing spots with stealth. Our silent motors
+            won't scare away the fish.</li>
+          <li><strong>Private Leisure & Cruising:</strong> Enjoy peaceful days on the water with family and friends,
+            powered only by the sun.</li>
+        </ul>
         <div class="scroll-gallery">
-          <div v-for="(pic, index) in slidePictures" :key="`gallery-${index}`" class="gallery-item">
-            <img :src="pic" :alt="'Solar boat application ' + (index + 1)" />
+          <div v-for="(pic, index) in sliders.customization.pictures" :key="`gallery-${index}`" class="gallery-item">
+            <img :src="pic" :alt="'Solar boat application ' + (index + 1)"  class="rounded-2xl"/>
           </div>
         </div>
         <p class="scroll-hint">Scroll sideways to see more &rarr;</p>
       </div>
     </section>
 
-    <hr class="section-divider">
-
-    <section id="advantages" class="feature-section reverse-layout">
+    <section id="advantages" class="feature-section reverse-layout px-5">
+      <div class="feature-image image-slider-container">
+        <div class="image-slider-track" :style="sliderStyles.advantages">
+          <img v-for="(pic, index) in sliders.advantages.pictures" :key="`slide-adv-${index}`" :src="pic"  class="rounded-2xl"
+            alt="A sleek YiehBoats solar vessel showing its advantages" />
+        </div>
+      </div>
       <div class="feature-content">
         <h2>The YiehBoats Advantage</h2>
-        <p>Experience the unique benefits of harnessing solar power on the water.</p>
+        <p>
+          Harnessing solar power on the water isn't just a novelty—it's a fundamental shift towards smarter, cleaner,
+          and more enjoyable boating. Experience benefits that gasoline and diesel engines simply can't offer.
+        </p>
         <ul class="advantages-list">
-          <li>🌿 <strong>Eco-Friendly:</strong> Zero emissions for a cleaner planet.</li>
-          <li>🤫 <strong>Silent Operation:</strong> Glide through the water without noise pollution.</li>
-          <li>💰 <strong>Cost-Effective:</strong> Minimal running costs with free energy from the sun.</li>
-          <li>🔧 <strong>Low Maintenance:</strong> Fewer moving parts means less upkeep and more time on the water.</li>
+          <li>🌿 <strong>Eco-Friendly:</strong> Glide on the water with a clear conscience. Our boats produce zero
+            emissions and no oil leaks, protecting the fragile aquatic ecosystems you love.</li>
+          <li>🤫 <strong>Silent Operation:</strong> Rediscover the sounds of nature. The near-silent electric motor
+            eliminates noise pollution, allowing for peaceful conversations and wildlife observation.</li>
+          <li>💰 <strong>Cost-Effective:</strong> The sun provides free fuel. Drastically cut your running costs by
+            eliminating expenses for gasoline, oil changes, and frequent engine servicing.</li>
+          <li>🔧 <strong>Low Maintenance:</strong> With far fewer moving parts than a traditional combustion engine, our
+            electric propulsion systems require minimal upkeep, giving you more time on the water.</li>
         </ul>
-      </div>
-      <div class="feature-image image-slider-container">
-        <div class="image-slider-track" :style="sliderStyle">
-          <img v-for="(pic, index) in slidePictures_A" :key="`slide-2-${index}`" :src="pic"
-            alt="A sleek YiehBoats solar vessel" />
-        </div>
       </div>
     </section>
 
-    <hr class="section-divider">
-
-    <section id="customization" class="feature-section">
+    <section id="customization" class="feature-section px-5 mb-6">
       <div class="feature-image image-slider-container">
-        <div class="image-slider-track" :style="sliderStyle">
-          <img v-for="(pic, index) in slidePictures" :key="`slide-3-${index}`" :src="pic"
+        <div class="image-slider-track" :style="sliderStyles.customization">
+          <img v-for="(pic, index) in sliders.customization.pictures" :key="`slide-cust-${index}`" :src="pic"  class="rounded-2xl"
             alt="Detailed view of a YiehBoats custom build" />
         </div>
       </div>
       <div class="feature-content">
         <h2>Tailored to Your Vision</h2>
-        <p>Your boat, your rules. Whether you want a boat for easy cruising, fishing, a party
-          boat or a multiday cruiser. We can create a boat with the
-          deck layout that suits your needs:</p>
+        <p>
+          Your boat should be a perfect reflection of your needs. We don't believe in one-size-fits-all. Our design
+          process is a collaboration, allowing you to specify everything from the hull material to the onboard
+          technology.
+        </p>
         <ul class="custom-options-list">
-          <li>Hull Size & Layout: Depending on your applications we can choose different hull materials</li>
-          <li>Size: Depending on you needs we can size the boat accordingly</li>
-          <li>Speed: We can design your boat for your required speed</li>
-          <li>Navigation & Tech Gadgets</li>
+          <li><strong>Hull Design & Materials:</strong> Choose from lightweight fiberglass for agility, robust aluminum
+            for durability, or classic wood finishes for timeless style.</li>
+          <li><strong>Bespoke Dimensions:</strong> We size the boat to your exact needs, whether it's a compact vessel
+            for two or a spacious deck for commercial tours.</li>
+          <li><strong>Performance Tuning:</strong> Define your need for speed and range. We'll engineer the optimal
+            motor power, battery bank capacity, and solar array size to match.</li>
+          <li><strong>Luxury Finishes & Tech:</strong> Select from premium seating, advanced navigation systems,
+            high-end sound systems, and other custom tech gadgets.</li>
         </ul>
         <a href='#' @click.prevent="$emit('open-design-boat')" class="cta-button">Design Your Boat Today</a>
       </div>
     </section>
-
   </div>
 </template>
 
 <script>
-import { defineEmits } from "vue";
+// Image imports
 import boat1 from '/images/download (1).jpg';
 import boat2 from '/images/download (2).jpg';
 import boat3 from '/images/download (3).jpg';
@@ -80,57 +102,67 @@ import boat7 from '/images/Rideau0625web.jpg';
 import boat8 from '/images/221013_LASAI_0936.jpg';
 import boat9 from '/images/wwf_solar_ok.jpg';
 
-const emit = defineEmits(["open-design-boat"]);
-
-
 export default {
   name: 'YiehBoatsShowcase',
+  emits: ["open-design-boat"],
   data() {
     return {
-      emit,
-      slidePictures: [
-        boat1,
-        boat2,
-        boat3,
-      ],
-      slidePictures_A: [
-        boat4,
-        boat5,
-        boat6,
-      ],
-      slidePictures_B: [
-        boat7,
-        boat8,
-        boat9,
-      ],
-      currentSlideIndex: 0,
-      slideInterval: null,
+      // Each slider now has its own state for independent operation
+      sliders: {
+        applications: {
+          pictures: [boat7, boat8, boat9],
+          currentIndex: 0,
+          interval: null,
+        },
+        advantages: {
+          pictures: [boat4, boat5, boat6],
+          currentIndex: 0,
+          interval: null,
+        },
+        customization: {
+          pictures: [boat1, boat2, boat3],
+          currentIndex: 0,
+          interval: null,
+        },
+      },
     };
   },
   computed: {
-    sliderStyle() {
-      // This computed property calculates the CSS transform to slide the images
-      return {
-        transform: `translateX(-${this.currentSlideIndex * 100}%)`
-      };
-    }
+    // This computed property generates the correct style for each slider
+    sliderStyles() {
+      const styles = {};
+      for (const key in this.sliders) {
+        const slider = this.sliders[key];
+        styles[key] = {
+          transform: `translateX(-${slider.currentIndex * 100}%)`,
+        };
+      }
+      return styles;
+    },
   },
   methods: {
-    nextSlide() {
-      // Moves to the next slide, or loops back to the first
-      const newIndex = this.currentSlideIndex + 1;
-      this.currentSlideIndex = newIndex >= this.slidePictures.length ? 0 : newIndex;
-    }
+    // A single method to advance the slide for a specific slider
+    nextSlide(sliderKey) {
+      const slider = this.sliders[sliderKey];
+      const newIndex = slider.currentIndex + 1;
+      slider.currentIndex = newIndex >= slider.pictures.length ? 0 : newIndex;
+    },
   },
   mounted() {
-    // Start the automatic sliding every 4 seconds
-    this.slideInterval = setInterval(this.nextSlide, 4000);
+    // Start an interval for each slider
+    for (const key in this.sliders) {
+      this.sliders[key].interval = setInterval(() => {
+        this.nextSlide(key);
+      }, 4000); // Change slide every 4 seconds
+    }
   },
   beforeUnmount() {
-    // Clean up the interval when the component is removed to prevent memory leaks
-    clearInterval(this.slideInterval);
-  }
-}
+    // Clean up all intervals when the component is destroyed
+    for (const key in this.sliders) {
+      clearInterval(this.sliders[key].interval);
+    }
+  },
+};
 </script>
 
 <style scoped>
@@ -142,90 +174,60 @@ export default {
   color: #333;
   background-color: #f4f7f6;
   overflow-x: hidden;
+  /* Prevents horizontal scrollbar from layout shifts */
 }
 
-.showcase-header {
-  text-align: center;
-  padding: 3rem 1rem;
-  background-color: #004266;
-  color: white;
-}
-
-.showcase-header h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  margin: 0;
-}
-
-.showcase-header p {
-  font-size: 1.25rem;
-  color: #cceeff;
-  margin-top: 0.5rem;
-}
-
-.section-divider {
-  border: 0;
-  height: 1px;
-  background: #ddd;
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
-/* --- Feature Section Layout --- */
+/* --- Feature Section Layout (FULL-WIDTH IMAGES) --- */
 .feature-section {
   display: flex;
   align-items: center;
-  gap: 3rem;
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  /* No padding here to allow image to be full-width */
+  width: 100%;
 }
 
 .feature-section.reverse-layout {
   flex-direction: row-reverse;
 }
 
-.feature-image,
-.feature-content {
+/* The image container takes up half the space */
+.feature-image {
   flex: 1;
-  min-width: 300px;
+  min-width: 50%;
+  height: 550px;
+  /* NEW: Set a fixed height for the slider area */
 }
 
-/* --- NEW: Image Slider Styles --- */
+/* The content container takes up the other half and has internal padding */
+.feature-content {
+  flex: 1;
+  min-width: 50%;
+  padding: 4rem 5%;
+  /* NEW: Padding is now inside the content block */
+  box-sizing: border-box;
+}
+
+/* --- Image Slider Styles --- */
 .image-slider-container {
   overflow: hidden;
-  /* This is crucial to hide the other images */
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  height: 42rem;
+  object-fit: cover;
 }
 
 .image-slider-track {
   display: flex;
   /* Aligns images horizontally */
-  transition: transform 0.5s ease-in-out;
-  /* The sliding animation */
-}
-
-.image-slider-track-B {
-  display: flex;
-  /* Aligns images horizontally */
+  height: 100%;
   transition: transform 0.7s ease-in-out;
-  /* The sliding animation */
-}
-
-.image-slider-track-A {
-  display: flex;
-  /* Aligns images horizontally */
-  transition: transform 0.9s ease-in-out;
   /* The sliding animation */
 }
 
 .image-slider-track img {
   width: 100%;
-  height: auto;
+  height: 100%;
   flex-shrink: 0;
   /* Prevents images from shrinking */
   object-fit: cover;
+  /* Prevents distortion */
 }
 
 /* --- Content Styling --- */
@@ -253,11 +255,16 @@ export default {
 .custom-options-list li {
   margin-bottom: 1rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  /* Aligns items to the top */
+  line-height: 1.5;
 }
 
-.advantages-list li strong {
+.advantages-list li strong,
+.custom-options-list li strong {
   margin-left: 0.5rem;
+  display: block;
+  /* Ensures strong tag text flows correctly */
 }
 
 /* --- Side-Scrolling Gallery --- */
@@ -305,6 +312,7 @@ export default {
 
 /* --- Call to Action Button --- */
 .cta-button {
+  display: inline-block;
   background-color: #101828;
   color: white;
   border: none;
@@ -313,39 +321,35 @@ export default {
   font-weight: bold;
   border-radius: 50px;
   cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
   margin-top: 1rem;
 }
 
 .cta-button:hover {
-  background-color: #868a94;
+  background-color: #005a8c;
   transform: translateY(-2px);
 }
 
 /* --- Responsive Design --- */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
   .feature-section,
   .feature-section.reverse-layout {
     flex-direction: column;
-    padding: 2rem 1rem;
-    gap: 2rem;
   }
 
-  #customization .feature-image {
-    order: 2;
+  .feature-image {
+    width: 100%;
+    min-width: 100%;
+    height: 400px;
+    /* Adjust height for mobile */
   }
 
-  #customization .feature-content {
-    order: 1;
-  }
-
-  .showcase-header h1 {
-    font-size: 2.2rem;
-  }
-
-  .feature-content h2 {
-    font-size: 2rem;
+  .feature-content {
+    width: 100%;
+    min-width: 100%;
+    padding: 2.5rem 1.5rem;
   }
 }
 </style>

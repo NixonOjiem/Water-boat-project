@@ -1,11 +1,10 @@
 <template>
   <div class="bg-[#D8EDFF] py-8 overflow-hidden">
     <div class="container mx-auto px-4">
-      <!-- Top Section: About Yieh Boats -->
       <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div class="h-full w-full flex items-center justify-center" data-aos="fade-up" data-aos-duration="1200">
           <img :src="currentSlide1" alt="A solar-powered boat gliding on a calm lake"
-            class="animated-shape w-full h-full max-h-[500px] object-cover shadow-xl">
+            class="w-full h-full max-h-[500px] object-cover shadow-xl rounded-lg">
         </div>
 
         <div class="flex flex-col justify-center">
@@ -34,7 +33,6 @@
         </div>
       </div>
 
-      <!-- Middle Section: The Advantage -->
       <div class="mt-16 md:mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div>
           <h2 class="text-3xl md:text-4xl text-center font-bold text-slate-800 mb-8" data-aos="fade-up">
@@ -92,19 +90,16 @@
 
         <div class="h-full w-full flex items-center justify-center" data-aos="fade-up" data-aos-duration="1200">
           <img :src="currentSlide2" alt="A blueprint for engineering and investment"
-            class="animated-shape w-full h-full max-h-[500px] object-cover shadow-xl">
+            class="w-full h-full max-h-[500px] object-cover shadow-xl rounded-lg">
         </div>
       </div>
 
 
-      <!-- Bottom Section: Sustainable Development Goals (Integrated) -->
       <div class="mt-16 md:mt-24">
         <div class="flex flex-col justify-center" data-aos="fade-up" data-aos-duration="1000">
 
-          <!-- Wrapper for the first two cards to be side-by-side -->
           <div class="flex flex-col lg:flex-row gap-8 mb-8">
 
-            <!-- Card 1 (Left) -->
             <div class="w-full lg:w-1/2 bg-white p-8 rounded-2xl shadow-lg flex flex-col">
               <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-800">
                 No poverty, hunger, good and well-being.
@@ -114,7 +109,6 @@
                 lake that can produce more fish in a sustainable way, eliminating hunger and ensuring the people can
                 live healthily in and around the lake.
               </p>
-              <!-- SDG Squares for Card 1 -->
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-auto">
                 <div class="sdg-square bg-red-600">
                   <span class="sdg-number">1</span>
@@ -131,7 +125,6 @@
               </div>
             </div>
 
-            <!-- Card 2 (Right) -->
             <div class="w-full lg:w-1/2 bg-white p-8 rounded-2xl shadow-lg flex flex-col">
               <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-800">
                 No pollution of the lake.
@@ -146,7 +139,6 @@
                 <li>No engine oil needed i.e no engine oil spills</li>
                 <li>No pollution from plastic waste</li>
               </ul>
-              <!-- SDG Squares for Card 2 -->
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-auto">
                 <div class="sdg-square" style="background-color: #3EB049;">
                   <span class="sdg-number">14</span>
@@ -164,12 +156,10 @@
             </div>
           </div>
 
-          <!-- Card 3 (Full Width) -->
           <div class="w-full bg-white p-8 rounded-2xl shadow-lg">
             <h2 class="text-4xl md:text-5xl font-bold mb-6 text-slate-800 text-center">
               Building a Sustainable Future
             </h2>
-            <!-- SDG Squares for Card 3 with an ID for JS targeting -->
             <div id="random-color-squares" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               <div class="sdg-square">
                 <span class="sdg-number">7</span>
@@ -286,33 +276,9 @@ onUnmounted(() => {
 </script>
 
 <style>
-/* Your existing animated shape styles */
-.animated-shape {
-  clip-path: polygon(0% 15%, 15% 0%, 100% 25%, 85% 100%, 15% 100%, 0% 85%);
-  animation: morph 8s ease-in-out infinite;
-  transition: all 0.5s ease;
-}
-
-.animated-shape:hover {
-  animation-play-state: paused;
-  /* Pauses the animation on hover */
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  /* Expands to full rectangle */
-}
-
-@keyframes morph {
-  0% {
-    clip-path: polygon(0% 15%, 15% 0%, 100% 25%, 85% 100%, 15% 100%, 0% 85%);
-  }
-
-  50% {
-    clip-path: polygon(0 25%, 25% 0, 100% 15%, 100% 85%, 75% 100%, 0 75%);
-  }
-
-  100% {
-    clip-path: polygon(0% 15%, 15% 0%, 100% 25%, 85% 100%, 15% 100%, 0% 85%);
-  }
-}
+/* The .animated-shape class, its :hover state, and the @keyframes morph
+  animation have been removed from here.
+*/
 
 /* Custom styles for the SDG squares for a consistent look */
 .sdg-square {

@@ -56,7 +56,7 @@
           <div class="w-[500px] h-[500px] absolute bg-cyan-500/20 blur-3xl rounded-full"></div>
 
           <img v-for="(slide, index) in pictureSlides" :key="index" :src="slide" alt="A modern catamaran on a calm lake"
-            class="absolute inset-0 w-full h-full object-cover z-10 animated-shape transition-opacity duration-1000 ease-in-out"
+            class="absolute inset-0 rounded-xl w-full h-full object-cover z-10 transition-opacity duration-1000 ease-in-out"
             :class="{ 'opacity-100': currentImageIndex === index, 'opacity-0': currentImageIndex !== index }" />
         </div>
       </div>

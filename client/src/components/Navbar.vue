@@ -5,10 +5,10 @@
     { 'py-2': isScrolled, 'py-5': !isScrolled },
   ]">
     <nav ref="desktopNavRef"
-      class="hidden md:flex items-center w-full max-w-6xl mx-auto bg-white px-8 py-4 rounded-[2.75rem] shadow-md">
+      class="hidden md:flex items-center w-full max-w-6xl mx-auto bg-white px-8 rounded-[2.75rem] shadow-md">
       <div class="logo-nav flex-shrink-0">
         <router-link to="/" class="flex items-center space-x-2">
-          <img src="/logo-web.svg" alt="YiehBoats Logo" class="h-[50px] w-[50px] rounded-md">
+          <img src="/logo-web.svg" alt="YiehBoats Logo" class="h-[50px] w-[50px] rounded-md object-cover">
           <span class="text-xl md:text-2xl font-bold text-gray-800">YiehBoats</span>
         </router-link>
       </div>

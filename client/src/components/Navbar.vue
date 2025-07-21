@@ -13,10 +13,10 @@
         </router-link>
       </div>
 
-      <ul class="flex items-center space-x-8 mx-auto">
-        <!-- <li>
-          <router-link to="/services" class="text-gray-700 hover:text-blue-600 font-medium">Our Services</router-link>
-        </li> -->
+      <ul class="flex items-center space-x-8 mx-auto desktop-nav-links">
+        <li>
+          <router-link to="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</router-link>
+        </li>
         <li>
           <router-link to="/custom-boat" class="text-gray-700 hover:text-blue-600 font-medium">Custom
             Boats</router-link>
@@ -24,9 +24,6 @@
         <li>
           <a href="#" @click.prevent="$emit('open-booking-modal')"
             class="text-gray-700 hover:text-blue-600 font-medium">Book a Trip</a>
-        </li>
-        <li>
-          <router-link to="/trips" class="text-gray-700 hover:text-blue-600 font-medium">Trips</router-link>
         </li>
         <li>
           <router-link to="/gallery" class="text-gray-700 hover:text-blue-600 font-medium">Gallery</router-link>
@@ -55,9 +52,8 @@
                     </router-link>
                   </li>
                   <li>
-                    <router-link to="/settings" class="hover:text-blue-600"
-                      @click="$emit('toggle-desktop-menu', $event)">
-                      Settings
+                    <router-link to="/trips" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">
+                      Trips
                     </router-link>
                   </li>
                   <li>
@@ -103,6 +99,9 @@
         <div v-if="isMobileMenuOpen" class="mt-2 bg-white rounded-2xl shadow-lg p-5">
           <ul class="flex flex-col space-y-4 text-gray-700">
 
+            <li>
+              <router-link to="/" class="mobile-nav-link">Home</router-link>
+            </li>
             <li>
               <router-link to="/custom-boat" class="mobile-nav-link">Custom Boats</router-link>
             </li>
@@ -276,5 +275,37 @@ onUnmounted(() => {
 .mobile-nav-link:hover {
   background-color: #bfdbfe;
   color: #002255;
+}
+
+/* --- NEW STYLES FOR TEXT SIZE REDUCTION --- */
+
+/* Default font size for desktop links (adjust if your default is different) */
+.desktop-nav-links li .router-link-active,
+.desktop-nav-links li a {
+  font-size: 1rem;
+  /* This is typically the default for 'font-medium' in Tailwind if not overridden */
+}
+
+/* Media query for screens up to 807px wide */
+@media (max-width: 807px) {
+
+  .desktop-nav-links li .router-link-active,
+  .desktop-nav-links li a {
+    font-size: 0.85rem;
+    /* Smaller size for screens <= 807px */
+    /* You might also want to adjust spacing here if text gets too cramped */
+    /* For example: */
+    /* padding: 0.3rem 0.5rem; */
+    /* margin: 0 0.25rem; */
+  }
+
+  /* Optionally, you might want to slightly reduce the space between links too */
+  .desktop-nav-links {
+    /* For Tailwind's `space-x-8`, it sets `margin-left` for all but the first child. */
+    /* You can override this for smaller screens. */
+    gap: 0rem;
+    /* Or adjust `space-x` class on the ul itself if you prefer a Tailwind-only approach */
+    /* Example: `space-x-4` instead of `space-x-8` */
+  }
 }
 </style>

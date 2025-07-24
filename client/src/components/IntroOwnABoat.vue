@@ -24,15 +24,16 @@
       </ul>
     </section>
 
-    <section class="md:float-right md:w-1/2 bg-[#101828] ">
-      <h2 class="text-white center text-center">Zero compromises</h2>
-      <p class="text-white mt-2 text-left">
+    <section class="md:float-right md:w-1/2 bg-[#101828]">
+      <h2 class="text-white center text-center text-2xl font-semibold mb-4">Zero compromises</h2>
+      <p class="text-white mt-2 text-left pl-4">
         Own a boat
         Picture scroll with different applications
         Our solar electric boats are engineered for
         unparalleled versatility. Forget the
         limitations of traditional boating; embrace
         the freedom of silent, sustainable power.
+        <br />
         <br />
         Whether for personal leisure or commercial
         enterprise, there's a YiehBoat for every

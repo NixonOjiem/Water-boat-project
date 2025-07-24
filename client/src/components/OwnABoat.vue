@@ -52,7 +52,7 @@
           <router-link to="/custom-boat" class="group mt-10 inline-block">
             <span
               class="px-8 py-4 font-bold text-white inline-block solar-gradient rounded-xl transition-all duration-300 ease-in-out group-hover:shadow-lg group-hover:shadow-cyan-300/50 group-hover:-translate-y-1 solar-shine">
-              Own A Solar Boat
+              Design Your Boat Now
               <i class="fas fa-arrow-right ml-2 text-sm"></i>
             </span>
           </router-link>

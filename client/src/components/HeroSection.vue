@@ -19,7 +19,7 @@
           Book a Trip
         </button>
         <router-link to="/custom-boat" class="btn btn-glass">
-          Custom Boat
+          Own a Boat
         </router-link>
       </div>
     </div>

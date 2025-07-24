@@ -15,10 +15,10 @@
         Experience Lake Victoria's Majesty
       </p>
       <div class="button-container">
-        <button class="btn btn-glass" @click.prevent="openBookingModal">
+        <button class="btn py-[0.75rem] px-[1.5rem] bg-[#00AAD4] btn-glass" @click.prevent="openBookingModal">
           Book a Trip
         </button>
-        <router-link to="/custom-boat" class="btn btn-glass">
+        <router-link to="/custom-boat" class="btn py-[1rem] px-[2.5rem] text-black bg-[#D9FAE5] btn-glass">
           Own a Boat
         </router-link>
       </div>
@@ -154,10 +154,10 @@ onUnmounted(() => {
 
 /* Base style for the buttons */
 .btn {
-  padding: 0.75rem 1.5rem;
+  /* padding: 0.75rem 1.5rem; */
   border-radius: 0.75rem;
-  color: white;
-  font-weight: 600;
+  /* color: white; */
+  /* font-weight: 600; */
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
@@ -167,16 +167,13 @@ onUnmounted(() => {
 
 .btn:hover {
   transform: translateY(-3px);
+  color: #fdfdfd;
 }
 
 /* Glass effect for the buttons */
 .btn-glass {
-  background: rgba(1, 83, 49, 0.644);
-  /* Semi-transparent white */
   backdrop-filter: blur(12px);
-  /* The blur effect */
   -webkit-backdrop-filter: blur(12px);
-  /* Safari support */
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }

@@ -4,15 +4,13 @@
       @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"
       @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="1000" />
     <main
-      class="fixed top-0 left-0 w-full h-[50vh] bg-gray-900 text-white flex flex-col items-center justify-center z-[-999]">
-      <h1 class="text-4xl font-bold mb-6">Build Your Custom Boat</h1>
-      <p class="text-lg mb-12">
-        Design your dream boat with our experts. From concept to launch, we make it happen.
-      </p>
+      class="fixed top-0 left-0 w-full h-[20vh] bg-gray-900 text-white flex flex-col items-center justify-end z-[-999]">
+      <h1 class="text-4xl font-bold mb-6">Own a Boat</h1>
     </main>
 
-    <div class="pt-[50vh] z-99999">
-      <CustomBoatComponent @open-design-boat="openDesignBoatForm" />
+    <div class="pt-[20vh] z-99999">
+      <!-- <CustomBoatComponent @open-design-boat="openDesignBoatForm" /> pt-[50vh] -->
+      <IntroOwnABoat @open-design-boat="openDesignBoatForm" />
     </div>
     <transition name="modal-fade">
       <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" class="Z-9999999999" />
@@ -34,6 +32,7 @@ import CustomBoatComponent from '@/components/CustomBoatComponent.vue';
 import FloatingBar from '@/components/FloatingBar.vue';
 import BookingModal from '@/components/BookingModal.vue';
 import DesignBoatForm from '@/components/DesignBoatForm.vue';
+import IntroOwnABoat from '@/components/IntroOwnABoat.vue';
 
 // --- Booking Modal State ---
 const isBookingModalOpen = ref(false);

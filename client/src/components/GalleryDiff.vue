@@ -1,15 +1,15 @@
 <template>
-  <div class="bg-[#F4F8FA] py-6">
+  <div class="bg-[#F4F8FA] py-12">
     <div class="w-full max-w-6xl px-4 mx-auto mb-8 text-center">
       <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight">
-        The Art of Our Boat Building
+        Discover Our Diverse Boat Builds
       </h2>
       <p class="mt-3 text-xl text-gray-600">
-        Crafting dreams on water through precision engineering and timeless artistry.
+        From sleek motor yachts to robust fishing vessels, find your perfect craft.
       </p>
     </div>
-    <section
-      class="grid w-full grid-cols-2 gap-4 p-4 grid-flow-row-dense md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[24rem]">
+
+    <section class="grid w-full grid-cols-2 gap-4 p-4 grid-flow-row-dense md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[24rem]">
       <div class="relative overflow-hidden rounded-xl group col-span-2 lg:col-span-2 lg:row-span-1">
         <img
           src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -80,7 +80,6 @@
           <p class="card-description">Explore hidden gems with our expert captains.</p>
         </div>
       </div>
-
     </section>
     <div class="w-full max-w-6xl px-4 mx-auto my-12">
       <hr class="border-gray-200" />
@@ -90,11 +89,13 @@
 
 <script>
 export default {
-  name: 'GalleryComponent',
+  // No specific script logic needed for this component
+  name: 'GalleryDiff',
   setup() {
     // Setup logic can go here if needed
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

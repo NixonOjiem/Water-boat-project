@@ -15,21 +15,21 @@
 
       <ul class="flex items-center space-x-8 mx-auto desktop-nav-links">
         <li>
-          <router-link to="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</router-link>
+          <router-link to="/" class="text-gray-700 hover:text-[#101828] font-medium">Home</router-link>
         </li>
         <li>
-          <router-link to="/custom-boat" class="text-gray-700 hover:text-blue-600 font-medium">Custom
+          <router-link to="/custom-boat" class="text-gray-700 hover:text-[#101828] font-medium">Custom
             Boats</router-link>
         </li>
         <li>
           <a href="#" @click.prevent="$emit('open-booking-modal')"
-            class="text-gray-700 hover:text-blue-600 font-medium">Book a Trip</a>
+            class="text-gray-700 hover:text-[#101828] font-medium">Book a Trip</a>
         </li>
         <li>
-          <router-link to="/gallery" class="text-gray-700 hover:text-blue-600 font-medium">Gallery</router-link>
+          <router-link to="/gallery" class="text-gray-700 hover:text-[#101828] font-medium">Gallery</router-link>
         </li>
         <li>
-          <router-link to="/about" class="text-gray-700 hover:text-blue-600 font-medium">About Us</router-link>
+          <router-link to="/about" class="text-gray-700 hover:text-[#101828]font-medium">About Us</router-link>
         </li>
       </ul>
 

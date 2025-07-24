@@ -302,9 +302,7 @@ onUnmounted(() => {
 /* Style for the EXACT active link in the MOBILE navigation */
 .mobile-nav-link.router-link-exact-active {
   background-color: #bfdbfe;
-  /* This is Tailwind's blue-200 */
   color: #1e3a8a;
-  /* This is a darker blue, like blue-800 */
 }
 
 /* Media query for screens up to 807px wide */

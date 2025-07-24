@@ -51,7 +51,7 @@
                       Dashboard
                     </router-link>
                   </li>
-                  <li>
+                  <li>+++++++++
                     <router-link to="/trips" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">
                       Trips
                     </router-link>
@@ -284,6 +284,27 @@ onUnmounted(() => {
 .desktop-nav-links li a {
   font-size: 1rem;
   /* This is typically the default for 'font-medium' in Tailwind if not overridden */
+}
+
+/* --- NEW STYLES FOR ACTIVE LINK --- */
+
+/* Style for the EXACT active link in the DESKTOP navigation */
+.desktop-nav-links .router-link-exact-active {
+  color: #f9fbff;
+  /* This is Tailwind's text-blue-600 */
+  font-weight: 600;
+  /* This is Tailwind's font-semibold */
+  background-color: #101828;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+/* Style for the EXACT active link in the MOBILE navigation */
+.mobile-nav-link.router-link-exact-active {
+  background-color: #bfdbfe;
+  /* This is Tailwind's blue-200 */
+  color: #1e3a8a;
+  /* This is a darker blue, like blue-800 */
 }
 
 /* Media query for screens up to 807px wide */

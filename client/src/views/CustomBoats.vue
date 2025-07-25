@@ -10,6 +10,7 @@
     <div class="pt-[20vh] z-99999">
       <!-- <CustomBoatComponent @open-design-boat="openDesignBoatForm" /> pt-[50vh] -->
       <IntroOwnABoat @open-design-boat="openDesignBoatForm" />
+      <SlidingPicture />
     </div>
     <transition name="modal-fade">
       <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" class="Z-9999999999" />
@@ -33,6 +34,7 @@ import FloatingBar from '@/components/FloatingBar.vue';
 import BookingModal from '@/components/BookingModal.vue';
 import DesignBoatForm from '@/components/DesignBoatForm.vue';
 import IntroOwnABoat from '@/components/IntroOwnABoat.vue';
+import SlidingPicture from '@/components/SlidingPicture.vue';
 
 // --- Booking Modal State ---
 const isBookingModalOpen = ref(false);

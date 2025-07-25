@@ -13,6 +13,7 @@
       <SlidingPicture />
       <AdvanatgesOfOwningBoat />
       <TayloredToYourVision />
+      <OwnABoatComponent />
     </div>
     <transition name="modal-fade">
       <BookingModal v-if="isBookingModalOpen" @close="closeBookingModal" class="Z-9999999999" />
@@ -39,6 +40,7 @@ import IntroOwnABoat from '@/components/IntroOwnABoat.vue';
 import SlidingPicture from '@/components/SlidingPicture.vue';
 import AdvanatgesOfOwningBoat from '@/components/AdvanatgesOfOwningBoat.vue';
 import TayloredToYourVision from '@/components/TayloredToYourVision.vue';
+import OwnABoatComponent from '@/components/OwnABoatComponent.vue';
 
 // --- Booking Modal State ---
 const isBookingModalOpen = ref(false);

@@ -1,10 +1,12 @@
 <template>
   <div>
-    <section class="image-slider-section">
+    <section class="image-slider-section py-4">
       <div class="image-slider-container" :style="sliderTransform">
         <img v-for="(image, index) in extendedPictureSlides" :key="index" :src="image" alt="Sliding image"
           class="slider-image" />
       </div>
+      <button class="slider-arrow left-arrow" @click="prevImage">&#9664;</button>
+      <button class="slider-arrow right-arrow" @click="nextImage">&#9654;</button>
     </section>
   </div>
 </template>
@@ -22,7 +24,6 @@ import pic8 from '/images/20250417_130235.jpg'
 export default {
   data() {
     return {
-      // We'll manage an internal index that goes beyond the original array length
       internalImageIndex: 0,
       pictureSlides: [
         pic1,
@@ -34,39 +35,49 @@ export default {
         pic7,
         pic8
       ],
-      numImagesPerRow: 4,
-      // How many images to duplicate at each end for a smooth transition
-      // We need at least 'numImagesPerRow' images duplicated at the end to slide smoothly.
-      // And we need at least 'numImagesPerRow' at the beginning to handle the 'jump back'.
-      duplicateCount: 4, // Make this at least equal to numImagesPerRow
-      slideInterval: null
+      numImagesPerRow: 3,
+      duplicateCount: 3,
+      slideInterval: null,
+      autoSlideDelay: 3000,
+      shouldTransition: true,
     }
   },
   computed: {
-    // This array will contain duplicates for infinite scrolling
     extendedPictureSlides() {
       const original = this.pictureSlides;
       const firstFew = original.slice(0, this.duplicateCount);
       const lastFew = original.slice(original.length - this.duplicateCount);
       return [...lastFew, ...original, ...firstFew];
     },
-    // Calculate the transform for the slider container
     sliderTransform() {
-      // Calculate the offset based on the internal index
-      // The internal index will range from 0 to (original.length + 2 * duplicateCount - 1)
       const offset = this.internalImageIndex;
-      // Each image takes 100% / numImagesPerRow width
       const translateXValue = -offset * (100 / this.numImagesPerRow);
       return {
         transform: `translateX(${translateXValue}%)`,
-        // Add transition only when not "jumping" back
-        transition: this.internalImageIndex === this.duplicateCount && this.internalImageIndex === this.pictureSlides.length + this.duplicateCount ? 'none' : 'transform 1s ease-in-out'
+        transition: this.shouldTransition ? 'transform 1s ease-in-out' : 'none'
       };
     }
   },
+  watch: {
+    internalImageIndex(newVal, oldVal) {
+      if (
+        newVal === this.duplicateCount && oldVal > this.pictureSlides.length + this.duplicateCount - 1 ||
+        newVal === this.pictureSlides.length + this.duplicateCount - 1 && oldVal < this.duplicateCount
+      ) {
+        this.shouldTransition = false;
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.shouldTransition = true;
+          }, 50);
+        });
+      } else {
+        this.shouldTransition = true;
+      }
+    }
+  },
   mounted() {
+    this.shouldTransition = true;
     this.startSlideShow();
-    // Initialize the internal index to show the first set of real images
     this.internalImageIndex = this.duplicateCount;
   },
   beforeUnmount() {
@@ -75,25 +86,45 @@ export default {
   methods: {
     startSlideShow() {
       this.slideInterval = setInterval(() => {
-        this.internalImageIndex++;
+        this.nextImage(true);
+      }, this.autoSlideDelay);
+    },
+    resetAutoSlide() {
+      clearInterval(this.slideInterval);
+      this.slideInterval = setTimeout(() => {
+        this.startSlideShow();
+      }, 5000);
+    },
+    nextImage(isAuto = false) {
+      if (!isAuto) {
+        this.resetAutoSlide();
+      }
 
-        // If we've slid past the original images into the duplicated ones at the end
-        if (this.internalImageIndex >= this.pictureSlides.length + this.duplicateCount) {
-          // Immediately jump back to the start of the original images (after the initial duplicated ones)
-          // Temporarily disable transition for the jump
-          const container = this.$el.querySelector('.image-slider-container');
-          if (container) {
-            container.style.transition = 'none';
-          }
-          this.internalImageIndex = this.duplicateCount;
-          // Force a reflow to apply the `transition: none` before re-enabling it
-          void container.offsetWidth; // eslint-disable-line no-unused-expressions
-          if (container) {
-            // Re-enable transition for the next actual slide
-            container.style.transition = 'transform 1s ease-in-out';
-          }
-        }
-      }, 3000); // Change image every 3 seconds
+      this.internalImageIndex++;
+
+      if (this.internalImageIndex >= this.pictureSlides.length + this.duplicateCount) {
+        this.shouldTransition = false;
+        this.internalImageIndex = this.duplicateCount;
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.shouldTransition = true;
+          }, 50);
+        });
+      }
+    },
+    prevImage() {
+      this.resetAutoSlide();
+      this.internalImageIndex--;
+
+      if (this.internalImageIndex < this.duplicateCount) {
+        this.shouldTransition = false;
+        this.internalImageIndex = this.pictureSlides.length + this.duplicateCount - 1;
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.shouldTransition = true;
+          }, 50);
+        });
+      }
     }
   }
 }
@@ -101,26 +132,65 @@ export default {
 
 <style scoped>
 .image-slider-section {
-  height: 30vh;
+  height: 35vh;
   overflow: hidden;
   position: relative;
+  /* Set the width of the entire slider section to 70% */
+  width: 70%;
+  /* Center the slider horizontally */
+  margin: 0 auto;
 }
 
 .image-slider-container {
   display: flex;
   height: 100%;
+  /* Make the container fill the 70% width of its parent (.image-slider-section) */
+  width: 100%;
   /* Transition is handled dynamically in `sliderTransform` */
 }
 
 .slider-image {
   /* Each image takes a portion of the container's width,
-     so that 'numImagesPerRow' images are visible at a time.
-     The total width of the container will be (total number of images in extendedPictureSlides) * (100% / numImagesPerRow)
-  */
-  width: calc(100% / 4);
-  /* This still dictates how many are visible at once */
+     so that 'numImagesPerRow' images are visible at a time. */
+  width: calc((100% / 3) - 10px);
   height: 100%;
   object-fit: cover;
   flex-shrink: 0;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+/* Remove margin from the last image in the visible set to avoid extra space */
+.slider-image:last-child {
+  margin-right: 0;
+}
+
+/* Navigation Arrows Styling */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 10;
+  border-radius: 5px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.slider-arrow:hover {
+  opacity: 1;
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
 }
 </style>

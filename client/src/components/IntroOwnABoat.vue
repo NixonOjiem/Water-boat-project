@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col min-h-[60] md:flex-row">
+  <div class="flex flex-col min-h-[60] md:flex-row z-[9999]">
     <section class="md:float-left md:w-1/2 bg-[#DBF0FE] p-4">
       <h2 class="text-2xl font-semibold mb-4">Endless Applications</h2>
       <ul>

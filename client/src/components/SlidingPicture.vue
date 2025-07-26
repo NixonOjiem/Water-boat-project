@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="z-[9999] bg-white">
     <section class="image-slider-section py-4">
       <div class="image-slider-container" :style="sliderTransform">
         <img v-for="(image, index) in extendedPictureSlides" :key="index" :src="image" alt="Sliding image"

@@ -9,8 +9,7 @@
             <span class="text-blue-400">Yieh</span>Boats
           </h3>
           <p class="text-sm leading-relaxed">
-            We are innovators charting a new course for sustainable water transport. We design and build safe, reliable,
-            and clean boats propelled entirely by solar energy.
+            Proudly built and designed in Kenya, we are pioneering a cleaner future for Lake Victoria's waters.
           </p>
         </div>
 
@@ -18,16 +17,21 @@
         <div class="w-full md:w-1/3 lg:w-1/4 text-center md:text-left">
           <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
           <nav class="space-y-2">
-            <a href="/"
-              class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">Home</a>
+            <router-link to="/"
+              class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">Home</router-link>
             <!-- <a href="#" class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">About Us</a> -->
-            <a href="/services"
-              class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">Services</a>
-            <a href="/booking"
+            <router-link to="/services"
+              class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">Services</router-link>
+            <router-link to="/booking"
               class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">Book a
-              Trip</a>
-            <a href="/gallery"
-              class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">Gallery</a>
+              Trip</router-link>
+            <router-link to="/trips"
+              class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">Your
+              Trips</router-link>
+            <router-link to="/gallery"
+              class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">Gallery</router-link>
+            <router-link to="/about"
+              class="block text-sm hover:text-blue-400 transition-colors duration-300 rounded-md py-1">About Us</router-link>
           </nav>
         </div>
 
@@ -36,7 +40,7 @@
           <h4 class="text-lg font-semibold text-white mb-4">Follow Us</h4>
           <div class="flex justify-center md:justify-start space-x-4">
             <!-- Social Media Icons (using Lucide React for example, or you can use Font Awesome/SVGs) -->
-            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+            <router-link to="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">
               <!-- Replace with actual SVG or icon component -->
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -44,8 +48,8 @@
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
               <span class="sr-only">Facebook</span>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+            </router-link>
+            <router-link to="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">
               <!-- Replace with actual SVG or icon component -->
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -54,8 +58,8 @@
                   d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17-17 11.6 2.2.1 4.4-.6 6-2 1.1 0 2.1-.2 2.9-.8 1.8-1.1 2.8-3.3 2.8-5.7v-.8c.7-.5 1.3-1.2 1.7-2 0 0 2 2.1 2 3.4z" />
               </svg>
               <span class="sr-only">Twitter</span>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+            </router-link>
+            <router-link to="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">
               <!-- Replace with actual SVG or icon component -->
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -65,8 +69,8 @@
                 <line x1="17.5" x2="17.5" y1="6.5" y2="6.5" />
               </svg>
               <span class="sr-only">Instagram</span>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+            </router-link>
+            <router-link to="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">
               <!-- Replace with actual SVG or icon component -->
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -76,7 +80,7 @@
                 <circle cx="4" cy="4" r="2" />
               </svg>
               <span class="sr-only">LinkedIn</span>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>

@@ -67,7 +67,7 @@
               placeholder="e.g., Kisumu, Kenya">
           </div>
 
-          <!-- Boat Description Textarea -->
+          <!-- Boat Description Textarea can be reduced-->
           <div>
             <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Describe your ideal
               boat</label>

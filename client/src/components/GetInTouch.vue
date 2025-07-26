@@ -11,17 +11,16 @@
       class="absolute top-1/2 left-8 transform -translate-y-1/2 -rotate-90 font-extrabold text-7xl text-gray-300 opacity-80 pointer-events-none tracking-widest hidden lg:block">
       CONTACT US
     </div>
+
     <div class="relative z-10 max-w-4xl w-full bg-white bg-opacity-90 rounded-xl shadow-2xl overflow-hidden md:flex"
       data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
-      <div class="md:w-1/2 p-8 sm:p-12 bg-[#002255] text-white flex flex-col justify-between">
+      <div class="md:w-1/2 p-6 sm:p-12 bg-[#002255] text-white flex flex-col justify-between">
         <div>
           <h2 class="text-3xl font-extrabold mb-4 text-center md:text-left">
             Get in Touch
           </h2>
           <p class="text-lg mb-8 opacity-90 text-center md:text-left">
-            We'd love to hear from you! Whether you have questions about boat
-            rides, custom boat building, or anything else, feel free to reach
-            out.
+            Got questions about boat rides, custom builds, or anything else? We'd love to hear from you!
           </p>
 
           <div class="space-y-6">
@@ -86,34 +85,34 @@
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
             <input type="text" id="name" v-model="form.name" autocomplete="name" required
-              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
+              class="mt-1 block w-full px-4 py-2 text-black border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
               placeholder="Your Full Name" />
           </div>
 
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
             <input type="email" id="email" v-model="form.email" autocomplete="email" required
-              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
+              class="mt-1 block w-full px-4 py-2 text-black border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
               placeholder="you@example.com" />
           </div>
 
-          <div>
+          <!-- <div>
             <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
             <input type="text" id="subject" v-model="form.subject"
-              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
+              class="mt-1 block w-full px-4 py-2 text-black border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
               placeholder="Regarding boat booking, custom build, etc." />
-          </div>
+          </div> -->
 
           <div>
             <label for="message" class="block text-sm font-medium text-gray-700">Your Message</label>
             <textarea id="message" v-model="form.message" rows="6" required
-              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
+              class="mt-1 block w-full px-4 py-2 text-black border border-gray-300 rounded-md shadow-sm focus:ring-[#00aad4] focus:border-[#00aad4] sm:text-base transition duration-300 ease-in-out transform focus:scale-105"
               placeholder="Tell us more about what you need..."></textarea>
           </div>
 
           <div>
             <button type="submit"
-              class="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-semibold text-white bg-[#00aad4] hover:bg-[#002255] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00aad4] transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+              class="w-full flex justify-center py-2 px-6 border border-transparent rounded-md shadow-sm text-lg font-semibold text-white bg-[#00aad4] hover:bg-[#002255] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00aad4] transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
               <span v-if="!loading">Send Message</span>
               <span v-else class="flex items-center">
                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"

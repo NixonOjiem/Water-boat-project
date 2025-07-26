@@ -31,6 +31,8 @@
       <div class="h-[500px] w-full"></div>
 
       <!-- These components will scroll up over the fixed main section -->
+      <GalleryTrips />
+      <GalleryDiff />
       <GalleryComponent />
       <Footer />
     </div>
@@ -47,6 +49,8 @@
 <script>
 import { ref } from 'vue';
 import Navbar from '@/components/Navbar.vue';
+import GalleryDiff from '@/components/GalleryDiff.vue';
+import GalleryTrips from '@/components/GalleryTrips.vue';
 import GalleryComponent from '@/components/GalleryComponent.vue';
 import Footer from '@/components/Footer.vue';
 import BookingModal from '@/components/BookingModal.vue'
@@ -58,7 +62,7 @@ import 'aos/dist/aos.css'
 
 export default {
   components: {
-    Navbar, GalleryComponent, Footer, BookingModal, FloatingBar
+    Navbar, GalleryDiff, GalleryTrips, GalleryComponent, Footer, BookingModal, FloatingBar
   },
   setup() {
     // Initialize AOS for animations

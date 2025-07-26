@@ -157,4 +157,8 @@ html {
 body {
   overflow-x: hidden;
 }
+
+.active {
+  background-color: #f9f9f9;
+}
 </style>

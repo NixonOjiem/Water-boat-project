@@ -52,13 +52,13 @@
           <router-link to="/custom-boat" class="group mt-10 inline-block">
             <span
               class="px-8 py-4 font-bold text-white inline-block solar-gradient rounded-xl transition-all duration-300 ease-in-out group-hover:shadow-lg group-hover:shadow-cyan-300/50 group-hover:-translate-y-1 solar-shine">
-              Own A Solar Boat
+              Design Your Boat Now
               <i class="fas fa-arrow-right ml-2 text-sm"></i>
             </span>
           </router-link>
         </div>
 
-        <div class="relative min-h-[500px] lg:min-h-[600px] flex items-center justify-center order-2 lg:order-1">
+        <!-- <div class="relative min-h-[500px] lg:min-h-[600px] flex items-center justify-center order-2 lg:order-1">
           <div class="w-[500px] h-[500px] absolute bg-cyan-400/20 blur-3xl rounded-full"></div>
 
           <div class="relative z-20 w-full max-w-2xl h-[500px] lg:h-[600px]">
@@ -78,11 +78,21 @@
               </div>
             </div>
           </div>
+        </div> -->
+
+         <div class="relative min-h-[500px] lg:min-h-[600px] text-black text-5xl order-2 lg:order-1">
+          <h1 class="text-4xl font-semibold mb-4">Advantages</h1>
+            <ul class="list-disc pl-6 text-3xl text-gray-700">
+              <li>Low operational cost</li>
+              <li>Zero emmisions and pollution</li>
+              <li>Built and designed in Kenya</li>
+              <li>Infinite range</li>
+            </ul>
         </div>
 
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
+      <!-- <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
         data-aos-duration="1000">
         <div class="bg-gradient-to-br from-cyan-50 to-white p-6 rounded-xl border border-cyan-100">
           <div class="text-cyan-500 text-3xl mb-4">
@@ -110,7 +120,7 @@
           <p class="text-gray-600 mt-2">Eliminate fuel costs and reduce maintenance with our innovative solar
             technology.</p>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

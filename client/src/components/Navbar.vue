@@ -18,8 +18,7 @@
           <router-link to="/" class="text-gray-700 hover:text-[#101828] font-medium">Home</router-link>
         </li>
         <li>
-          <router-link to="/custom-boat" class="text-gray-700 hover:text-[#101828] font-medium">Custom
-            Boats</router-link>
+          <router-link to="/custom-boat" class="text-gray-700 hover:text-[#101828] font-medium">Own a Boat</router-link>
         </li>
         <li>
           <a href="#" @click.prevent="$emit('open-booking-modal')"
@@ -51,7 +50,7 @@
                       Dashboard
                     </router-link>
                   </li>
-                  <li>+++++++++
+                  <li>
                     <router-link to="/trips" class="hover:text-blue-600" @click="$emit('toggle-desktop-menu', $event)">
                       Trips
                     </router-link>
@@ -103,7 +102,7 @@
               <router-link to="/" class="mobile-nav-link">Home</router-link>
             </li>
             <li>
-              <router-link to="/custom-boat" class="mobile-nav-link">Custom Boats</router-link>
+              <router-link to="/custom-boat" class="mobile-nav-link">Own a Boat</router-link>
             </li>
             <li>
               <router-link to="#" @click.prevent="$emit('open-booking-modal')" class="mobile-nav-link">Book a

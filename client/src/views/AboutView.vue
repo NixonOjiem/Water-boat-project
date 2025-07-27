@@ -12,7 +12,7 @@
 
       <div class="h-[90px] w-full"></div>
       <!-- <AboutComponent @open-investment-form="openInvestmentForm" /> -->
-      <IntroToAboutus />
+      <IntroToAboutus @open-investment-form="openInvestmentForm" />
       <Sustainabilitycomponent />
       <CallForInvestorsOnAbout @open-investment-form="openInvestmentForm" />
       <FloatingBar @open-booking-modal="openBookingModal" />

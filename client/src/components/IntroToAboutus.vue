@@ -69,6 +69,9 @@
 </template>
 
 <script>
+import { defineEmits } from 'vue';
+
+defineEmits(['open-investment-form']);
 export default {
   name: 'IntroToAboutus',
   props: {

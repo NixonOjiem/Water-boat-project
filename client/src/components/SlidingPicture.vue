@@ -1,9 +1,9 @@
 <template>
   <div class="z-[9999] bg-white">
-    <section class="image-slider-section py-4">
+    <section v-if="isMounted" class="image-slider-section py-4">
       <div class="image-slider-container" :style="sliderTransform">
         <img v-for="(image, index) in extendedPictureSlides" :key="index" :src="image" alt="Sliding image"
-          class="slider-image" />
+          class="slider-image" :style="imageStyle" />
       </div>
       <button class="slider-arrow left-arrow" @click="prevImage">&#9664;</button>
       <button class="slider-arrow right-arrow" @click="nextImage">&#9654;</button>
@@ -25,24 +25,32 @@ export default {
   data() {
     return {
       internalImageIndex: 0,
+      isMounted: false,
       pictureSlides: [
-        pic1,
-        pic2,
-        pic3,
-        pic4,
-        pic5,
-        pic6,
-        pic7,
-        pic8
+        pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8
       ],
+      // Default value, will be updated on mount
       numImagesPerRow: 3,
-      duplicateCount: 3,
       slideInterval: null,
       autoSlideDelay: 3000,
       shouldTransition: true,
     }
   },
   computed: {
+    /**
+     * The number of images to duplicate for the infinite scroll effect.
+     * This is now tied to the number of visible images.
+     */
+    duplicateCount() {
+      return this.numImagesPerRow;
+    },
+    /**
+     * Dynamically calculates the width of each slider image.
+     */
+    imageStyle() {
+      const width = `calc((100% / ${this.numImagesPerRow}) - 10px)`;
+      return { width };
+    },
     extendedPictureSlides() {
       const original = this.pictureSlides;
       const firstFew = original.slice(0, this.duplicateCount);
@@ -59,6 +67,7 @@ export default {
     }
   },
   watch: {
+    // This watcher ensures smooth transitions when jumping from the last to the first slide.
     internalImageIndex(newVal, oldVal) {
       if (
         newVal === this.duplicateCount && oldVal > this.pictureSlides.length + this.duplicateCount - 1 ||
@@ -76,14 +85,42 @@ export default {
     }
   },
   mounted() {
+    this.isMounted = true;
+    this.updateNumImagesPerRow();
+    window.addEventListener('resize', this.updateNumImagesPerRow);
+
     this.shouldTransition = true;
     this.startSlideShow();
+    // Initialize index based on the dynamic duplicateCount
     this.internalImageIndex = this.duplicateCount;
   },
   beforeUnmount() {
     clearInterval(this.slideInterval);
+    window.removeEventListener('resize', this.updateNumImagesPerRow);
   },
   methods: {
+    /**
+     * Checks window width and updates the number of images to show.
+     */
+    updateNumImagesPerRow() {
+      const width = window.innerWidth;
+      console.log(`Window width: ${width}`); // Debug line
+      let newNumImages;
+
+      if (width > 1024) { // Large screens
+        newNumImages = 3;
+      } else if (width > 768) { // Medium screens
+        newNumImages = 2;
+      } else { // Small screens
+        newNumImages = 1;
+      }
+
+      if (newNumImages !== this.numImagesPerRow) {
+        this.numImagesPerRow = newNumImages;
+        // Reset the index to the new starting position to avoid visual glitches
+        this.internalImageIndex = this.duplicateCount;
+      }
+    },
     startSlideShow() {
       this.slideInterval = setInterval(() => {
         this.nextImage(true);
@@ -135,26 +172,22 @@ export default {
   height: 45vh;
   overflow: hidden;
   position: relative;
-  /* Set the width of the entire slider section to 70% */
   width: 80%;
-  /* Center the slider horizontally */
   margin: 0 auto;
-
 }
 
 .image-slider-container {
   display: flex;
   height: 100%;
-  /* Make the container fill the 70% width of its parent (.image-slider-section) */
   width: 100%;
-  /* Transition is handled dynamically in `sliderTransform` */
   border-radius: 30px;
 }
 
 .slider-image {
-  /* Each image takes a portion of the container's width,
-     so that 'numImagesPerRow' images are visible at a time. */
-  width: calc((100% / 3) - 10px);
+  /*
+   * The width is now handled dynamically via a Vue inline style binding.
+   * :style="imageStyle"
+   */
   height: 100%;
   object-fit: cover;
   flex-shrink: 0;
@@ -162,12 +195,10 @@ export default {
   margin-right: 10px;
 }
 
-/* Remove margin from the last image in the visible set to avoid extra space */
 .slider-image:last-child {
   margin-right: 0;
 }
 
-/* Navigation Arrows Styling */
 .slider-arrow {
   position: absolute;
   top: 50%;

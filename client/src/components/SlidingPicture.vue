@@ -104,7 +104,7 @@ export default {
      */
     updateNumImagesPerRow() {
       const width = window.innerWidth;
-      console.log(`Window width: ${width}`); // Debug line
+      //console.log(`Window width: ${width}`); // Debug line
       let newNumImages;
 
       if (width > 1024) { // Large screens

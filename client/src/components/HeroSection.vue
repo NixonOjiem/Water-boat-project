@@ -1,6 +1,6 @@
 <template>
   <div ref="heroRootRef" class="relative w-full h-full">
-    <img src="/images/cruise-vertical.png" alt="Aerial view of a yacht on Lake Victoria"
+    <img src="/images/20250417_130235.jpg" alt="Aerial view of a yacht on Lake Victoria"
       class="absolute top-0 left-0 w-full h-full object-cover hero-image"
       :style="{ transform: `scale(${parallaxScale})` }" />
 

@@ -52,7 +52,7 @@
               boat</label>
             <textarea id="description" v-model="design.description" rows="4" required
               class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out text-gray-900"
-              placeholder="e.g., A 30ft catamaran for coastal cruising, focused on fuel efficiency and solar power..."></textarea>
+              placeholder="e.g., A 30ft catamaran for cruising, focused on efficiency and solar power..."></textarea>
           </div>
 
           <button type="submit"

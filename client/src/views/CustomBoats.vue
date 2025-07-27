@@ -4,11 +4,11 @@
       @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"
       @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="1000" />
 
-    <main class="absolute top-0 left-0 w-full h-[30vh] flex flex-col items-center justify-end z-[10]"
+    <main class="absolute top-0 left-0 w-full h-[20vh] flex flex-col items-center justify-end z-[10]"
       :style="{ transform: `translateY(${parallaxOffset}px)` }">
       <h1 class="text-4xl font-bold mb-6 text-black">Own a Boat</h1>
     </main>
-    <div class="relative pt-[30vh] z-[10]">
+    <div class="relative pt-[20vh] z-[10]">
       <IntroOwnABoat @open-design-boat="openDesignBoatForm" />
       <SlidingPicture />
       <AdvanatgesOfOwningBoat />

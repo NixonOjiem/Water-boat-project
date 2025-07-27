@@ -132,13 +132,14 @@ export default {
 
 <style scoped>
 .image-slider-section {
-  height: 35vh;
+  height: 45vh;
   overflow: hidden;
   position: relative;
   /* Set the width of the entire slider section to 70% */
-  width: 70%;
+  width: 80%;
   /* Center the slider horizontally */
   margin: 0 auto;
+
 }
 
 .image-slider-container {
@@ -147,6 +148,7 @@ export default {
   /* Make the container fill the 70% width of its parent (.image-slider-section) */
   width: 100%;
   /* Transition is handled dynamically in `sliderTransform` */
+  border-radius: 30px;
 }
 
 .slider-image {

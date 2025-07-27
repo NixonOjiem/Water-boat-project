@@ -1,16 +1,18 @@
 <template>
   <section class="about-container relative min-h-screen">
-    <main class="fixed inset-0 w-full h-[500px] bg-gray-900 text-white z-0 flex flex-col items-center justify-center">
+    <!-- <main class="fixed inset-0 w-full h-[500px] bg-gray-900 text-white z-0 flex flex-col items-center justify-center">
       <h1 class="text-4xl font-bold mb-6">About Us</h1>
       <p class="text-lg mb-12">We are dedicated to revolutionizing water transport in Africa with our innovative
         solar-powered boats.</p>
-    </main>
+    </main> -->
     <div class="about-content relative z-10">
       <Navbar :is-mobile-menu-open="isMobileMenuOpen" :is-desktop-menu-open="isDesktopMenuOpen"
         @toggle-mobile-menu="toggleMobileMenu" @toggle-desktop-menu="toggleDesktopMenu"
         @open-booking-modal="openBookingModal" data-aos-easing="linear" data-aos="fade-down" data-aos-duration="1000" />
-      <div class="h-[500px] w-full"></div>
-      <AboutComponent @open-investment-form="openInvestmentForm" />
+
+      <div class="h-[90px] w-full"></div>
+      <!-- <AboutComponent @open-investment-form="openInvestmentForm" /> -->
+      <IntroToAboutus />
       <FloatingBar @open-booking-modal="openBookingModal" />
 
       <transition name="modal-fade">
@@ -34,6 +36,7 @@ import AboutComponent from '@/components/AboutComponent.vue';
 import FloatingBar from '@/components/FloatingBar.vue';
 import BookingModal from '@/components/BookingModal.vue';
 import InvestmentForm from '@/components/InvestmentForm.vue';
+import IntroToAboutus from '@/components/IntroToAboutus.vue';
 
 // Initialize AOS for animations
 onMounted(() => {

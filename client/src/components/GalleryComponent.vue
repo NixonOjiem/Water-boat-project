@@ -16,8 +16,8 @@
           alt="People relaxing on a luxury yacht deck." />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         <div class="relative z-10 flex flex-col justify-end h-full p-6">
-          <h3 class="text-2xl font-bold text-white">Luxury Yacht Charters</h3>
-          <p class="card-description">Experience the ultimate in maritime luxury.</p>
+          <!-- <h3 class="text-2xl font-bold text-white">Luxury Yacht Charters</h3>
+          <p class="card-description">Experience the ultimate in maritime luxury.</p> -->
         </div>
       </div>
 
@@ -27,8 +27,8 @@
           alt="A modern motorboat ready for rental." />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         <div class="relative z-10 flex flex-col justify-end h-full p-6">
-          <h3 class="text-2xl font-bold text-white">Premier Boat Rentals</h3>
-          <p class="card-description">Find the perfect vessel for your next adventure.</p>
+          <!-- <h3 class="text-2xl font-bold text-white">Premier Boat Rentals</h3>
+          <p class="card-description">Find the perfect vessel for your next adventure.</p> -->
         </div>
       </div>
 
@@ -38,8 +38,8 @@
           alt="An angler fishing from a boat at sunset." />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         <div class="relative z-10 flex flex-col justify-end h-full p-6">
-          <h3 class="text-2xl font-bold text-white">Fishing Expeditions</h3>
-          <p class="card-description">Charter a fully-equipped trip to the best spots.</p>
+          <!-- <h3 class="text-2xl font-bold text-white">Fishing Expeditions</h3>
+          <p class="card-description">Charter a fully-equipped trip to the best spots.</p> -->
         </div>
       </div>
 
@@ -49,8 +49,8 @@
           alt="Close-up of boat engine maintenance.">
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         <div class="relative z-10 flex flex-col justify-end h-full p-6">
-          <h3 class="text-2xl font-bold text-white">Maintenance & Repair</h3>
-          <p class="card-description">Keep your boat in pristine condition.</p>
+          <!-- <h3 class="text-2xl font-bold text-white">Maintenance & Repair</h3>
+          <p class="card-description">Keep your boat in pristine condition.</p> -->
         </div>
       </div>
 
@@ -60,8 +60,8 @@
           alt="A modern yacht sailing on the open water.">
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         <div class="relative z-10 flex flex-col justify-end h-full p-6">
-          <h3 class="text-2xl font-bold text-white">Boat Sales</h3>
-          <p class="card-description">Find your dream boat with our brokerage service.</p>
+          <!-- <h3 class="text-2xl font-bold text-white">Boat Sales</h3>
+          <p class="card-description">Find your dream boat with our brokerage service.</p> -->
         </div>
       </div>
 
@@ -71,8 +71,8 @@
           alt="A small boat navigating through a scenic canyon." />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         <div class="relative z-10 flex flex-col justify-end h-full p-6">
-          <h3 class="text-2xl font-bold text-white">Guided Tours</h3>
-          <p class="card-description">Explore hidden gems with our expert captains.</p>
+          <!-- <h3 class="text-2xl font-bold text-white">Guided Tours</h3>
+          <p class="card-description">Explore hidden gems with our expert captains.</p> -->
         </div>
       </div>
 

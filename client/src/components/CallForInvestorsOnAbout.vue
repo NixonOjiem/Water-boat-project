@@ -14,6 +14,7 @@
             Drop us a line, use the button below.
           </p>
           <button
+            @click.prevent="$emit('open-investment-form')"
             class="bg-[#002255] text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-opacity-90 transition-colors duration-300">
             Invest In YiehBoats
           </button>
@@ -24,6 +25,9 @@
 </template>
 
 <script>
+import { defineEmits } from 'vue';
+
+defineEmits(['open-investment-form']);
 export default {
   name: 'CallForInvestorsOnAbout',
   // If you need props later, you can add them here

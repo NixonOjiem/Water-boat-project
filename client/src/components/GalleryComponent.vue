@@ -11,8 +11,7 @@
     <section
       class="grid w-full grid-cols-2 gap-4 p-4 grid-flow-row-dense md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[24rem]">
       <div class="relative overflow-hidden rounded-xl group col-span-2 lg:col-span-2 lg:row-span-1">
-        <img
-          src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        <img src="/images/20250418_150744.jpg"
           class="absolute inset-0 object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-105"
           alt="People relaxing on a luxury yacht deck." />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -23,8 +22,7 @@
       </div>
 
       <div class="relative overflow-hidden rounded-xl group lg:col-span-1">
-        <img
-          src="https://images.unsplash.com/photo-1521231690221-9abf37b451b3?q=80&w=1333&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        <img src="/images/20250418_151305.jpg"
           class="absolute inset-0 object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-105"
           alt="A modern motorboat ready for rental." />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -35,8 +33,7 @@
       </div>
 
       <div class="relative overflow-hidden rounded-xl group lg:col-span-1">
-        <img
-          src="https://images.unsplash.com/photo-1585000962552-70f0a67223d9?q=80&w=1180&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        <img src="/images/20250417_130634.jpg"
           class="absolute inset-0 object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-105"
           alt="An angler fishing from a boat at sunset." />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -47,7 +44,7 @@
       </div>
 
       <div class="relative overflow-hidden rounded-xl group lg:col-span-1">
-        <img src="https://images.pexels.com/photos/28241135/pexels-photo-28241135.jpeg"
+        <img src="/images/IMG20250408130233.jpg"
           class="absolute inset-0 object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-105"
           alt="Close-up of boat engine maintenance.">
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -58,8 +55,7 @@
       </div>
 
       <div class="relative overflow-hidden rounded-xl group lg:col-span-1">
-        <img
-          src="https://images.unsplash.com/photo-1744996746100-a144a225c9be?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        <img src="/images/IMG20250410164059.jpg"
           class="absolute inset-0 object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-105"
           alt="A modern yacht sailing on the open water.">
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -70,8 +66,7 @@
       </div>
 
       <div class="relative overflow-hidden rounded-xl group col-span-2 lg:col-span-2 lg:row-span-1">
-        <img
-          src="https://images.unsplash.com/photo-1591413740659-2abf5686532a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        <img src="/images/20250116_113830.jpg"
           class="absolute inset-0 object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-105"
           alt="A small boat navigating through a scenic canyon." />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>

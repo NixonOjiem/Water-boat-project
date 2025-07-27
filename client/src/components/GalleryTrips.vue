@@ -5,7 +5,7 @@
         Our Premier Boat Experiences
       </h2>
       <p class="mt-3 text-xl text-gray-600">
-        From luxurious charters to thrilling expeditions, your adventure awaits.
+        From luxurious charters to thrilling trips, your adventure awaits.
       </p>
     </div>
 

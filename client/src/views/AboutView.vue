@@ -13,6 +13,7 @@
       <div class="h-[90px] w-full"></div>
       <!-- <AboutComponent @open-investment-form="openInvestmentForm" /> -->
       <IntroToAboutus />
+      <Sustainabilitycomponent />
       <FloatingBar @open-booking-modal="openBookingModal" />
 
       <transition name="modal-fade">
@@ -37,6 +38,7 @@ import FloatingBar from '@/components/FloatingBar.vue';
 import BookingModal from '@/components/BookingModal.vue';
 import InvestmentForm from '@/components/InvestmentForm.vue';
 import IntroToAboutus from '@/components/IntroToAboutus.vue';
+import Sustainabilitycomponent from '@/components/Sustainabilitycomponent.vue';
 
 // Initialize AOS for animations
 onMounted(() => {

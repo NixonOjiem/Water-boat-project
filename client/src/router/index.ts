@@ -60,6 +60,10 @@ const router = createRouter({
       component: Test,
     },
   ],
+    scrollBehavior(to, from, savedPosition) {
+    // Always scroll to the top of the page
+    return { top: 0 };
+  },
 })
 
 export default router

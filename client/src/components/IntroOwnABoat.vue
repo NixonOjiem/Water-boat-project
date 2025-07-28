@@ -1,32 +1,36 @@
 <template>
   <div class="flex flex-col min-h-[60] md:flex-row z-[9999] mx-[5vw]">
     <section class="md:float-left md:w-1/2 bg-[#DBF0FE] p-4">
-      <h2 class="text-2xl font-semibold mb-4">Endless Applications</h2>
+      <h2 class="text-2xl font-semibold mb-4" style="font-size: 25px;">Endless Applications</h2>
       <ul>
         <li class="pt-4">
-          <span class="font-bold">Eco-Tourism:</span>
-          <p class="mt-1">Allows resorts to provide their customers with luxurious, ecofriendly and safe tours on the
+          <span class="font-bold" style="font-size: 22px;">Eco-Tourism:</span>
+          <p class="mt-1" style="font-size: 20px;">Allows resorts to provide their customers with luxurious, ecofriendly
+            and safe tours on the
             lake</p>
         </li>
         <li class="pt-4">
-          <span class="font-bold">Fishfarming:</span>
-          <p class="mt-1">Reduce your operational costs and emmission while increasing safety with a solar boat.</p>
+          <span class="font-bold" style="font-size: 22px;">Fishfarming:</span>
+          <p class="mt-1" style="font-size: 20px;">Reduce your operational costs and emmission while increasing safety
+            with a solar boat.</p>
         </li>
         <li class="pt-4">
-          <span class="font-bold">Leisure:</span>
-          <p class="mt-1">Boat-owners can experience a silent and safe trips on the lake with minimal impact on the
+          <span class="font-bold" style="font-size: 22px;">Leisure:</span>
+          <p class="mt-1" style="font-size: 20px;">Boat-owners can experience a silent and safe trips on the lake with
+            minimal impact on the
             environment</p>
         </li>
         <li class="pt-4">
-          <span class="font-bold">Passenger and goods:</span>
-          <p class="mt-1">Zero emissions and safe transport of people and goods</p>
+          <span class="font-bold" style="font-size: 22px;">Passenger and goods:</span>
+          <p class="mt-1" style="font-size: 20px;">Zero emissions and safe transport of people and goods</p>
         </li>
       </ul>
     </section>
 
     <section class="md:float-right md:w-1/2 bg-[#101828]">
-      <h2 class="text-white center text-center text-2xl font-semibold mb-4">Zero compromises</h2>
-      <p class="text-white mt-2 text-left pl-4">
+      <h2 class="text-white center text-center text-2xl font-semibold mb-4" style="font-size: 25px;">Zero compromises
+      </h2>
+      <p class="text-white mt-2 text-left pl-4" style="font-size: 20px;">
         Our solar electric boats are engineered for
         unparalleled versatility. Forget the
         limitations of traditional boating; embrace

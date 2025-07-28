@@ -32,7 +32,7 @@
         </section>
 
         <section class="lg:w-1/2">
-          <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">{{ title }}</h2>
+          <h2 class="text-3xl font-bold text-center mb-8 text-gray-800" style="font-size: 45px;">{{ title }}</h2>
           <img src="/images/Screenshot 2025-07-27 155343.png" alt="Sustainability Image"
             class="w-full h-auto object-cover rounded-xl shadow-lg" />
         </section>

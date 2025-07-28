@@ -1,7 +1,7 @@
 <template>
   <div class="advantages-section-wrapper">
     <h2 class="section-title"><b>Advantages of owning a Yieh boat</b></h2>
-    <p class="section-description">
+    <p class="section-description text-[20px]">
       Harnessing solar power on the water isn't just a novelty—it's a fundamental shift towards smarter, cleaner, and
       more enjoyable boating. See the advantages below
     </p>
@@ -9,14 +9,14 @@
     <div class="advantages-grid">
       <section class="advantage-card">
         <h3 class="card-title">No Pollution:</h3>
-        <p class="card-description">Our boats produce zero emissions and no
+        <p class="card-description text-[20px]">Our boats produce zero emissions and no
           oil leaks, protecting the fragile aquatic
           ecosystems millions of people depend on</p>
       </section>
 
       <section class="advantage-card">
         <h3 class="card-title">Low Maintenance:</h3>
-        <p class="card-description">With far fewer moving parts than a
+        <p class="card-description text-[20px]">With far fewer moving parts than a
           traditional motors, our electric propulsion
           systems require minimal upkeep, giving
           you more time on the water.</p>
@@ -24,7 +24,7 @@
 
       <section class="advantage-card">
         <h3 class="card-title">Cost effective:</h3>
-        <p class="card-description">The sun provides free fuel. Drastically cut
+        <p class="card-description text-[20px]">The sun provides free fuel. Drastically cut
           your running costs by eliminating
           expenses for gasoline, oil changes, and
           frequent engine servicing</p>
@@ -32,7 +32,7 @@
 
       <section class="advantage-card">
         <h3 class="card-title">Locally built:</h3>
-        <p class="card-description">Our boats are built and designed in Kenya,
+        <p class="card-description text-[20px]">Our boats are built and designed in Kenya,
           with as much local components as
           possible. Empowering the Kenyan economy
           and people.</p>
@@ -140,7 +140,6 @@ export default {
 }
 
 .card-description {
-  font-size: 1em;
   color: #666;
   line-height: 1.5;
 }

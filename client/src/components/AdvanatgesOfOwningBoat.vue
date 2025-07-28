@@ -140,7 +140,6 @@ export default {
 }
 
 .card-description {
-  font-size: 1em;
   color: #666;
   line-height: 1.5;
 }

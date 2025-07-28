@@ -25,7 +25,7 @@
           </p>
 
           <div class="mt-10">
-            <div class="relative h-48 overflow-hidden rounded-xl bg-gray-50 border border-cyan-100 p-6 shadow-sm">
+            <!-- <div class="relative h-48 overflow-hidden rounded-xl bg-gray-50 border border-cyan-100 p-6 shadow-sm">
               <div v-for="(item, index) in advantages" :key="index"
                 class="absolute inset-0 p-6 transition-all duration-500 ease-in-out"
                 :class="currentAdvantage === index ? 'opacity-100' : 'opacity-0'">
@@ -39,14 +39,14 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <div class="flex justify-center mt-6 space-x-2">
+            <!-- <div class="flex justify-center mt-6 space-x-2">
               <button v-for="(_, index) in advantages" :key="index" @click="currentAdvantage = index"
                 class="w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"
                 :class="currentAdvantage === index ? 'bg-cyan-500 w-6' : ''">
               </button>
-            </div>
+            </div> -->
           </div>
 
           <router-link to="/custom-boat" class="group mt-10 inline-block">
@@ -80,14 +80,14 @@
           </div>
         </div> -->
 
-         <div class="relative min-h-[500px] lg:min-h-[600px] text-black text-5xl order-2 lg:order-1">
+        <div class="relative min-h-[500px] lg:min-h-[600px] text-black text-5xl order-2 lg:order-1">
           <h1 class="text-4xl font-semibold mb-4">Advantages</h1>
-            <ul class="list-disc pl-6 text-3xl text-gray-700">
-              <li>Low operational cost</li>
-              <li>Zero emmisions and pollution</li>
-              <li>Built and designed in Kenya</li>
-              <li>Infinite range</li>
-            </ul>
+          <ul class="list-disc pl-6 text-3xl text-gray-700">
+            <li>Low operational cost</li>
+            <li>Zero emmisions and pollution</li>
+            <li>Built and designed in Kenya</li>
+            <li>Infinite range</li>
+          </ul>
         </div>
 
       </div>

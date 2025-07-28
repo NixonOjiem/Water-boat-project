@@ -32,25 +32,25 @@
               placeholder="you@gmail.com">
           </div>
 
-          <div>
+          <!-- <div>
             <label for="designPhone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
             <input type="tel" id="designPhone" v-model="design.phone" required
               class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out text-gray-900"
               placeholder="+254756566654">
-          </div>
+          </div> -->
 
-          <div>
+          <!-- <div>
             <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Your Location
               (City/Region)</label>
             <input type="text" id="location" v-model="design.location" required
               class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out text-gray-900"
               placeholder="e.g., Kisumu, Kenya">
-          </div>
+          </div> -->
 
           <div>
             <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Describe your ideal
               boat</label>
-            <textarea id="description" v-model="design.description" rows="4" required
+            <textarea id="description" v-model="design.description" rows="7" required
               class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out text-gray-900"
               placeholder="e.g., A 30ft catamaran for cruising, focused on efficiency and solar power..."></textarea>
           </div>

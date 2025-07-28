@@ -50,7 +50,7 @@
           <div>
             <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Describe your ideal
               boat</label>
-            <textarea id="description" v-model="design.description" rows="7" required
+            <textarea id="description" v-model="design.description" rows="5" required
               class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out text-gray-900"
               placeholder="e.g., A 30ft catamaran for cruising, focused on efficiency and solar power..."></textarea>
           </div>
@@ -119,34 +119,29 @@ export default {
 <style scoped>
 /* Main page wrapper for layout */
 .design-boat-page-wrapper {
-  padding: 40px 20px;
-  /* Add overall padding for the page content */
+  padding: 24px 16px;
+  /* REDUCED overall page padding */
   display: flex;
   justify-content: center;
-  /* Center the form card horizontally */
   min-height: calc(100vh - var(--navbar-height, 0px) - var(--footer-height, 0px));
-  /* Ensure it takes available viewport height */
   background-color: #f7fafc;
-  /* Light background for the page */
 }
 
-/* Modal content card -> now the main form card on the page */
+/* Form card on the page */
 .design-form-card {
   width: 100%;
-  max-width: 900px;
-  /* Increased max-width for better page layout */
+  max-width: 800px;
+  /* REDUCED max-width for a more compact card */
   background-color: white;
   border-radius: 16px;
-  /* Rounded-2xl */
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  /* Shadow-2xl */
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* Default to column on small screens */
+  max-height: 650px;
 }
 
-/* Left Panel: Image and Text Overlay */
+/* Left Panel: Image */
 .design-image-panel {
   width: 100%;
   position: relative;
@@ -156,65 +151,55 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* Align content to the bottom */
-  padding: 32px;
-  /* p-8 */
+  padding: 24px;
+  /* REDUCED padding */
   color: white;
 }
 
 .image-overlay-content {
   background-color: rgba(0, 0, 0, 0.5);
-  /* Semi-transparent overlay for text readability */
   padding: 15px;
   border-radius: 8px;
 }
 
 .image-overlay-title {
-  font-size: 1.875rem;
-  /* text-3xl */
+  font-size: 1.5rem;
+  /* text-2xl - slightly smaller title */
   font-weight: bold;
   line-height: 1.25;
-  /* leading-tight */
 }
 
 .image-overlay-description {
   margin-top: 8px;
-  /* mt-2 */
-  font-size: 1.125rem;
-  /* text-lg */
+  font-size: 1rem;
+  /* text-base - slightly smaller description */
   opacity: 0.9;
 }
-
 
 /* Right Panel: Form */
 .form-panel {
   width: 100%;
-  padding: 32px;
-  /* p-8 */
+  padding: 24px;
+  /* REDUCED padding */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .form-title {
-  font-size: 1.875rem;
-  /* text-3xl */
+  font-size: 1.5rem;
+  /* text-2xl - slightly smaller title */
   font-weight: bold;
   color: #1a202c;
-  /* text-gray-800 */
-  margin-bottom: 8px;
-  /* mb-2 */
+  margin-bottom: 4px;
+  /* mb-1 */
 }
 
 .form-subtitle {
   color: #4a5568;
-  /* text-gray-600 */
-  margin-bottom: 32px;
-  /* mb-8 */
+  margin-bottom: 24px;
+  /* REDUCED bottom margin (mb-6) */
 }
-
-/* Form inputs and button (Tailwind classes kept for brevity) */
-/* ... (existing Tailwind classes for inputs and button are fine) ... */
 
 /* Simple fade transition for the confirmation message */
 .fade-enter-active,
@@ -228,35 +213,23 @@ export default {
 }
 
 /* --- Media Queries --- */
-
-/* For medium and large screens (md: breakpoint and up) */
 @media (min-width: 768px) {
   .design-form-card {
     flex-direction: row;
-    /* Layout as row on larger screens */
   }
 
   .design-image-panel {
-    width: 50%;
-    /* md:w-1/2 */
+    width: 45%;
+    /* Adjusted width slightly */
     min-height: 50vh;
-    /* Set height to 50vh as requested */
     display: flex;
-    /* Ensure it's displayed */
   }
 
   .form-panel {
-    width: 50%;
-    /* md:w-1/2 */
-    padding: 48px;
-    /* lg:p-12 */
+    width: 55%;
+    /* Adjusted width slightly */
+    padding: 32px;
+    /* REDUCED padding on larger screens (was 48px) */
   }
 }
-
-/* For very large screens (lg: breakpoint and up if you had it) */
-/* @media (min-width: 1024px) {
-    .form-panel {
-        padding: 48px;
-    }
-} */
 </style>

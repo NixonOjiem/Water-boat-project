@@ -1,6 +1,6 @@
 <template>
   <div class="tailored-section-wrapper">
-    <h2 class="tailored-section-title" style="font-size: 25px;"><b>Tailored To Your Vision:</b></h2>
+    <h2 class="tailored-section-title" style="font-size: 40px;"><b>Tailored To Your Vision:</b></h2>
     <p class="tailored-section-description" style="font-size: 20px;">
       Your boat should be a perfect reflection of your needs. We don't believe in one-size-fits-all. Our design process
       is

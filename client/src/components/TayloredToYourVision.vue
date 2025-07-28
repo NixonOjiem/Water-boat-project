@@ -1,7 +1,7 @@
 <template>
   <div class="tailored-section-wrapper">
-    <h2 class="tailored-section-title"><b>Tailored To Your Vision:</b></h2>
-    <p class="tailored-section-description">
+    <h2 class="tailored-section-title" style="font-size: 25px;"><b>Tailored To Your Vision:</b></h2>
+    <p class="tailored-section-description" style="font-size: 20px;">
       Your boat should be a perfect reflection of your needs. We don't believe in one-size-fits-all. Our design process
       is
       a collaboration, allowing you to specify everything from the hull material to the onboard technology.
@@ -10,8 +10,8 @@
     <div class="vision-cards-container">
       <section class="vision-card">
         <div class="card-content-wrapper">
-          <h3 class="card-title">Custom Hull Material:</h3>
-          <p class="card-description">Choose from different materials to produce your hull.
+          <h3 class="card-title" style="font-size: 22px;">Custom Hull Material:</h3>
+          <p class="card-description" style="font-size: 20px;">Choose from different materials to produce your hull.
             Lightweight fiberglass for agility, robust HDPE for durability, Aluminium
             or wood</p>
         </div>
@@ -19,24 +19,27 @@
 
       <section class="vision-card">
         <div class="card-content-wrapper">
-          <h3 class="card-title">Choose Your Size:</h3>
-          <p class="card-description">We size the boat to your exact needs, whether it's a compact vessel for
+          <h3 class="card-title" style="font-size: 22px;">Choose Your Size:</h3>
+          <p class="card-description" style="font-size: 20px;">We size the boat to your exact needs, whether it's a
+            compact vessel for
             two or a spacious deck for commercial tours</p>
         </div>
       </section>
 
       <section class="vision-card">
         <div class="card-content-wrapper">
-          <h3 class="card-title">Performance Tuning:</h3>
-          <p class="card-description">Define your need for speed and range. We'll engineer the optimal motor
+          <h3 class="card-title" style="font-size: 22px;">Performance Tuning:</h3>
+          <p class="card-description" style="font-size: 20px;">Define your need for speed and range. We'll engineer the
+            optimal motor
             power, battery bank capacity, and solar array size to match.</p>
         </div>
       </section>
 
       <section class="vision-card">
         <div class="card-content-wrapper">
-          <h3 class="card-title">Deck layout and finishing:</h3>
-          <p class="card-description">Choose the deck layout that suits you and select from premium seating, advanced
+          <h3 class="card-title" style="font-size: 22px;">Deck layout and finishing:</h3>
+          <p class="card-description" style="font-size: 20px;">Choose the deck layout that suits you and select from
+            premium seating, advanced
             navigation systems, high-end sound systems, and other custom tech gadgets.</p>
         </div>
       </section>

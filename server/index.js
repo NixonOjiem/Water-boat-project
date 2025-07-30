@@ -37,7 +37,7 @@ app.use("/auth", authRoutes); // Use the auth middleware for authentication rout
 // Error handling middleware (optional, but good practice)
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send("Something broke!");
+  res.status(500).send("Something went wrong and broke!");
 });
 
 // Start server

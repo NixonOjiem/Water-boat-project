@@ -24,7 +24,16 @@
             supply boats all over africa.
           </p>
 
-          <div class="mt-10">
+
+          <router-link to="/custom-boat" class="group mt-10 inline-block">
+            <span
+              class="px-8 py-4 font-bold text-white inline-block solar-gradient rounded-xl transition-all duration-300 ease-in-out group-hover:shadow-lg group-hover:shadow-cyan-300/50 group-hover:-translate-y-1 solar-shine">
+              Design Your Boat Now
+              <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </span>
+          </router-link>
+        </div>
+          <!-- <div class="mt-10"> -->
             <!-- <div class="relative h-48 overflow-hidden rounded-xl bg-gray-50 border border-cyan-100 p-6 shadow-sm">
               <div v-for="(item, index) in advantages" :key="index"
                 class="absolute inset-0 p-6 transition-all duration-500 ease-in-out"
@@ -47,16 +56,7 @@
                 :class="currentAdvantage === index ? 'bg-cyan-500 w-6' : ''">
               </button>
             </div> -->
-          </div>
-
-          <router-link to="/custom-boat" class="group mt-10 inline-block">
-            <span
-              class="px-8 py-4 font-bold text-white inline-block solar-gradient rounded-xl transition-all duration-300 ease-in-out group-hover:shadow-lg group-hover:shadow-cyan-300/50 group-hover:-translate-y-1 solar-shine">
-              Design Your Boat Now
-              <i class="fas fa-arrow-right ml-2 text-sm"></i>
-            </span>
-          </router-link>
-        </div>
+          <!-- </div> -->
 
         <!-- <div class="relative min-h-[500px] lg:min-h-[600px] flex items-center justify-center order-2 lg:order-1">
           <div class="w-[500px] h-[500px] absolute bg-cyan-400/20 blur-3xl rounded-full"></div>
@@ -80,15 +80,34 @@
           </div>
         </div> -->
 
-        <div class="relative min-h-[500px] lg:min-h-[600px] text-black text-5xl order-2 lg:order-1">
-          <h1 class="text-4xl font-semibold mb-4">Advantages</h1>
-          <ul class="list-disc pl-6 text-3xl text-gray-700">
-            <li>Low operational cost</li>
-            <li>Zero emmisions and pollution</li>
-            <li>Built and designed in Kenya</li>
-            <li>Infinite range</li>
-          </ul>
-        </div>
+        <div class="relative min-h-[500px] lg:min-h-[600px] text-gray-800 order-2 lg:order-1 flex flex-col justify-center">
+
+                    <h2 class="text-4xl font-bold mb-8 text-gray-800">Key Advantages</h2>
+
+                    <!-- Large, responsive list of advantages -->
+                    <ul class="space-y-6">
+                        <!-- List Item 1 -->
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-wallet text-3xl w-10 text-center text-cyan-500 mr-4"></i>
+                            <span class="text-2xl md:text-3xl font-semibold text-gray-700">Low operational cost</span>
+                        </li>
+                        <!-- List Item 2 -->
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-leaf text-3xl w-10 text-center text-green-500 mr-4"></i>
+                            <span class="text-2xl md:text-3xl font-semibold text-gray-700">Zero emissions & pollution</span>
+                        </li>
+                        <!-- List Item 3 -->
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-flag text-3xl w-10 text-center text-red-500 mr-4"></i>
+                            <span class="text-2xl md:text-3xl font-semibold text-gray-700">Designed & built in Kenya</span>
+                        </li>
+                        <!-- List Item 4 -->
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-infinity text-3xl w-10 text-center text-yellow-500 mr-4"></i>
+                            <span class="text-2xl md:text-3xl font-semibold text-gray-700">Infinite range</span>
+                        </li>
+                    </ul>
+                </div>
 
       </div>
 
